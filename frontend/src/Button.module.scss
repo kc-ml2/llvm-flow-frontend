@@ -1,0 +1,115 @@
+@import './variable';
+
+//navbar
+.nav {
+  background-color: transparent;
+  border: transparent;
+  padding-top: $btn-padding-y;
+  padding-bottom: $btn-padding-y;
+  padding-left: $btn-padding-x;
+  padding-right: $btn-padding-x;
+  font-weight: 600;
+  color: $dark;
+  font-size: 1rem;
+}
+
+.nav:hover {
+  background-color: transparent;
+  color: $purple;
+}
+
+.nav:focus {
+  background-color: transparent;
+  color: $purple;
+  outline: 0;
+}
+
+.nav:active {
+  background-color: transparent;
+  color: $purple;
+  outline: 0;
+}
+
+//default
+.default {
+  background-color: $purple;
+  border: $purple;
+  padding-top: $btn-padding-y;
+  padding-bottom: $btn-padding-y;
+  padding-left: $btn-padding-x;
+  padding-right: $btn-padding-x;
+  font-weight: 600;
+  color: white;
+  font-size: 1rem;
+  border-radius: 10px;
+  position: relative;
+  top: 0;
+  transition: top ease 0.2s;
+}
+
+.default:hover {
+  top: -3px;
+}
+
+//white
+.white {
+  background-color: white;
+  border: 2px solid $dark;
+  padding-top: $btn-padding-y-lg;
+  padding-bottom: $btn-padding-y-lg;
+  padding-left: $btn-padding-x-lg;
+  padding-right: $btn-padding-x-lg;
+  font-weight: 600;
+  color: $dark;
+  font-size: 1.5rem;
+  border-radius: 10px;
+  position: relative;
+  top: 0;
+  transition: top ease 0.2s;
+}
+
+.white:hover {
+  top: -3px;
+}
+
+//dark
+.dark {
+  background-color: $dark;
+  border: $dark;
+  padding-top: $btn-padding-y-sm;
+  padding-bottom: $btn-padding-y-sm;
+  padding-left: $btn-padding-x-sm;
+  padding-right: $btn-padding-x-sm;
+  font-weight: 600;
+  color: white;
+  font-size: 0.7rem;
+  border-radius: 7px;
+  position: relative;
+  top: 0;
+  transition: top ease 0.2s;
+}
+
+.dark:hover {
+  top: -3px;
+}
+
+//transparent
+.transparent {
+  background-color: transparent;
+  border: 1px solid $purple;
+  padding-top: $btn-padding-y-sm;
+  padding-bottom: $btn-padding-y-sm;
+  padding-left: $btn-padding-x-sm;
+  padding-right: $btn-padding-x-sm;
+  font-weight: 600;
+  color: $purple;
+  font-size: 1rem;
+  border-radius: 10px;
+  position: relative;
+  top: 0;
+  transition: top ease 0.2s;
+}
+
+.transparent:hover {
+  top: -3px;
+}

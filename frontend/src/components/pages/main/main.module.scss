@@ -1,0 +1,28 @@
+@import '../../../variable';
+
+.main {
+  text-align: center;
+  position: fixed;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  h1 {
+    font-weight: 700;
+  }
+
+  a {
+    color: $purple;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    top: 0;
+    transition: top ease 0.2s;
+  }
+  a:hover {
+    color: $purple;
+    font-weight: 600;
+    top: -2px;
+  }
+}

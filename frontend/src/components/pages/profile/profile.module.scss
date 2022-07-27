@@ -1,0 +1,60 @@
+@import '../../../variable';
+
+.profile {
+  padding-top: 5rem;
+  padding-left: 8%;
+  padding-right: 8%;
+
+  .user {
+    font-size: 1.5rem;
+    font-weight: 600;
+    display: grid;
+    grid-template-columns: 90% 10%;
+
+    i {
+      font-style: normal;
+      color: $yellow;
+    }
+
+    p {
+      grid-row: 1;
+      grid-column: 1;
+    }
+
+    button {
+      grid-row: 1;
+      grid-column: 2;
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+.list {
+  padding-top: 4rem;
+  padding-bottom: 15rem;
+  table {
+    border-collapse: collapse;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  thead {
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-bottom: 1px solid $dark;
+    td {
+      padding-bottom: 1rem;
+    }
+  }
+
+  td {
+    padding: 0.5rem;
+  }
+
+  tbody {
+    font-weight: 500;
+    tr:hover {
+      color: $purple;
+    }
+  }
+}

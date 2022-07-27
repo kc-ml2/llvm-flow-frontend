@@ -1,0 +1,73 @@
+@import '../../../variable';
+
+.upload {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  .file {
+    display: grid;
+    grid-template-columns: 10rem 30rem;
+    padding-bottom: 1rem;
+    label {
+      font-weight: 600;
+      font-size: 1.3rem;
+      grid-row: 1;
+      grid-column: 1;
+    }
+    input {
+      font-size: 1rem !important;
+      width: 100%;
+      grid-row: 1;
+      grid-column: 2;
+      color: $gray;
+    }
+  }
+
+  .pass {
+    display: grid;
+    grid-template-columns: 10rem 30rem;
+    padding-bottom: 1rem;
+    label {
+      font-weight: 600;
+      font-size: 1.3rem;
+      grid-row: 1;
+      grid-column: 1;
+    }
+    input {
+      border: 1px solid $dark;
+      border-radius: 5px;
+      color: $dark;
+      padding: 0.3rem;
+      width: 100%;
+      grid-row: 1;
+      grid-column: 2;
+    }
+  }
+
+  .cmd {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    background-color: $dark;
+    border-radius: 5px;
+    color: white;
+    padding: 1rem;
+    h5 {
+      font-size: 0.7rem;
+      color: $gray;
+    }
+
+    i {
+      color: $yellow;
+      font-style: normal;
+    }
+  }
+}
+
+#submit {
+  text-align: center;
+  input {
+    font-size: 1.3rem;
+  }
+}

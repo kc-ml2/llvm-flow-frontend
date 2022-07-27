@@ -1,0 +1,77 @@
+@import '../../../variable';
+
+.llvmcfg {
+  margin: 0 auto;
+  margin-bottom: 8rem;
+
+  hr {
+    width: 97%;
+    opacity: 0.7;
+    height: 10px;
+    background-color: $gray;
+    margin: 0 auto;
+  }
+  .row {
+    display: grid;
+    grid-template-columns: 80% 20%;
+    .info {
+      background-color: $dark;
+      border-radius: 5px;
+      color: white;
+      padding: 1rem;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      margin: 1rem;
+      width: 70%;
+      grid-row: 1;
+      grid-column: 1;
+
+      h5 {
+        font-size: 0.5rem;
+        color: $gray;
+      }
+
+      h4 {
+        font-size: 0.8rem;
+      }
+      i {
+        font-style: normal;
+        color: $yellow;
+      }
+    }
+
+    .mode {
+      grid-row: 1;
+      grid-column: 2;
+      text-align: end;
+      padding-top: 1rem;
+      padding-right: 0.5rem;
+      display: grid;
+      text-align: center;
+      margin: 0 auto;
+      margin-right: 1rem;
+      color: $gray;
+
+      .col1 {
+        grid-row: 1;
+        grid-column: 1;
+        color: $dark;
+        font-weight: 600;
+        font-size: 0.8rem;
+        padding-right: 0.5rem;
+      }
+      .col2 {
+        grid-row: 1;
+        grid-column: 2;
+      }
+      .col3 {
+        grid-row: 1;
+        grid-column: 3;
+        color: $dark;
+        font-weight: 600;
+        font-size: 0.8rem;
+        padding-left: 0.5rem;
+      }
+    }
+  }
+}

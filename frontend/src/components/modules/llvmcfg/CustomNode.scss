@@ -1,0 +1,31 @@
+@import '../../../variable';
+
+.yes {
+  height: 100%;
+  width: 100%;
+  border: 2px solid $yellow;
+  padding: 10px;
+  border-radius: 5px;
+  background: white;
+  text-align: start;
+  font-size: 12px;
+
+  p {
+    line-height: 5px;
+  }
+}
+
+.no {
+  height: 100%;
+  width: 100%;
+  border: 2px solid $gray;
+  padding: 10px;
+  border-radius: 5px;
+  background: white;
+  text-align: start;
+  font-size: 12px;
+
+  p {
+    line-height: 5px;
+  }
+}

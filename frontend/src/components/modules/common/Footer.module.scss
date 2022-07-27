@@ -1,0 +1,32 @@
+@import '../../../variable';
+
+.footer {
+  background-color: white;
+  color: $purple;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+
+  .content {
+    margin-left: 8%;
+    margin-right: 8%;
+
+    .right {
+      text-align: end;
+      img {
+        margin-left: 1rem;
+      }
+    }
+    hr {
+      height: 1.5px;
+      opacity: 1;
+    }
+
+    h5 {
+      font-size: 1rem;
+    }
+  }
+}

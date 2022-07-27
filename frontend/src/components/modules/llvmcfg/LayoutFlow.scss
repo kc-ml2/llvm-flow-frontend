@@ -1,0 +1,35 @@
+@import '../../../variable';
+
+.layoutflow {
+  flex-grow: 1;
+  position: relative;
+  margin: 1rem;
+  background-color: $light;
+  border-top: 1px solid $gray;
+  // height: 100%;
+
+  h4 {
+    padding-left: 1rem;
+    padding-top: 1rem;
+    color: $dark;
+    font-size: 0.9rem;
+  }
+}
+
+.layoutflow .controls {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 10;
+  font-size: 12px;
+}
+
+.layoutflow .controls button:first-child {
+  margin-right: 10px;
+}
+
+.react-flow__attribution {
+  background-color: transparent;
+  margin-bottom: 620px;
+  margin-right: 0.5rem;
+}
