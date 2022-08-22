@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from 'axios'
 
-const { REACT_APP_API_URL } = process.env
+// const { REACT_APP_DEV_URL } = process.env
+const { REACT_APP_PROD_URL } = process.env
 
 export const getBaseConfig = (method: any) => ({
   method,
@@ -18,7 +19,7 @@ export const serializeResponse = (response: any) => {
 }
 
 export const httpClient = axios.create({
-  baseURL: REACT_APP_API_URL,
+  baseURL: REACT_APP_PROD_URL,
   headers: {
     'Content-type': 'application/json',
   },
