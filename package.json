@@ -2,7 +2,6 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:8000",
   "dependencies": {
     "@craco/craco": "^6.4.3",
     "@react-oauth/google": "^0.2.4",
@@ -84,17 +83,5 @@
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.29.4",
     "prettier": "2.6.2"
-  },
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
-  "main": "craco.config.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kc-ml2/llvm-flow.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/kc-ml2/llvm-flow/issues"
-  },
-  "homepage": "https://github.com/kc-ml2/llvm-flow#readme"
+  }
 }
