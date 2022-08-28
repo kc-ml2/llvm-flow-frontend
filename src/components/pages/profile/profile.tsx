@@ -24,7 +24,7 @@ const Profile = () => {
     };
 
     axios
-      .get(`${REACT_APP_API_URL}:8000/profile/`, { headers: headers })
+      .get(`${REACT_APP_API_URL}/profile/`, { headers: headers })
       .then((response) => {
         setData(response.data.data);
       });
@@ -42,7 +42,7 @@ const Profile = () => {
         "multipart/form-data; boundary=177130003042384797933296855923",
     };
     axios
-      .post(`${REACT_APP_API_URL}:8000/profile/`, payload, {
+      .post(`${REACT_APP_API_URL}/profile/`, payload, {
         headers: headers,
       })
       .then((response) => {

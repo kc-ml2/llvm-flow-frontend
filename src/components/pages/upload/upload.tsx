@@ -47,7 +47,7 @@ function Upload() {
     };
 
     axios
-      .post(`${REACT_APP_API_URL}:8000/upload/`, data, { headers: headers })
+      .post(`${REACT_APP_API_URL}/upload/`, data, { headers: headers })
       .then((response) => {
         dispatch(setGraphData(response.data));
         navigate("/llvmcfg");
