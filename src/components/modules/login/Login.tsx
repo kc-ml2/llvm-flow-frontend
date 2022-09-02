@@ -1,5 +1,3 @@
-/* eslint-disable camelcase */
-/* eslint-disable multiline-ternary */
 import React, { useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google'

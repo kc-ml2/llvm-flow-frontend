@@ -2,7 +2,6 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:8000",
   "dependencies": {
     "@craco/craco": "^6.4.3",
     "@react-oauth/google": "^0.2.4",
