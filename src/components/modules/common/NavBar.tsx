@@ -38,10 +38,23 @@ const NavBar = () => {
       <Collapse navbar isOpen={isOpen} className={styles.right}>
         <Nav navbar className={styles.nav}>
           <NavItem className={styles.items}>
-            <button className={buttons.nav}>Github</button>
+            <button className={buttons.nav}>
+              <a
+                href="https://github.com/kc-ml2/llvm-flow"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Github
+              </a>
+            </button>
           </NavItem>
           <NavItem className={styles.items}>
             <button className={buttons.nav}>Guide</button>
+          </NavItem>
+          <NavItem className={styles.items}>
+            <NavLink to="/upload">
+              <button className={buttons.nav}>Start</button>
+            </NavLink>
           </NavItem>
           <NavItem className={styles.items}>
             {isLogin ? (

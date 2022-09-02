@@ -11,6 +11,15 @@
   font-weight: 600;
   color: $dark;
   font-size: 1rem;
+
+  a {
+    text-decoration: none;
+    color: $dark;
+  }
+
+  a:hover {
+    color: $purple;
+  }
 }
 
 .nav:hover {
