@@ -27,6 +27,7 @@ const Profile = () => {
       .get(`${REACT_APP_API_URL}/profile/`, { headers: headers })
       .then((response) => {
         setData(response.data.data)
+        console.log(response)
       })
   }, [])
 
@@ -58,7 +59,7 @@ const Profile = () => {
       date.slice(4, 6) +
       '.' +
       date.slice(6, 8) +
-      '-' +
+      '/' +
       date.slice(9, 11) +
       ':' +
       date.slice(11, 13)
@@ -72,7 +73,7 @@ const Profile = () => {
           Welcome, <i>{email}</i> !
         </p>
         <button
-          className={buttons.transparent}
+          className={buttons.basic}
           onClick={() => {
             localStorage.removeItem('user')
             dispatch(setLogout())

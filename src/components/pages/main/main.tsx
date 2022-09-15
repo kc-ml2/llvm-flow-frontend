@@ -34,7 +34,7 @@ function Main() {
       </h5>
       <br></br>
       <button onClick={handleUpload} className={buttons.white}>
-        Get Start
+        Start
       </button>
     </section>
   )

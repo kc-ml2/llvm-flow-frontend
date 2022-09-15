@@ -39,7 +39,7 @@
   outline: 0;
 }
 
-//default
+//default - nav(signin, profile)
 .default {
   background-color: $purple;
   border: $purple;
@@ -102,10 +102,10 @@
   top: -3px;
 }
 
-//transparent
-.transparent {
-  background-color: transparent;
-  border: 1px solid $purple;
+//basic - logout
+.basic {
+  background-color: $lightpurple;
+  border: 1px solid $lightpurple;
   padding-top: $btn-padding-y-sm;
   padding-bottom: $btn-padding-y-sm;
   padding-left: $btn-padding-x-sm;
@@ -119,6 +119,6 @@
   transition: top ease 0.2s;
 }
 
-.transparent:hover {
+.basic:hover {
   top: -3px;
 }
