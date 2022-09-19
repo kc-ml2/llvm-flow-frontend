@@ -27,7 +27,6 @@ const Profile = () => {
       .get(`${REACT_APP_API_URL}/profile/`, { headers: headers })
       .then((response) => {
         setData(response.data.data)
-        console.log(response)
       })
   }, [])
 
@@ -100,7 +99,7 @@ const Profile = () => {
                   <tr key={i}>
                     <td>{convertDate(i[2].substring(0, i[2].indexOf('/')))}</td>
                     <td>{i[2].substring(i[2].indexOf('/') + 1)}</td>
-                    <td>-{i[0]}</td>
+                    <td>{i[0]}</td>
                     <td>
                       <button
                         className={buttons.dark}

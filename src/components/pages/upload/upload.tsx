@@ -52,6 +52,7 @@ function Upload() {
         dispatch(setGraphData(response.data))
         navigate('/llvmcfg')
       })
+      .catch((response) => alert('Please check your pass option again!'))
   }
 
   return (
@@ -81,7 +82,7 @@ function Upload() {
         <div className={styles.cmd}>
           <h5>clang 10, llvm 10</h5>
           <p>
-            opt beforeg.ll -S <i>-{pass}</i> -o afterg.ll
+            opt beforeg.ll -S <i>{pass}</i> -o afterg.ll
           </p>
         </div>
         <div id={styles.submit}>
