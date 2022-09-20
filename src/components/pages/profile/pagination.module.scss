@@ -1,0 +1,37 @@
+@import '../../../variable';
+
+.pagination {
+  text-align: center;
+  padding-right: 40px;
+  width: 100%;
+  margin: 0 auto;
+
+  li {
+    display: inline-block;
+    padding: 1rem;
+    color: $gray;
+    font-weight: 600;
+    width: 40px;
+
+    a {
+      color: $gray;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: $dark;
+      font-weight: 600;
+      margin: 0 auto;
+    }
+  }
+
+  li:hover {
+    color: $dark;
+  }
+}
+
+.active {
+  a {
+    color: $dark !important;
+  }
+}
