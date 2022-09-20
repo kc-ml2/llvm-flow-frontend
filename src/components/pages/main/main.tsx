@@ -19,6 +19,14 @@ function Main() {
     }
   }
 
+  const handleUploadCompiled = () => {
+    if (isLogin) {
+      navigate('/uploadCompiled')
+    } else {
+      navigate('/login')
+    }
+  }
+
   return (
     <section className={styles.main}>
       <h1>LLVM-FLOW !</h1>
@@ -34,7 +42,12 @@ function Main() {
       </h5>
       <br></br>
       <button onClick={handleUpload} className={buttons.white}>
-        Start
+        Start with <b>.c</b> file
+      </button>
+      <br></br>
+      <br></br>
+      <button onClick={handleUploadCompiled} className={buttons.white}>
+        Start with <b>.ll</b> file
       </button>
     </section>
   )
