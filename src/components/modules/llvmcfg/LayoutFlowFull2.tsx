@@ -103,6 +103,23 @@ const LayoutFlowFull2 = ({ llvmJson, llvmOutput, title }: LayoutFlowProps) => {
   }
   checkSameBlock(blockID, llvmOutput, node)
 
+  // step*) edge tailport와 node 정보 연결하기
+  function connectTailport(tailport: string, tail: number) {
+    if (tailport) {
+      const tailLabel = node.filter((node: any) => node._gvid === tail)[0].label
+
+      const text = tailLabel.substring(tailLabel.indexOf(tailport) + 3)
+
+      if (text.includes('|')) {
+        return text.substring(0, text.indexOf('|'))
+      } else {
+        return text.substring(0, text.indexOf('}'))
+      }
+    } else {
+      return null
+    }
+  }
+
   // step4) node, edge 정의
   const initialNode = node.map(({ _gvid, name, label, isSame }: any) => ({
     id: _gvid.toString(),
@@ -122,7 +139,7 @@ const LayoutFlowFull2 = ({ llvmJson, llvmOutput, title }: LayoutFlowProps) => {
     source: tail.toString(),
     target: head.toString(),
     type: 'smoothstep',
-    label: tailport,
+    label: connectTailport(tailport, tail),
     labelStyle: { fontWeight: 600, fontSize: '1rem' },
   }))
 
