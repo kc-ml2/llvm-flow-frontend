@@ -9,6 +9,9 @@ import {
   NavbarToggler,
   Nav,
   NavItem,
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
 } from 'reactstrap'
 import styles from './NavBar.module.scss'
 import buttons from '@/Button.module.scss'
@@ -20,6 +23,12 @@ const NavBar = () => {
   const cx = classNames.bind(styles)
   const { isLogin } = useAppSelector((state) => state.auth)
   const [isOpen, setIsOpen] = useState(false)
+  const [isOpenDropdown, setIsOpenDropdown] = useState(false)
+
+  const toggle = () => {
+    setIsOpenDropdown(!isOpenDropdown)
+  }
+
   return (
     <Navbar expand="md" className={cx('NavBar', 'fixedTop')}>
       <NavbarBrand href="/" className={styles.logo}>
@@ -52,9 +61,23 @@ const NavBar = () => {
             <button className={buttons.nav}>Guide</button>
           </NavItem>
           <NavItem className={styles.items}>
-            <NavLink to="/upload">
-              <button className={buttons.nav}>Start</button>
-            </NavLink>
+            <Dropdown isOpen={isOpenDropdown} toggle={toggle}>
+              <DropdownToggle caret color="white" className={styles.dropdown}>
+                Start
+              </DropdownToggle>
+              <DropdownMenu>
+                <NavLink to="/upload">
+                  <button className={buttons.nav}>
+                    with <b>.c</b> file
+                  </button>
+                </NavLink>
+                <NavLink to="/uploadCompiled">
+                  <button className={buttons.nav}>
+                    with <b>.ll</b> file
+                  </button>
+                </NavLink>
+              </DropdownMenu>
+            </Dropdown>
           </NavItem>
           <NavItem className={styles.items}>
             {isLogin ? (

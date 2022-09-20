@@ -67,6 +67,14 @@ ul {
   // for safari browser
 }
 
+.dropdown {
+  font-weight: 600;
+}
+
+.dropdown:hover {
+  color: $purple !important;
+}
+
 #collapseButton {
   background-color: transparent;
   border: transparent;

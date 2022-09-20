@@ -71,7 +71,7 @@ function Upload() {
     <section className={styles.upload}>
       <form onSubmit={handleSubmit} method="post" encType="multipart/form-data">
         <div className={styles.file}>
-          <label htmlFor="input-file">File Upload</label>
+          <label htmlFor="input-file">.c File Upload</label>
           <input
             type="file"
             name="content"
