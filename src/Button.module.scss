@@ -39,7 +39,7 @@
   outline: 0;
 }
 
-//default - nav(signin, profile)
+//default - nav(signin, profile, delete:yes)
 .default {
   background-color: $purple;
   border: $purple;
@@ -60,7 +60,28 @@
   top: -3px;
 }
 
-//white
+//default_yellow - delete:no
+.default_light {
+  background-color: $lightpurple;
+  border: $purple;
+  padding-top: $btn-padding-y;
+  padding-bottom: $btn-padding-y;
+  padding-left: $btn-padding-x;
+  padding-right: $btn-padding-x;
+  font-weight: 600;
+  color: $purple;
+  font-size: 1rem;
+  border-radius: 10px;
+  position: relative;
+  top: 0;
+  transition: top ease 0.2s;
+}
+
+.default_light:hover {
+  top: -3px;
+}
+
+//white - get started
 .white {
   background-color: white;
   border: 2px solid $dark;

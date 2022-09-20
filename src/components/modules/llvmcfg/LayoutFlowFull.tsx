@@ -186,10 +186,10 @@ const LayoutFlowFull = ({ llvmJson, llvmOutput, title }: LayoutFlowProps) => {
         <MiniMap nodeColor={nodeColor} nodeStrokeWidth={3} />
       </ReactFlow>
       <div className="controls">
-        <button onClick={() => onLayout('TB')} className={buttons.dark}>
+        <button onClick={() => onLayout('TB')} className={buttons.mini}>
           vertical layout
         </button>
-        <button onClick={() => onLayout('LR')} className={buttons.dark}>
+        <button onClick={() => onLayout('LR')} className={buttons.mini}>
           horizontal layout
         </button>
       </div>

@@ -6,11 +6,13 @@ import { setGraphData } from '@/redux/features/graph/graphSlice'
 import styles from './profile.module.scss'
 import buttons from '../../../Button.module.scss'
 import axios from 'axios'
+import { Modal } from 'reactstrap'
 const { REACT_APP_API_URL } = process.env
 
 const Profile = () => {
   const { email, token } = useAppSelector((state) => state.auth)
   const [data, setData] = useState<any | undefined>(undefined)
+  const [open, setOpen] = useState(false)
 
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
@@ -65,8 +67,10 @@ const Profile = () => {
         headers: headers,
       })
       .then((response) => {
+        window.location.reload()
+      })
+      .catch((response) => {
         console.log(response)
-        navigate('/profile')
       })
   }
 
@@ -131,10 +135,28 @@ const Profile = () => {
                     <td>
                       <button
                         className={buttons.mini_yellow}
-                        onClick={() => deleteGraph(i[1])}
+                        onClick={() => setOpen(true)}
                       >
                         delete
                       </button>
+                      <Modal isOpen={open} className={styles.modal}>
+                        <div>
+                          Are you sure you want to delete this data?
+                          <br></br>
+                          <button
+                            className={buttons.default}
+                            onClick={() => deleteGraph(i[1])}
+                          >
+                            Yes
+                          </button>
+                          <button
+                            className={buttons.default_light}
+                            onClick={() => setOpen(false)}
+                          >
+                            No
+                          </button>
+                        </div>
+                      </Modal>
                     </td>
                   </tr>
                 ))

@@ -55,6 +55,18 @@
     font-weight: 500;
     tr:hover {
       color: $purple;
+      background-color: $lightgray;
     }
+  }
+}
+
+.modal {
+  div {
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.2rem;
+  }
+  button {
+    margin: 0.5rem;
   }
 }
