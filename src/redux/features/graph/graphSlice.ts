@@ -12,6 +12,7 @@ interface GraphState {
   after_output?: Array<string>
   file_pass?: string
   isReady?: boolean
+  filterID?: number
 }
 
 const initialState: GraphState = {
@@ -25,6 +26,7 @@ const initialState: GraphState = {
   after_output: undefined,
   file_pass: undefined,
   isReady: false,
+  filterID: undefined,
 }
 
 export const graphSlice = createSlice({
@@ -42,6 +44,7 @@ export const graphSlice = createSlice({
       state.after_output = payload.after_output
       state.file_pass = payload.file_pass
       state.isReady = true
+      state.filterID = payload.filterID
     },
   },
 })

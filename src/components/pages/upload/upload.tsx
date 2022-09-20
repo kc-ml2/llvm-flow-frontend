@@ -85,6 +85,7 @@ function Upload() {
           <input
             type="text"
             name="transformpass"
+            placeholder="ex) -simplifycfg -inline"
             id="input-text"
             onChange={(e) => {
               setPass(e.target.value)

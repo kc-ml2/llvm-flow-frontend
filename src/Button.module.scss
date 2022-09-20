@@ -81,16 +81,16 @@
   top: -3px;
 }
 
-//dark
-.dark {
-  background-color: $dark;
-  border: $dark;
+//mini - purple
+.mini {
+  background-color: $lightpurple;
+  border: $lightpurple;
   padding-top: $btn-padding-y-sm;
   padding-bottom: $btn-padding-y-sm;
   padding-left: $btn-padding-x-sm;
   padding-right: $btn-padding-x-sm;
   font-weight: 600;
-  color: white;
+  color: $purple;
   font-size: 0.7rem;
   border-radius: 7px;
   position: relative;
@@ -98,8 +98,31 @@
   transition: top ease 0.2s;
 }
 
-.dark:hover {
+.mini:hover {
   top: -3px;
+  background-color: $darkpurple;
+}
+
+//mini - yellow
+.mini_yellow {
+  background-color: $lightyellow;
+  border: $lightyellow;
+  padding-top: $btn-padding-y-sm;
+  padding-bottom: $btn-padding-y-sm;
+  padding-left: $btn-padding-x-sm;
+  padding-right: $btn-padding-x-sm;
+  font-weight: 600;
+  color: $yellow;
+  font-size: 0.7rem;
+  border-radius: 7px;
+  position: relative;
+  top: 0;
+  transition: top ease 0.2s;
+}
+
+.mini_yellow:hover {
+  top: -3px;
+  background-color: $dakryellow;
 }
 
 //basic - logout
@@ -121,4 +144,5 @@
 
 .basic:hover {
   top: -3px;
+  background-color: $darkpurple;
 }

@@ -51,6 +51,25 @@ const Profile = () => {
       })
   }
 
+  const deleteGraph = (e: any) => {
+    const headers = {
+      Authorization: 'Token ' + token,
+      // FIXME: boundary 해결하기!
+      'Content-type':
+        'multipart/form-data; boundary=177130003042384797933296855923',
+    }
+
+    axios
+      .delete(`${REACT_APP_API_URL}/delete/`, {
+        data: { filterID: e },
+        headers: headers,
+      })
+      .then((response) => {
+        console.log(response)
+        navigate('/profile')
+      })
+  }
+
   const convertDate = (date: string) => {
     return (
       date.slice(0, 4) +
@@ -90,6 +109,7 @@ const Profile = () => {
               <td>file name</td>
               <td>pass option</td>
               <td>show graph</td>
+              <td>delete</td>
             </tr>
           </thead>
           <tbody>
@@ -102,10 +122,18 @@ const Profile = () => {
                     <td>{i[0]}</td>
                     <td>
                       <button
-                        className={buttons.dark}
+                        className={buttons.mini}
                         onClick={() => showGraph(i)}
                       >
                         start
+                      </button>
+                    </td>
+                    <td>
+                      <button
+                        className={buttons.mini_yellow}
+                        onClick={() => deleteGraph(i[1])}
+                      >
+                        delete
                       </button>
                     </td>
                   </tr>
