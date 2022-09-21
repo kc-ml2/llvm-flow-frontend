@@ -72,7 +72,7 @@ interface LayoutFlowProps {
 }
 
 const LayoutFlow = ({ llvmJson, llvmOutput, title }: LayoutFlowProps) => {
-  const flowStyles = { height: '40rem' }
+  // const flowStyles = {  background: 'white' }
   // step1) json -> react flow에 맞는 형식으로 변경
   const nodeinitial = llvmJson.objects
   const node = nodeinitial.map((object: any) => {
@@ -198,7 +198,7 @@ const LayoutFlow = ({ llvmJson, llvmOutput, title }: LayoutFlowProps) => {
         connectionLineType={ConnectionLineType.SmoothStep}
         defaultPosition={[0, 0]}
         defaultZoom={0}
-        style={flowStyles}
+        // style={flowStyles}
       >
         <Background />
         <MiniMap nodeColor={nodeColor} nodeStrokeWidth={3} />
