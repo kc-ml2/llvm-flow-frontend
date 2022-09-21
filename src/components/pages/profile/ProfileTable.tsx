@@ -124,7 +124,11 @@ const ProfileTable = () => {
                     >
                       delete
                     </button>
-                    <Modal isOpen={open} className={styles.modal}>
+                    <Modal
+                      isOpen={open}
+                      className={styles.modal}
+                      backdropClassName={styles.backdrop}
+                    >
                       <div>
                         Are you sure you want to delete this data?
                         <br></br>
