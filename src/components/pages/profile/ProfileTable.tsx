@@ -191,7 +191,7 @@ const ProfileTable = () => {
     )
   }
 
-  return <PaginatedItems itemsPerPage={20} />
+  return <PaginatedItems itemsPerPage={2} />
 }
 
 export default ProfileTable
