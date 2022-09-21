@@ -61,8 +61,8 @@ export default memo(({ data, isConnectable }: any) => {
       <Handle
         type="target"
         position={Position.Top}
-        id="a"
-        isConnectable={isConnectable}
+        // id="a"
+        isConnectable={false}
       />
       <button
         className={`${data.isSame}`}
@@ -86,14 +86,8 @@ export default memo(({ data, isConnectable }: any) => {
       <Handle
         type="source"
         position={Position.Bottom}
-        id="a"
-        isConnectable={isConnectable}
-      />
-      <Handle
-        type="target"
-        position={Position.Bottom}
-        id="a"
-        isConnectable={isConnectable}
+        // id="a"
+        isConnectable={false}
       />
     </>
   )

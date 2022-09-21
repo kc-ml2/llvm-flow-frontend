@@ -34,6 +34,7 @@ function App() {
         <Route path="/uploadCPP" element={<UploadCPP />} />
         <Route path="/uploadLL" element={<UploadLL />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/llvmcfg" element={<LLVMcfg />} />
         {isLogin && <Route path="/profile" element={<Profile />} />}
         {isReady && <Route path="/llvmcfg" element={<LLVMcfg />} />}
       </Routes>

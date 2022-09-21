@@ -116,7 +116,7 @@ const LayoutFlow = ({ llvmJson, llvmOutput, title }: LayoutFlowProps) => {
         return text.substring(0, text.indexOf('}'))
       }
     } else {
-      return null
+      return '.'
     }
   }
 
