@@ -42,6 +42,7 @@
     "react-resizable": "^3.0.4",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.0",
+    "react-switch-selector": "^2.2.1",
     "reactstrap": "^9.1.1",
     "redux": "^4.2.0",
     "scss": "^0.2.4",

@@ -1,8 +1,7 @@
 /* eslint-disable camelcase */
 import React, { Suspense } from 'react'
-import Switch from '@/components/modules/common/Switch'
+import SwitchSelector from '@/components/modules/common/SwitchSelector'
 import { useAppSelector, useAppDispatch } from '@/redux/hook'
-import { setIsFullFalse, setIsFullTrue } from '@/redux/features/mode/modeSlice'
 import styles from './llvmcfg.module.scss'
 import Loading from '@/components/modules/common/Loading'
 
@@ -10,8 +9,6 @@ function LLVMcfg() {
   const { file_pass, before_json, before_output, after_json, after_output } =
     useAppSelector((state) => state.graph)
   const { isFull } = useAppSelector((state) => state.mode)
-
-  const dispatch = useAppDispatch()
 
   const LayoutFlow = React.lazy(
     () => import('@/components/modules/llvmcfg/LayoutFlow'),
@@ -35,16 +32,7 @@ function LLVMcfg() {
           </h4>
         </div>
         <div className={styles.mode}>
-          <Switch
-            isOn={isFull}
-            handleToggle={() => {
-              if (isFull === true) {
-                dispatch(setIsFullFalse())
-              } else if (isFull === false) {
-                dispatch(setIsFullTrue())
-              }
-            }}
-          />
+          <SwitchSelector />
         </div>
       </div>
       {isFull && (
