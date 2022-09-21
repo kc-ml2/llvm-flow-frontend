@@ -14,6 +14,7 @@ const ProfileTable = () => {
   const { token } = useAppSelector((state) => state.auth)
   const [open, setOpen] = useState(false)
   const [items, setItems] = useState<any | undefined>(undefined)
+  const [currentID, setCurrentID] = useState()
 
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
@@ -64,7 +65,7 @@ const ProfileTable = () => {
 
     axios
       .delete(`${REACT_APP_API_URL}/delete/`, {
-        data: { filterID: e },
+        data: { filterID: currentID },
         headers: headers,
       })
       .then(() => {
@@ -120,7 +121,9 @@ const ProfileTable = () => {
                   <td>
                     <button
                       className={buttons.mini_yellow}
-                      onClick={() => setOpen(true)}
+                      onClick={() => {
+                        setOpen(true), setCurrentID(i[1])
+                      }}
                     >
                       delete
                     </button>
@@ -135,7 +138,7 @@ const ProfileTable = () => {
                         <br></br>
                         <button
                           className={buttons.default}
-                          onClick={() => deleteGraph(i[1])}
+                          onClick={() => deleteGraph(currentID)}
                         >
                           Yes
                         </button>
