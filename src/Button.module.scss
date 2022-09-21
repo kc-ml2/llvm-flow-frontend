@@ -114,13 +114,9 @@
   color: $purple;
   font-size: 0.7rem;
   border-radius: 7px;
-  position: relative;
-  top: 0;
-  transition: top ease 0.2s;
 }
 
 .mini:hover {
-  top: -3px;
   background-color: $darkpurple;
 }
 
@@ -136,13 +132,9 @@
   color: $darkyellow;
   font-size: 0.7rem;
   border-radius: 7px;
-  position: relative;
-  top: 0;
-  transition: top ease 0.2s;
 }
 
 .mini_yellow:hover {
-  top: -3px;
   background-color: $dakryellow;
 }
 

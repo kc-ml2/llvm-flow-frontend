@@ -1,7 +1,8 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Main from '@/components/pages/main/main'
-import Upload from '@/components/pages/upload/upload'
-import UploadCompiled from '@/components/pages/upload/uploadCompiled'
+import UploadC from '@/components/pages/upload/uploadC'
+import UploadCPP from '@/components/pages/upload/uploadCPP'
+import UploadLL from '@/components/pages/upload/uploadLL'
 import Login from '@/components/modules/login/Login'
 import Profile from '@/components/pages/profile/profile'
 import LLVMcfg from '@/components/pages/llvmcfg/llvmcfg'
@@ -29,8 +30,9 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/upload" element={<Upload />} />
-        <Route path="/uploadCompiled" element={<UploadCompiled />} />
+        <Route path="/uploadC" element={<UploadC />} />
+        <Route path="/uploadCPP" element={<UploadCPP />} />
+        <Route path="/uploadLL" element={<UploadLL />} />
         <Route path="/login" element={<Login />} />
         {isLogin && <Route path="/profile" element={<Profile />} />}
         {isReady && <Route path="/llvmcfg" element={<LLVMcfg />} />}

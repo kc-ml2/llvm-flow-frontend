@@ -58,7 +58,7 @@ function Upload() {
       }
 
       axios
-        .post(`${REACT_APP_API_URL}/upload/`, data, { headers: headers })
+        .post(`${REACT_APP_API_URL}/uploadCPP/`, data, { headers: headers })
         .then((response) => {
           dispatch(setGraphData(response.data))
           navigate('/llvmcfg')
@@ -71,13 +71,13 @@ function Upload() {
     <section className={styles.upload}>
       <form onSubmit={handleSubmit} method="post" encType="multipart/form-data">
         <div className={styles.file}>
-          <label htmlFor="input-file">.c File Upload</label>
+          <label htmlFor="input-file">.cpp File Upload</label>
           <input
             type="file"
             name="content"
             multiple
             id="intput-file"
-            accept=".c, .h"
+            accept=".h, .cpp"
           />
         </div>
         <div className={styles.pass}>

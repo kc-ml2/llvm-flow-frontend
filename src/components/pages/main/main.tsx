@@ -11,17 +11,25 @@ function Main() {
 
   const navigate = useNavigate()
 
-  const handleUpload = () => {
+  const handleUploadC = () => {
     if (isLogin) {
-      navigate('/upload')
+      navigate('/uploadC')
     } else {
       navigate('/login')
     }
   }
 
-  const handleUploadCompiled = () => {
+  const handleUploadCPP = () => {
     if (isLogin) {
-      navigate('/uploadCompiled')
+      navigate('/uploadCPP')
+    } else {
+      navigate('/login')
+    }
+  }
+
+  const handleUploadLL = () => {
+    if (isLogin) {
+      navigate('/uploadLL')
     } else {
       navigate('/login')
     }
@@ -41,12 +49,17 @@ function Main() {
         </a>
       </h5>
       <br></br>
-      <button onClick={handleUpload} className={buttons.white}>
+      <button onClick={handleUploadC} className={buttons.white}>
         Start with <b>.c</b> file
       </button>
       <br></br>
       <br></br>
-      <button onClick={handleUploadCompiled} className={buttons.white}>
+      <button onClick={handleUploadCPP} className={buttons.white}>
+        Start with <b>.cpp</b> file
+      </button>
+      <br></br>
+      <br></br>
+      <button onClick={handleUploadLL} className={buttons.white}>
         Start with <b>.ll</b> file
       </button>
     </section>

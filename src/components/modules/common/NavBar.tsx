@@ -66,12 +66,17 @@ const NavBar = () => {
                 Start
               </DropdownToggle>
               <DropdownMenu>
-                <NavLink to="/upload">
+                <NavLink to="/uploadC">
                   <button className={buttons.nav}>
                     with <b>.c</b> file
                   </button>
                 </NavLink>
-                <NavLink to="/uploadCompiled">
+                <NavLink to="/uploadCPP">
+                  <button className={buttons.nav}>
+                    with <b>.cpp</b> file
+                  </button>
+                </NavLink>
+                <NavLink to="/uploadLL">
                   <button className={buttons.nav}>
                     with <b>.ll</b> file
                   </button>

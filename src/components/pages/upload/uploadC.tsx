@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState } from 'react'
 // import uploadAPI from '@/api/http-upload'
 // import getCompilerOutput from '@/api/http-upload'
 import { useAppSelector, useAppDispatch } from '@/redux/hook'
@@ -18,7 +18,6 @@ import CloseIcon from '@mui/icons-material/Close'
 function Upload() {
   const { isLogin, token } = useAppSelector((state) => state.auth)
   const [pass, setPass] = useState<string>('')
-  const [file, setFile] = useState<string>('')
   const [openWarning, setOpenWarning] = useState(false)
   const [openError, setOpenError] = useState(false)
   const navigate = useNavigate()
@@ -59,9 +58,7 @@ function Upload() {
       }
 
       axios
-        .post(`${REACT_APP_API_URL}/uploadCompiled/`, data, {
-          headers: headers,
-        })
+        .post(`${REACT_APP_API_URL}/uploadC/`, data, { headers: headers })
         .then((response) => {
           dispatch(setGraphData(response.data))
           navigate('/llvmcfg')
@@ -74,16 +71,13 @@ function Upload() {
     <section className={styles.upload}>
       <form onSubmit={handleSubmit} method="post" encType="multipart/form-data">
         <div className={styles.file}>
-          <label htmlFor="input-file">.ll File Upload</label>
+          <label htmlFor="input-file">.c File Upload</label>
           <input
             type="file"
             name="content"
             multiple
             id="intput-file"
-            accept=".ll"
-            onChange={(e) => {
-              setFile(e.target.value)
-            }}
+            accept=".h, .c"
           />
         </div>
         <div className={styles.pass}>
@@ -160,7 +154,7 @@ function Upload() {
         <div className={styles.cmd}>
           <h5>clang 10, llvm 10</h5>
           <p>
-            opt {file} -S <i>{pass}</i> -o afterg.ll
+            opt beforeg.ll -S <i>{pass}</i> -o afterg.ll
           </p>
         </div>
 
