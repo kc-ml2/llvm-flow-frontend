@@ -15,6 +15,7 @@ const ProfileTable = () => {
   const [open, setOpen] = useState(false)
   const [items, setItems] = useState<any | undefined>(undefined)
   const [currentID, setCurrentID] = useState<number>()
+  const [currentFolder, setCurrentFolder] = useState<string>('')
   const [currentDate, setCurrentDate] = useState<string>('')
   const [currentFile, setCurrentFile] = useState<string>('')
   const [currentOption, setCurrentOption] = useState<string>('')
@@ -58,7 +59,7 @@ const ProfileTable = () => {
       })
   }
 
-  const deleteGraph = (e: any) => {
+  const deleteGraph = (currentID: any, currentFolder: any) => {
     const headers = {
       Authorization: 'Token ' + token,
       // FIXME: boundary 해결하기!
@@ -68,7 +69,7 @@ const ProfileTable = () => {
 
     axios
       .delete(`${REACT_APP_API_URL}/delete/`, {
-        data: { filterID: currentID },
+        data: { filterID: currentID, folder: currentFolder },
         headers: headers,
       })
       .then(() => {
@@ -131,7 +132,8 @@ const ProfileTable = () => {
                             convertDate(i[2].substring(0, i[2].indexOf('/'))),
                           ),
                           setCurrentFile(i[2].substring(i[2].indexOf('/') + 1)),
-                          setCurrentOption(i[0])
+                          setCurrentOption(i[0]),
+                          setCurrentFolder(i[2].substring(0, i[2].indexOf('/')))
                       }}
                     >
                       delete
@@ -163,7 +165,7 @@ const ProfileTable = () => {
                       <ModalFooter>
                         <button
                           className={buttons.default}
-                          onClick={() => deleteGraph(currentID)}
+                          onClick={() => deleteGraph(currentID, currentFolder)}
                         >
                           Yes
                         </button>
