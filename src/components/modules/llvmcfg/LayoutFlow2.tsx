@@ -139,6 +139,7 @@ const LayoutFlow2 = ({ llvmJson, llvmOutput, title }: LayoutFlowProps) => {
     source: tail.toString(),
     target: head.toString(),
     type: 'smoothstep',
+    animated: true,
     label: connectTailport(tailport, tail),
     labelStyle: { fontWeight: 600, fontSize: '1rem' },
   }))

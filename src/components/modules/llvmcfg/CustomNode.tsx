@@ -89,6 +89,12 @@ export default memo(({ data, isConnectable }: any) => {
         id="a"
         isConnectable={isConnectable}
       />
+      <Handle
+        type="target"
+        position={Position.Bottom}
+        id="a"
+        isConnectable={isConnectable}
+      />
     </>
   )
 })
