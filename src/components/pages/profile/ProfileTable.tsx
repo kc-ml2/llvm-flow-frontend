@@ -128,6 +128,7 @@ const ProfileTable = () => {
                       isOpen={open}
                       className={styles.modal}
                       backdropClassName={styles.backdrop}
+                      backdrop={'static'}
                     >
                       <div>
                         Are you sure you want to delete this data?

@@ -61,6 +61,7 @@
 }
 
 .modal {
+  padding-top: 20%;
   div {
     padding: 1rem;
     text-align: center;
@@ -72,5 +73,6 @@
 }
 
 .backdrop {
-  background-color: $lightgray;
+  background-color: $lightgray !important;
+  opacity: 0.3 !important;
 }
