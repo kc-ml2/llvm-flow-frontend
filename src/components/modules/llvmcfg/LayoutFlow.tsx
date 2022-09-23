@@ -9,6 +9,7 @@ import ReactFlow, {
   Background,
   Node,
   Edge,
+  MarkerType,
 } from 'react-flow-renderer'
 import dagre from 'dagre'
 import CustomNode from './CustomNode'
@@ -142,6 +143,9 @@ const LayoutFlow = ({ llvmJson, llvmOutput, title }: LayoutFlowProps) => {
     animated: true,
     label: connectTailport(tailport, tail),
     labelStyle: { fontWeight: 600, fontSize: '1rem' },
+    markerEnd: {
+      type: MarkerType.ArrowClosed,
+    },
   }))
 
   // step5) react-flow 설정

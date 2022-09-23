@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import React, { memo, useState } from 'react'
+import { memo, useState } from 'react'
 import './CustomNode.scss'
 import { Handle, Position } from 'react-flow-renderer'
 import { useAppSelector } from '@/redux/hook'
@@ -10,21 +10,17 @@ export default memo(({ data, isConnectable }: any) => {
   const { isFull } = useAppSelector((state) => state.mode)
   const [fullmode, setFullmode] = useState<boolean>(isFull)
 
-  const changeColor = (sameNode: any, targetNode: any, clickType: string) => {
-    if (clickType === 'left') {
-      sameNode.style.backgroundColor = '#FFD260'
-      targetNode.style.backgroundColor = '#FFD260'
-    } else if (clickType === 'right') {
+  const changeColor = (sameNode: any, targetNode: any) => {
+    if (targetNode.style.backgroundColor === 'rgb(255, 210, 96)') {
       sameNode.style.backgroundColor = 'white'
       targetNode.style.backgroundColor = 'white'
+    } else if (targetNode.style.backgroundColor === 'white') {
+      sameNode.style.backgroundColor = '#FFD260'
+      targetNode.style.backgroundColor = '#FFD260'
     }
   }
 
-  const findSameBlock = (
-    idWithType: string,
-    type: string,
-    clickType: string,
-  ) => {
+  const findSameBlock = (idWithType: string, type: string) => {
     if (before_output && after_output) {
       const id = idWithType.substring(data.block_id.indexOf('%'))
       if (type === 'initial') {
@@ -32,24 +28,19 @@ export default memo(({ data, isConnectable }: any) => {
         const sameBlockID = after_output[index]
         const targetNode = document.getElementById(idWithType)
         const sameNode = document.getElementById('optimized' + sameBlockID)
-        changeColor(sameNode, targetNode, clickType)
+        changeColor(sameNode, targetNode)
       } else {
         const index = after_output.indexOf(id)
         const sameBlockID = before_output[index]
         const targetNode = document.getElementById(idWithType)
         const sameNode = document.getElementById('initial' + sameBlockID)
-        changeColor(sameNode, targetNode, clickType)
+        changeColor(sameNode, targetNode)
       }
     }
   }
 
-  const handleClean = (e: any) => {
-    e.preventDefault()
-    findSameBlock(e.target.id, e.target.name, 'right')
-  }
-
   const handleSame = (e: any) => {
-    findSameBlock(e.target.id, e.target.name, 'left')
+    findSameBlock(e.target.id, e.target.name)
   }
 
   const handleFull = () => {
@@ -61,16 +52,17 @@ export default memo(({ data, isConnectable }: any) => {
       <Handle
         type="target"
         position={Position.Top}
-        // id="a"
+        id="a"
         isConnectable={false}
       />
       <button
         className={`${data.isSame}`}
         onClick={handleSame}
-        onContextMenu={handleClean}
+        // onContextMenu={handleClean}
         onDoubleClick={handleFull}
         id={data.block_id}
         name={data.type}
+        style={{ backgroundColor: 'white' }}
       >
         {fullmode && (
           <>
@@ -83,10 +75,11 @@ export default memo(({ data, isConnectable }: any) => {
           <>{data.block_id.substring(data.block_id.indexOf('%'))}</>
         )}
       </button>
+      <Handle type="source" position={Position.Bottom} isConnectable={false} />
       <Handle
-        type="source"
+        type="target"
         position={Position.Bottom}
-        // id="a"
+        id="b"
         isConnectable={false}
       />
     </>

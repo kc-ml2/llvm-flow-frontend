@@ -16,7 +16,7 @@ export default function ResizableBox({ children }: ResizableProps) {
       width={width}
       height={height}
       className="layoutflow"
-      minConstraints={[1200, 600]}
+      minConstraints={[1200, 300]}
       resizeHandles={['se', 'e', 's']}
     >
       <div style={{ width: '99%', height: '90%' }}>{children}</div>
