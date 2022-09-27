@@ -163,7 +163,7 @@ const LayoutFlow = ({ llvmJson, llvmOutput, title }: LayoutFlowProps) => {
     source: tail.toString(),
     target: head.toString(),
     type: 'smoothstep',
-    // animated: true,
+    animated: true,
     targetHandle: setTargetHandleID(tail, head),
     sourceHandle: setTargetHandleID(tail, head),
     label: connectTailport(tailport, tail),

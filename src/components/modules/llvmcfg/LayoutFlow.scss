@@ -32,25 +32,27 @@
 }
 
 path.react-flow__edge-path {
-  stroke-width: 1.2;
-  z-index: 0;
+  stroke-width: 2;
 }
 
 path.react-flow__edge-path:hover {
   cursor: pointer;
-  stroke-width: 2.5;
+  stroke-width: 4;
   stroke: $dark;
-  z-index: 1;
 }
 
 path.react-flow__edge-path:active {
   cursor: pointer;
-  stroke-width: 2.5;
+  stroke-width: 4;
   stroke: $dark;
-  z-index: 2;
 }
 .react-flow__edge.selected .react-flow__edge-path {
-  stroke-width: 2.5;
+  stroke-width: 4;
   stroke: $dark;
-  z-index: 2;
+}
+
+.react-flow__edge.animated path {
+  stroke-dasharray: 5;
+  -webkit-animation: dashdraw 0.9s linear infinite;
+  animation: dashdraw 0.9s linear infinite;
 }
