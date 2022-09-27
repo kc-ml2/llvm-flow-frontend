@@ -6,7 +6,6 @@
   margin: 1rem;
   background-color: $light;
   border-top: 1px solid $gray;
-  // height: 100%;
 
   h4 {
     padding-left: 1rem;
@@ -30,4 +29,28 @@
 
 .react-flow__attribution {
   background-color: transparent;
+}
+
+path.react-flow__edge-path {
+  stroke-width: 1.2;
+  z-index: 0;
+}
+
+path.react-flow__edge-path:hover {
+  cursor: pointer;
+  stroke-width: 2.5;
+  stroke: $dark;
+  z-index: 1;
+}
+
+path.react-flow__edge-path:active {
+  cursor: pointer;
+  stroke-width: 2.5;
+  stroke: $dark;
+  z-index: 2;
+}
+.react-flow__edge.selected .react-flow__edge-path {
+  stroke-width: 2.5;
+  stroke: $dark;
+  z-index: 2;
 }

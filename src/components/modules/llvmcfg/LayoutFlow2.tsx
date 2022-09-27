@@ -9,6 +9,7 @@ import ReactFlow, {
   Background,
   Node,
   Edge,
+  MarkerType,
 } from 'react-flow-renderer'
 import dagre from 'dagre'
 import CustomNode from './CustomNode'
@@ -22,8 +23,8 @@ dagreGraph.setDefaultEdgeLabel(() => ({}))
 // node 크기에 따라 중심 맞춰서 edge를 그리기 때문에
 // node에 들어가는 정보에 따라서 nodeWidth, nodeHeight를 바꿔줘야 겹치지 않고 그려짐
 
-const nodeWidth = 40
-const nodeHeight = 40
+const nodeWidth = 45
+const nodeHeight = 45
 
 const nodeTypes = {
   selectorNode: CustomNode,
@@ -116,7 +117,30 @@ const LayoutFlow2 = ({ llvmJson, llvmOutput, title }: LayoutFlowProps) => {
         return text.substring(0, text.indexOf('}'))
       }
     } else {
-      return '.'
+      return null
+    }
+  }
+
+  // setp**) 위에서 아래로 target이 되는 경우, targetHandleID 설정
+  function setTargetHandleID(tail: number, head: number) {
+    const tailLabelFull = node.filter((node: any) => node._gvid === tail)[0]
+      .label
+    const tailLabel = tailLabelFull
+      .replace(/[{}]/g, '')
+      .split(/\\l/)[0]
+      .slice(0, -1)
+
+    const headLabelFull = node.filter((node: any) => node._gvid === head)[0]
+      .label
+    const headLabel = headLabelFull
+      .replace(/[{}]/g, '')
+      .split(/\\l/)[0]
+      .slice(0, -1)
+
+    if (tailLabel > headLabel) {
+      return 'b'
+    } else if (tailLabel < headLabel) {
+      return 'a'
     }
   }
 
@@ -141,7 +165,12 @@ const LayoutFlow2 = ({ llvmJson, llvmOutput, title }: LayoutFlowProps) => {
     type: 'smoothstep',
     animated: true,
     label: connectTailport(tailport, tail),
+    targetHandle: setTargetHandleID(tail, head),
+    sourceHandle: setTargetHandleID(tail, head),
     labelStyle: { fontWeight: 600, fontSize: '1rem' },
+    markerEnd: {
+      type: MarkerType.ArrowClosed,
+    },
   }))
 
   // step5) react-flow 설정
@@ -196,12 +225,16 @@ const LayoutFlow2 = ({ llvmJson, llvmOutput, title }: LayoutFlowProps) => {
         onConnect={onConnect}
         nodeTypes={nodeTypes}
         connectionLineType={ConnectionLineType.SmoothStep}
-        defaultPosition={[0, 0]}
+        defaultPosition={[100, 0]}
         defaultZoom={0}
         // style={flowStyles}
       >
         <Background />
-        <MiniMap nodeColor={nodeColor} nodeStrokeWidth={3} />
+        <MiniMap
+          nodeColor={nodeColor}
+          nodeStrokeWidth={3}
+          maskColor={'#eaeaea'}
+        />
       </ReactFlow>
       <div className="controls">
         <button onClick={() => onLayout('TB')} className={buttons.mini}>

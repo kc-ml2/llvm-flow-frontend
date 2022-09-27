@@ -54,11 +54,41 @@ export default memo(({ data, isConnectable }: any) => {
         position={Position.Top}
         id="a"
         isConnectable={false}
+        style={{
+          left: '20%',
+          right: 'auto',
+          background: 'transparent',
+          border: 'transparent',
+        }}
+      />
+      <Handle
+        type="source"
+        position={Position.Top}
+        id="b"
+        isConnectable={false}
+        style={
+          `${data.isSame}` === 'yes'
+            ? {
+                right: '20%',
+                left: 'auto',
+                background: '#ffc342',
+                border: 'none',
+                borderRadius: '0px',
+                height: '3.5px',
+              }
+            : {
+                right: '20%',
+                left: 'auto',
+                background: '#c4c4c4',
+                border: 'none',
+                borderRadius: '0px',
+                height: '3.5px',
+              }
+        }
       />
       <button
         className={`${data.isSame}`}
         onClick={handleSame}
-        // onContextMenu={handleClean}
         onDoubleClick={handleFull}
         id={data.block_id}
         name={data.type}
@@ -75,12 +105,54 @@ export default memo(({ data, isConnectable }: any) => {
           <>{data.block_id.substring(data.block_id.indexOf('%'))}</>
         )}
       </button>
-      <Handle type="source" position={Position.Bottom} isConnectable={false} />
+      <Handle
+        type="source"
+        position={Position.Bottom}
+        id="a"
+        isConnectable={false}
+        style={
+          `${data.isSame}` === 'yes'
+            ? {
+                right: '20%',
+                left: 'auto',
+                background: '#ffc342',
+                border: 'none',
+                borderRadius: '0px',
+                height: '3.5px',
+              }
+            : {
+                right: '20%',
+                left: 'auto',
+                background: '#c4c4c4',
+                border: 'none',
+                borderRadius: '0px',
+                height: '3.5px',
+              }
+        }
+      />
       <Handle
         type="target"
-        position={Position.Bottom}
+        position={Position.Left}
         id="b"
         isConnectable={false}
+        style={{
+          // left: '20%',
+          // right: 'auto',
+          background: 'transparent',
+          border: 'transparent',
+        }}
+      />
+      <Handle
+        type="target"
+        position={Position.Right}
+        id="b"
+        isConnectable={false}
+        style={{
+          // left: '20%',
+          // right: 'auto',
+          background: 'transparent',
+          border: 'transparent',
+        }}
       />
     </>
   )
