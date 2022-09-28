@@ -53,6 +53,6 @@ path.react-flow__edge-path:active {
 
 .react-flow__edge.animated path {
   stroke-dasharray: 5;
-  -webkit-animation: dashdraw 0.9s linear infinite;
-  animation: dashdraw 0.9s linear infinite;
+  -webkit-animation: dashdraw 1s linear infinite;
+  animation: dashdraw 1s linear infinite;
 }
