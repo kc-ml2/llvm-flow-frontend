@@ -14,7 +14,7 @@ import {
   DropdownMenu,
 } from 'reactstrap'
 import styles from './NavBar.module.scss'
-import buttons from '@/Button.module.scss'
+import buttons from '@/styles/Button.module.scss'
 import classNames from 'classnames/bind'
 import { useAppSelector } from '@/redux/hook'
 import { NavLink } from 'react-router-dom'

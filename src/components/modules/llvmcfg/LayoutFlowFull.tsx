@@ -15,7 +15,7 @@ import dagre from 'dagre'
 import CustomNode from './CustomNode'
 import ResizableBox from '../common/ResizableBox'
 import './LayoutFlow.scss'
-import buttons from '../../../Button.module.scss'
+import buttons from '@/styles/Button.module.scss'
 
 const dagreGraph = new dagre.graphlib.Graph()
 dagreGraph.setDefaultEdgeLabel(() => ({}))

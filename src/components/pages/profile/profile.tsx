@@ -2,7 +2,7 @@ import { useAppSelector, useAppDispatch } from '@/redux/hook'
 import { setLogout } from '@/redux/features/auth/authSlice'
 import { useNavigate } from 'react-router-dom'
 import styles from './profile.module.scss'
-import buttons from '../../../Button.module.scss'
+import buttons from '@/styles/Button.module.scss'
 import ProfileTable from './ProfileTable'
 
 const Profile = () => {

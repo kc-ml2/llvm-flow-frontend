@@ -4,7 +4,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAppSelector } from '@/redux/hook'
 import styles from './main.module.scss'
-import buttons from '../../../Button.module.scss'
+import buttons from '@/styles/Button.module.scss'
 
 function Main() {
   const { isLogin } = useAppSelector((state) => state.auth)

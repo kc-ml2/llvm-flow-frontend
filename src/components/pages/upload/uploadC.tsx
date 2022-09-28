@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { setGraphData } from '@/redux/features/graph/graphSlice'
 import styles from './upload.module.scss'
-import buttons from '../../../Button.module.scss'
+import buttons from '@/styles/Button.module.scss'
 const { REACT_APP_API_URL } = process.env
 import Alert from '@mui/material/Alert'
 import AlertTitle from '@mui/material/AlertTitle'
