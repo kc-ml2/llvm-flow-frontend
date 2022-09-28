@@ -185,11 +185,11 @@ const LayoutFlow2 = ({ llvmJson, llvmOutput, title }: LayoutFlowProps) => {
   const nodeColor = (node: any) => {
     switch (node.data.isSame) {
       case 'yes':
-        return '#8220FF'
+        return '#fc851c'
       case 'no':
-        return '#eee'
+        return '#c4c4c4'
       default:
-        return '#eee'
+        return '#c4c4c4'
     }
   }
 
