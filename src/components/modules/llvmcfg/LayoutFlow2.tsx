@@ -16,6 +16,7 @@ import CustomNode from './CustomNode'
 import ResizableBox from '../common/ResizableBox'
 import './LayoutFlow.scss'
 import buttons from '@/styles/Button.module.scss'
+import { COLORS } from '@/const/color'
 
 const dagreGraph = new dagre.graphlib.Graph()
 dagreGraph.setDefaultEdgeLabel(() => ({}))
@@ -185,11 +186,11 @@ const LayoutFlow2 = ({ llvmJson, llvmOutput, title }: LayoutFlowProps) => {
   const nodeColor = (node: any) => {
     switch (node.data.isSame) {
       case 'yes':
-        return '#fc851c'
+        return COLORS.DARKYELLOW
       case 'no':
-        return '#c4c4c4'
+        return COLORS.GRAY
       default:
-        return '#c4c4c4'
+        return COLORS.GRAY
     }
   }
 
@@ -234,7 +235,7 @@ const LayoutFlow2 = ({ llvmJson, llvmOutput, title }: LayoutFlowProps) => {
         <MiniMap
           nodeColor={nodeColor}
           nodeStrokeWidth={3}
-          maskColor={'#eaeaea'}
+          maskColor={COLORS.DARKGRAY}
         />
       </ReactFlow>
       <div className="controls">

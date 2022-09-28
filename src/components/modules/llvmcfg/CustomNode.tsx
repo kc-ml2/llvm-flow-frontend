@@ -3,9 +3,10 @@ import { memo, useState } from 'react'
 import './CustomNode.scss'
 import { Handle, Position } from 'react-flow-renderer'
 import { useAppSelector } from '@/redux/hook'
+import { COLORS } from '@/const/color'
 
 // eslint-disable-next-line react/display-name
-export default memo(({ data, isConnectable }: any) => {
+export default memo(({ data }: any) => {
   const { before_output, after_output } = useAppSelector((state) => state.graph)
   const { isFull } = useAppSelector((state) => state.mode)
   const [fullmode, setFullmode] = useState<boolean>(isFull)
@@ -15,8 +16,8 @@ export default memo(({ data, isConnectable }: any) => {
       sameNode.style.backgroundColor = 'white'
       targetNode.style.backgroundColor = 'white'
     } else if (targetNode.style.backgroundColor === 'white') {
-      sameNode.style.backgroundColor = '#FFD260'
-      targetNode.style.backgroundColor = '#FFD260'
+      sameNode.style.backgroundColor = COLORS.BACKYELLOW
+      targetNode.style.backgroundColor = COLORS.BACKYELLOW
     }
   }
 
@@ -71,7 +72,7 @@ export default memo(({ data, isConnectable }: any) => {
             ? {
                 right: '20%',
                 left: 'auto',
-                background: '#ffc342',
+                background: COLORS.YELLOW,
                 border: 'none',
                 borderRadius: '0px',
                 height: '3.5px',
@@ -79,7 +80,7 @@ export default memo(({ data, isConnectable }: any) => {
             : {
                 right: '20%',
                 left: 'auto',
-                background: '#c4c4c4',
+                background: COLORS.GRAY,
                 border: 'none',
                 borderRadius: '0px',
                 height: '3.5px',
@@ -115,7 +116,7 @@ export default memo(({ data, isConnectable }: any) => {
             ? {
                 right: '20%',
                 left: 'auto',
-                background: '#ffc342',
+                background: COLORS.YELLOW,
                 border: 'none',
                 borderRadius: '0px',
                 height: '3.5px',
@@ -123,7 +124,7 @@ export default memo(({ data, isConnectable }: any) => {
             : {
                 right: '20%',
                 left: 'auto',
-                background: '#c4c4c4',
+                background: COLORS.GRAY,
                 border: 'none',
                 borderRadius: '0px',
                 height: '3.5px',
@@ -136,8 +137,6 @@ export default memo(({ data, isConnectable }: any) => {
         id="b"
         isConnectable={false}
         style={{
-          // left: '20%',
-          // right: 'auto',
           background: 'transparent',
           border: 'transparent',
         }}
@@ -148,8 +147,6 @@ export default memo(({ data, isConnectable }: any) => {
         id="b"
         isConnectable={false}
         style={{
-          // left: '20%',
-          // right: 'auto',
           background: 'transparent',
           border: 'transparent',
         }}
