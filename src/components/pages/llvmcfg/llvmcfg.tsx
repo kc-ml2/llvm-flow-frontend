@@ -38,32 +38,42 @@ function LLVMcfg() {
 
       {isFull && (
         <Suspense fallback={<Loading />}>
-          <LayoutFlowFull
-            llvmJson={before_json}
-            llvmOutput={before_output}
-            title={'initial'}
-          />
-          <LayoutFlowFull2
-            llvmJson={after_json}
-            llvmOutput={after_output}
-            title={'optimized'}
-          />
-          <hr></hr>
+          <section className={styles.layout}>
+            <div className={styles.first}>
+              <LayoutFlowFull
+                llvmJson={before_json}
+                llvmOutput={before_output}
+                title={'initial'}
+              />
+            </div>
+            <div className={styles.second}>
+              <LayoutFlowFull2
+                llvmJson={after_json}
+                llvmOutput={after_output}
+                title={'optimized'}
+              />
+            </div>
+          </section>
         </Suspense>
       )}
       {!isFull && (
         <Suspense fallback={<Loading />}>
-          <LayoutFlow
-            llvmJson={before_json}
-            llvmOutput={before_output}
-            title={'initial'}
-          />
-          <LayoutFlow2
-            llvmJson={after_json}
-            llvmOutput={after_output}
-            title={'optimized'}
-          />
-          <hr></hr>
+          <section className={styles.layout}>
+            <div className={styles.first}>
+              <LayoutFlow
+                llvmJson={before_json}
+                llvmOutput={before_output}
+                title={'initial'}
+              />
+            </div>
+            <div className={styles.second}>
+              <LayoutFlow2
+                llvmJson={after_json}
+                llvmOutput={after_output}
+                title={'optimized'}
+              />
+            </div>
+          </section>
         </Suspense>
       )}
     </section>

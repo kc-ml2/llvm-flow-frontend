@@ -8,18 +8,18 @@ interface ResizableProps {
 }
 
 export default function ResizableBox({ children }: ResizableProps) {
-  const width = window.innerWidth * 0.98
-  const height = 600
+  const width = window.innerWidth * 0.49
+  const height = window.innerHeight * 0.8
 
   return (
     <ReactResizableBox
       width={width}
       height={height}
       className="layoutflow"
-      minConstraints={[1200, 300]}
-      resizeHandles={['se', 'e', 's']}
+      minConstraints={[300, 300]}
+      resizeHandles={['se', 'sw']}
     >
-      <div style={{ width: '99%', height: '90%' }}>{children}</div>
+      <div style={{ width: '90%', height: '90%' }}>{children}</div>
     </ReactResizableBox>
   )
 }
