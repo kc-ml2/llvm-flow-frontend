@@ -2,6 +2,7 @@
 
 .sliding {
   z-index: -1 !important;
-  background-color: aquamarine;
+  background-color: $lightgray;
   position: relative;
+  padding-top: 70px;
 }

@@ -154,7 +154,7 @@ function Upload() {
         <div className={styles.cmd}>
           <h5>clang 10, llvm 10</h5>
           <p>
-            opt beforeg.ll -S <i>{pass}</i> -o afterg.ll
+            beforeg.ll -S <i>{pass}</i> -o afterg.ll
           </p>
         </div>
 

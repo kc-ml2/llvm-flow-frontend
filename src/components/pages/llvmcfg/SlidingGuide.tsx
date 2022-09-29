@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import SlidingPane from 'react-sliding-pane'
+import Guide from './Guide'
 import 'react-sliding-pane/dist/react-sliding-pane.css'
 import styles from './SlidingGuide.module.scss'
 import buttons from '@/styles/Button.module.scss'
@@ -15,13 +16,13 @@ const SlidingGuide = () => {
         className={styles.sliding}
         overlayClassName={styles.overlay}
         isOpen={isOpen}
-        title="Hey, it is optional pane title.  I can be React component too."
-        subtitle="Optional subtitle."
+        title="🔎 Guide"
+        subtitle="How to use LLVM-FLOW"
         onRequestClose={() => {
           setIsOpen(false)
         }}
       >
-        <div>And I am pane content.</div>
+        <Guide />
       </SlidingPane>
     </div>
   )

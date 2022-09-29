@@ -63,6 +63,31 @@
       font-style: normal;
     }
   }
+
+  .clang {
+    margin-bottom: 2rem;
+    background-color: $lightgray;
+    border: 1px solid $darkgray;
+    border-radius: 5px;
+    padding: 1rem;
+    font-weight: 600;
+
+    i {
+      font-style: normal;
+      color: $red;
+      background-color: $lightred;
+      padding: 0.1rem;
+      padding-left: 0.2rem;
+      padding-right: 0.2rem;
+      font-size: 0.8rem;
+      border-radius: 5px;
+    }
+
+    #clangex {
+      font-size: 0.8rem;
+      margin-left: 1.5rem;
+    }
+  }
 }
 
 #submit {

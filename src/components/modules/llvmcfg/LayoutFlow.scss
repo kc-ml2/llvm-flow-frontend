@@ -30,6 +30,9 @@
 
 .react-flow__attribution {
   background-color: transparent;
+  a {
+    color: $gray;
+  }
 }
 
 path.react-flow__edge-path {

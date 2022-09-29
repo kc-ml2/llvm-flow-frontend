@@ -28,16 +28,11 @@ function LLVMcfg() {
   return (
     <section className={styles.llvmcfg}>
       <div className={styles.row}>
-        <div className={styles.info}>
-          <h4>
-            Pass Option = <i>{file_pass}</i>
-          </h4>
+        <div className={styles.guide}>
+          <SlidingGuide />
         </div>
         <div className={styles.mode}>
           <SwitchSelector />
-        </div>
-        <div className={styles.guide}>
-          <SlidingGuide />
         </div>
       </div>
 

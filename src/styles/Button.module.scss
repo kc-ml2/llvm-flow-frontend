@@ -171,14 +171,11 @@
   font-weight: 500;
   color: $blue;
   font-size: 0.8rem;
-  border-radius: 20px;
-  height: 40px;
-  position: relative;
-  top: 0;
-  transition: top ease 0.2s;
+  border-radius: 15px;
+  min-height: 40px;
+  z-index: 10 !important;
 }
 
 .guide:hover {
-  top: -3px;
   background-color: $darkblue;
 }

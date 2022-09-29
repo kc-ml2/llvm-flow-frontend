@@ -72,6 +72,20 @@ function Upload() {
 
   return (
     <section className={styles.upload}>
+      <div className={styles.clang}>
+        <span>
+          ⚠️ Please use the <i>-g</i> option when producing the LLMV-IR file by
+          clang.
+        </span>
+        <br></br>
+        <span id={styles.clangex}>
+          ex.
+          <i>
+            clang <b>-g</b> -emit-llvm -S
+          </i>
+        </span>
+      </div>
+
       <form onSubmit={handleSubmit} method="post" encType="multipart/form-data">
         <div className={styles.file}>
           <label htmlFor="input-file">.ll File Upload</label>
@@ -158,7 +172,6 @@ function Upload() {
         {/* Warning & Error Alert */}
 
         <div className={styles.cmd}>
-          <h5>clang 10, llvm 10</h5>
           <p>
             opt {file} -S <i>{pass}</i> -o afterg.ll
           </p>
