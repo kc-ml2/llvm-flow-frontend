@@ -1,6 +1,8 @@
 /* eslint-disable camelcase */
 import React, { Suspense, useEffect } from 'react'
-import SwitchSelector from '@/components/modules/common/SwitchSelector'
+import SwitchSelector from '@/components/pages/llvmcfg/SwitchSelector'
+import Helper from './Helper'
+import SlidingGuide from './SlidingGuide'
 import { useAppSelector } from '@/redux/hook'
 import styles from './llvmcfg.module.scss'
 import Loading from '@/components/modules/common/Loading'
@@ -34,7 +36,11 @@ function LLVMcfg() {
         <div className={styles.mode}>
           <SwitchSelector />
         </div>
+        <div className={styles.guide}>
+          <SlidingGuide />
+        </div>
       </div>
+
       {isFull && (
         <Suspense fallback={<Loading />}>
           <LayoutFlowFull

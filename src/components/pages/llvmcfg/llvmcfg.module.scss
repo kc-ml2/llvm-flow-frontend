@@ -3,6 +3,7 @@
 .llvmcfg {
   margin: 0 auto;
   margin-bottom: 8rem;
+  // z-index: 10 !important;
 
   hr {
     width: 97%;
@@ -13,7 +14,7 @@
   }
   .row {
     display: grid;
-    grid-template-columns: 80% 20%;
+    grid-template-columns: 80% 10% 10%;
     .info {
       background-color: $dark;
       border-radius: 5px;
@@ -45,33 +46,21 @@
       grid-column: 2;
       text-align: end;
       padding-top: 1rem;
-      padding-right: 0.5rem;
       display: grid;
       text-align: center;
       margin: 0 auto;
-      margin-right: 1rem;
-      color: $gray;
+      z-index: 0 !important;
+    }
 
-      .col1 {
-        grid-row: 1;
-        grid-column: 1;
-        color: $dark;
-        font-weight: 600;
-        font-size: 0.8rem;
-        padding-right: 0.5rem;
-      }
-      .col2 {
-        grid-row: 1;
-        grid-column: 2;
-      }
-      .col3 {
-        grid-row: 1;
-        grid-column: 3;
-        color: $dark;
-        font-weight: 600;
-        font-size: 0.8rem;
-        padding-left: 0.5rem;
-      }
+    .guide {
+      grid-row: 1;
+      grid-column: 3;
+      text-align: end;
+      padding-top: 1rem;
+      display: grid;
+      text-align: center;
+      margin: 0 auto;
+      z-index: 0 !important;
     }
   }
 }

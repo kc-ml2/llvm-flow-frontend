@@ -159,3 +159,26 @@
   top: -3px;
   background-color: $darkpurple;
 }
+
+//guide  - open guide
+.guide {
+  background-color: $lightblue;
+  border: transparent;
+  padding-top: $btn-padding-y-sm;
+  padding-bottom: $btn-padding-y-sm;
+  padding-left: $btn-padding-x-sm;
+  padding-right: $btn-padding-x-sm;
+  font-weight: 500;
+  color: $blue;
+  font-size: 0.8rem;
+  border-radius: 20px;
+  height: 40px;
+  position: relative;
+  top: 0;
+  transition: top ease 0.2s;
+}
+
+.guide:hover {
+  top: -3px;
+  background-color: $darkblue;
+}

@@ -58,7 +58,7 @@ const NavBar = () => {
             </button>
           </NavItem>
           <NavItem className={styles.items}>
-            <button className={buttons.nav}>Guide</button>
+            <button className={buttons.nav}>Docs</button>
           </NavItem>
           <NavItem className={styles.items}>
             <Dropdown isOpen={isOpenDropdown} toggle={toggle}>

@@ -16,6 +16,7 @@ const Login = () => {
     if (response.ok) {
       dispatch(setAuthData(response.data))
       localStorage.setItem('user', JSON.stringify(response.data))
+      localStorage.setItem('helperOpen', 'true')
       navigate(-1)
     } else {
       console.log(response)
