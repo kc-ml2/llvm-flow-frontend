@@ -82,6 +82,9 @@ const LayoutFlow = ({ llvmJson, llvmOutput, title }: LayoutFlowProps) => {
   })
   const edge = llvmJson.edges
 
+  const numberOfNode = llvmJson.objects.length
+  const numberOfEdge = llvmJson.edges.length
+
   const position = { x: 0, y: 0 }
 
   // step2) basicblock id 지정 (ex. %210)
@@ -217,7 +220,12 @@ const LayoutFlow = ({ llvmJson, llvmOutput, title }: LayoutFlowProps) => {
 
   return (
     <ResizableBox>
-      <h4>{title}</h4>
+      <h4>
+        {title} &nbsp;&nbsp;
+        <i>
+          [Node: {numberOfNode}, Edge: {numberOfEdge}]
+        </i>
+      </h4>
       <ReactFlow
         nodes={nodes}
         edges={edges}
