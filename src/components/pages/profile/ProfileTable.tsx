@@ -34,7 +34,7 @@ const ProfileTable = () => {
     axios
       .get(`${REACT_APP_API_URL}/profile/`, { headers: headers })
       .then((response) => {
-        setItems(response.data.data)
+        setItems(response.data.data.reverse())
       })
   }, [])
 
@@ -108,79 +108,74 @@ const ProfileTable = () => {
         </thead>
         <tbody>
           {currentItems &&
-            currentItems
-              .map((i: any) => (
-                <tr key={i}>
-                  <td>{convertDate(i[2].substring(0, i[2].indexOf('/')))}</td>
-                  <td>{i[2].substring(i[2].indexOf('/') + 1)}</td>
-                  <td>{i[0]}</td>
-                  <td>
-                    <button
-                      className={buttons.mini}
-                      onClick={() => showGraph(i)}
-                    >
-                      start
-                    </button>
-                  </td>
-                  <td>
-                    <button
-                      className={buttons.mini_yellow}
-                      onClick={() => {
-                        setOpen(true),
-                          setCurrentID(i[1]),
-                          setCurrentDate(
-                            convertDate(i[2].substring(0, i[2].indexOf('/'))),
-                          ),
-                          setCurrentFile(i[2].substring(i[2].indexOf('/') + 1)),
-                          setCurrentOption(i[0]),
-                          setCurrentFolder(i[2].substring(0, i[2].indexOf('/')))
-                      }}
-                    >
-                      delete
-                    </button>
-                    <Modal
-                      isOpen={open}
-                      className={styles.modal}
-                      backdropClassName={styles.backdrop}
-                      size="lg"
-                      style={{ width: '100%' }}
-                    >
-                      <ModalHeader>
-                        Are you sure you want to delete this data?
-                      </ModalHeader>
-                      <ModalBody className={styles.modalBody}>
-                        <table>
-                          <tr>
-                            <th>date</th>
-                            <th>file name</th>
-                            <th>pass option</th>
-                          </tr>
-                          <tr>
-                            <td>{currentDate}</td>
-                            <td>{currentFile}</td>
-                            <td>{currentOption}</td>
-                          </tr>
-                        </table>
-                      </ModalBody>
-                      <ModalFooter>
-                        <button
-                          className={buttons.default}
-                          onClick={() => deleteGraph(currentID, currentFolder)}
-                        >
-                          Yes
-                        </button>
-                        <button
-                          className={buttons.default_light}
-                          onClick={() => setOpen(false)}
-                        >
-                          No
-                        </button>
-                      </ModalFooter>
-                    </Modal>
-                  </td>
-                </tr>
-              ))
-              .reverse()}
+            currentItems.map((i: any) => (
+              <tr key={i}>
+                <td>{convertDate(i[2].substring(0, i[2].indexOf('/')))}</td>
+                <td>{i[2].substring(i[2].indexOf('/') + 1)}</td>
+                <td>{i[0]}</td>
+                <td>
+                  <button className={buttons.mini} onClick={() => showGraph(i)}>
+                    start
+                  </button>
+                </td>
+                <td>
+                  <button
+                    className={buttons.mini_yellow}
+                    onClick={() => {
+                      setOpen(true),
+                        setCurrentID(i[1]),
+                        setCurrentDate(
+                          convertDate(i[2].substring(0, i[2].indexOf('/'))),
+                        ),
+                        setCurrentFile(i[2].substring(i[2].indexOf('/') + 1)),
+                        setCurrentOption(i[0]),
+                        setCurrentFolder(i[2].substring(0, i[2].indexOf('/')))
+                    }}
+                  >
+                    delete
+                  </button>
+                  <Modal
+                    isOpen={open}
+                    className={styles.modal}
+                    backdropClassName={styles.backdrop}
+                    size="lg"
+                    style={{ width: '100%' }}
+                  >
+                    <ModalHeader>
+                      Are you sure you want to delete this data?
+                    </ModalHeader>
+                    <ModalBody className={styles.modalBody}>
+                      <table>
+                        <tr>
+                          <th>date</th>
+                          <th>file name</th>
+                          <th>pass option</th>
+                        </tr>
+                        <tr>
+                          <td>{currentDate}</td>
+                          <td>{currentFile}</td>
+                          <td>{currentOption}</td>
+                        </tr>
+                      </table>
+                    </ModalBody>
+                    <ModalFooter>
+                      <button
+                        className={buttons.default}
+                        onClick={() => deleteGraph(currentID, currentFolder)}
+                      >
+                        Yes
+                      </button>
+                      <button
+                        className={buttons.default_light}
+                        onClick={() => setOpen(false)}
+                      >
+                        No
+                      </button>
+                    </ModalFooter>
+                  </Modal>
+                </td>
+              </tr>
+            ))}
         </tbody>
       </table>
     )

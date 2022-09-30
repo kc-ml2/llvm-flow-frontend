@@ -19,7 +19,7 @@ export default function ResizableBox({ children }: ResizableProps) {
       minConstraints={[300, 300]}
       resizeHandles={['se', 'sw']}
     >
-      <div style={{ width: '90%', height: '90%' }}>{children}</div>
+      <div style={{ width: '99%', height: '90%' }}>{children}</div>
     </ReactResizableBox>
   )
 }
