@@ -38,7 +38,7 @@ function App() {
         {isLogin && <Route path="/profile" element={<Profile />} />}
         {isReady && <Route path="/llvmcfg" element={<LLVMcfg />} />}
       </Routes>
-      {!isReady && <Footer />}
+      <Footer />
     </Router>
   )
 }
