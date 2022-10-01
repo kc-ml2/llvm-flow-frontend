@@ -153,6 +153,7 @@ function Upload() {
 
         <div className={styles.cmd}>
           <h5>clang 10, llvm 10</h5>
+          <p>clang -O0 -g -Xclang -disable-O0-optnone -emit-llvm -S *.c</p>
           <p>
             beforeg.ll -S <i>{pass}</i> -o afterg.ll
           </p>
