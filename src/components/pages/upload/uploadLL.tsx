@@ -74,14 +74,13 @@ function Upload() {
     <section className={styles.upload}>
       <div className={styles.clang}>
         <span>
-          ⚠️ Please use the <i>-g</i> option when producing the LLMV-IR file by
-          clang.
+          ⚠️ Please include the following commands when compiling with clang.
         </span>
         <br></br>
         <span id={styles.clangex}>
           ex.
           <i>
-            clang -o0 <b>-g</b> -emit-llvm -S
+            clang <b>-O0 -g -Xclang -disable-O0-optnone</b> -emit-llvm -S
           </i>
         </span>
       </div>
