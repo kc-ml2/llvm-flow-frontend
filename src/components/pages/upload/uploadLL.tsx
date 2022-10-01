@@ -81,7 +81,7 @@ function Upload() {
         <span id={styles.clangex}>
           ex.
           <i>
-            clang <b>-g</b> -emit-llvm -S
+            clang -o0 <b>-g</b> -emit-llvm -S
           </i>
         </span>
       </div>
@@ -135,7 +135,7 @@ function Upload() {
               sx={{ mb: 2 }}
             >
               <AlertTitle>
-                <b>Error</b>
+                <b>LLVM Command Error</b>
               </AlertTitle>
               Please check pass option and file again!
             </Alert>

@@ -115,7 +115,7 @@ function Upload() {
               sx={{ mb: 2 }}
             >
               <AlertTitle>
-                <b>Error</b>
+                <b>LLVM Command Error</b>
               </AlertTitle>
               Please check pass option and file again!
             </Alert>
