@@ -36,6 +36,7 @@ const Footer = () => {
         </div>
         <hr></hr>
         <h5>ML2 | Machine Learning Lab</h5>
+        <i> Copyright © 2022 ML2. All rights reserved.</i>
       </section>
     </footer>
   )

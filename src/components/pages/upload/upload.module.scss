@@ -9,8 +9,9 @@
 
   .file {
     display: grid;
-    grid-template-columns: 10rem 30rem;
+    grid-template-columns: 1fr 3fr;
     padding-bottom: 1rem;
+
     label {
       font-weight: 600;
       font-size: 1.3rem;
@@ -28,7 +29,7 @@
 
   .pass {
     display: grid;
-    grid-template-columns: 10rem 30rem;
+    grid-template-columns: 1fr 3fr;
     padding-bottom: 1rem;
     label {
       font-weight: 600;
