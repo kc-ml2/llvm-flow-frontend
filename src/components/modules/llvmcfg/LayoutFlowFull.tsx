@@ -166,7 +166,7 @@ const LayoutFlowFull = ({ llvmJson, llvmOutput, title }: LayoutFlowProps) => {
     id: _gvid.toString(),
     source: tail.toString(),
     target: head.toString(),
-    // type: 'smoothstep',
+    type: 'smoothstep',
     animated: true,
     label: connectTailport(tailport, tail),
     targetHandle: setTargetHandleID(tail, head),

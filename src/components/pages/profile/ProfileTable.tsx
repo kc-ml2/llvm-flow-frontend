@@ -112,7 +112,7 @@ const ProfileTable = () => {
               <tr key={i}>
                 <td>{convertDate(i[2].substring(0, i[2].indexOf('/')))}</td>
                 <td>{i[2].substring(i[2].indexOf('/') + 1)}</td>
-                <td>{i[0]}</td>
+                <td id={styles.passOption}>{i[0]}</td>
                 <td>
                   <button className={buttons.mini} onClick={() => showGraph(i)}>
                     start

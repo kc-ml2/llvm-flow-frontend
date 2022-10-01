@@ -36,6 +36,10 @@ function LLVMcfg() {
         </div>
       </div>
 
+      <div className={styles.cfgName}>
+        <p> {before_json.name}</p>
+      </div>
+
       {isFull && (
         <Suspense fallback={<Loading />}>
           <section className={styles.layout}>

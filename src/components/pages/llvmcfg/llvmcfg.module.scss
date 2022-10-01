@@ -3,6 +3,14 @@
 .llvmcfg {
   margin: 0 auto;
 
+  .cfgName {
+    font-size: 0.8rem;
+    margin-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    color: $gray;
+  }
+
   hr {
     width: 97%;
     opacity: 0.7;
