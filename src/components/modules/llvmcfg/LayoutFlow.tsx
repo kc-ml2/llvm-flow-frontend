@@ -236,7 +236,7 @@ const LayoutFlow = ({ llvmJson, llvmOutput, title }: LayoutFlowProps) => {
         connectionLineType={ConnectionLineType.SmoothStep}
         defaultPosition={[100, 0]}
         defaultZoom={0.5}
-        minZoom={0.2}
+        minZoom={0.1}
         // style={flowStyles}
       >
         <Background />

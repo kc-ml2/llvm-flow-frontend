@@ -58,6 +58,11 @@ const NavBar = () => {
             </button>
           </NavItem>
           <NavItem className={styles.items}>
+            <NavLink to="/example">
+              <button className={buttons.nav}>Example</button>
+            </NavLink>
+          </NavItem>
+          <NavItem className={styles.items}>
             <button className={buttons.nav}>Docs</button>
           </NavItem>
           <NavItem className={styles.items}>

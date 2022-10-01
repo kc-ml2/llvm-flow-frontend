@@ -1,0 +1,108 @@
+{
+  "name": "CFG for '_Z9is_sortedPii' function",
+  "directed": true,
+  "strict": false,
+  "label": "CFG for '_Z9is_sortedPii' function",
+  "_subgraph_cnt": 0,
+  "objects": [
+    {
+      "_gvid": 0,
+      "name": "Node0xa17710",
+      "label": "{%2:\\l  %3 = alloca i1, align 1\\l  %4 = alloca i32*, align 8\\l  %5 = alloca i32, align 4\\l  %6 = alloca i32, align 4\\l  store i32* %0, i32** %4, align 8\\l  store i32 %1, i32* %5, align 4\\l  store i32 0, i32* %6, align 4\\l  br label %7\\l}",
+      "shape": "record"
+    },
+    {
+      "_gvid": 1,
+      "name": "Node0xa18160",
+      "label": "{%7:\\l7:                                                \\l  %8 = load i32, i32* %6, align 4\\l  %9 = load i32, i32* %5, align 4\\l  %10 = sub nsw i32 %9, 1\\l  %11 = icmp slt i32 %8, %10\\l  br i1 %11, label %12, label %30\\l|{<s0>T|<s1>F}}",
+      "shape": "record"
+    },
+    {
+      "_gvid": 2,
+      "name": "Node0xa17ed0",
+      "label": "{%12:\\l12:                                               \\l  %13 = load i32*, i32** %4, align 8\\l  %14 = load i32, i32* %6, align 4\\l  %15 = sext i32 %14 to i64\\l  %16 = getelementptr inbounds i32, i32* %13, i64 %15\\l  %17 = load i32, i32* %16, align 4\\l  %18 = load i32*, i32** %4, align 8\\l  %19 = load i32, i32* %6, align 4\\l  %20 = add nsw i32 %19, 1\\l  %21 = sext i32 %20 to i64\\l  %22 = getelementptr inbounds i32, i32* %18, i64 %21\\l  %23 = load i32, i32* %22, align 4\\l  %24 = icmp sgt i32 %17, %23\\l  br i1 %24, label %25, label %26\\l|{<s0>T|<s1>F}}",
+      "shape": "record"
+    },
+    {
+      "_gvid": 3,
+      "name": "Node0xa183b0",
+      "label": "{%30:\\l30:                                               \\l  store i1 true, i1* %3, align 1\\l  br label %31\\l}",
+      "shape": "record"
+    },
+    {
+      "_gvid": 4,
+      "name": "Node0xa18920",
+      "label": "{%25:\\l25:                                               \\l  store i1 false, i1* %3, align 1\\l  br label %31\\l}",
+      "shape": "record"
+    },
+    {
+      "_gvid": 5,
+      "name": "Node0xa18970",
+      "label": "{%26:\\l26:                                               \\l  br label %27\\l}",
+      "shape": "record"
+    },
+    {
+      "_gvid": 6,
+      "name": "Node0xa18ab0",
+      "label": "{%31:\\l31:                                               \\l  %32 = load i1, i1* %3, align 1\\l  ret i1 %32\\l}",
+      "shape": "record"
+    },
+    {
+      "_gvid": 7,
+      "name": "Node0xa18b60",
+      "label": "{%27:\\l27:                                               \\l  %28 = load i32, i32* %6, align 4\\l  %29 = add nsw i32 %28, 1\\l  store i32 %29, i32* %6, align 4\\l  br label %7\\l}",
+      "shape": "record"
+    }
+  ],
+  "edges": [
+    {
+      "_gvid": 0,
+      "tail": 0,
+      "head": 1
+    },
+    {
+      "_gvid": 1,
+      "tail": 1,
+      "head": 2,
+      "tailport": "s0"
+    },
+    {
+      "_gvid": 2,
+      "tail": 1,
+      "head": 3,
+      "tailport": "s1"
+    },
+    {
+      "_gvid": 3,
+      "tail": 2,
+      "head": 4,
+      "tailport": "s0"
+    },
+    {
+      "_gvid": 4,
+      "tail": 2,
+      "head": 5,
+      "tailport": "s1"
+    },
+    {
+      "_gvid": 5,
+      "tail": 3,
+      "head": 6
+    },
+    {
+      "_gvid": 6,
+      "tail": 4,
+      "head": 6
+    },
+    {
+      "_gvid": 7,
+      "tail": 5,
+      "head": 7
+    },
+    {
+      "_gvid": 8,
+      "tail": 7,
+      "head": 1
+    }
+  ]
+}

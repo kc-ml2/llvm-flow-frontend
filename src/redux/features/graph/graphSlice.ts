@@ -1,11 +1,9 @@
 // import { NodeType, EdgeType } from '@/components/modules/llvmcfg/types'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import exBefore from '../../../exData/exBefore.json'
+import exAfter from '../../../exData/exAfter.json'
 
 interface GraphState {
-  // initialNodeBefore: NodeType[] | undefined
-  // initialNodeAfter: NodeType[] | undefined
-  // initialEdgeBefore: EdgeType[] | undefined
-  // initialEdgeAfter: EdgeType[] | undefined
   before_json?: any
   before_output?: Array<string>
   after_json?: any
@@ -16,15 +14,11 @@ interface GraphState {
 }
 
 const initialState: GraphState = {
-  // initialNodeBefore: undefined,
-  // initialNodeAfter: undefined,
-  // initialEdgeBefore: undefined,
-  // initialEdgeAfter: undefined,
-  before_json: undefined,
-  before_output: undefined,
-  after_json: undefined,
-  after_output: undefined,
-  file_pass: undefined,
+  before_json: exBefore,
+  before_output: ['Function', '%25', '%30', 'Function'],
+  after_json: exAfter,
+  after_output: ['1:', '%15', '%18', '2:'],
+  file_pass: '-simplifycfg -sroa -dse -globalopt -instcombine',
   isReady: false,
   filterID: undefined,
 }
@@ -34,10 +28,6 @@ export const graphSlice = createSlice({
   initialState,
   reducers: {
     setGraphData: (state, { payload }: PayloadAction<GraphState>) => {
-      // state.initialNodeBefore = payload.initialNodeBefore
-      // state.initialNodeAfter = payload.initialNodeAfter
-      // state.initialEdgeBefore = payload.initialEdgeBefore
-      // state.initialEdgeAfter = payload.initialEdgeAfter
       state.before_json = payload.before_json
       state.before_output = payload.before_output
       state.after_json = payload.after_json

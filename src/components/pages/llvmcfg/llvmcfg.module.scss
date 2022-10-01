@@ -6,9 +6,10 @@
   .cfgName {
     font-size: 0.8rem;
     margin-top: 1rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    color: $gray;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding: 0.5rem;
+    border: 1px solid $darkgray;
   }
 
   hr {

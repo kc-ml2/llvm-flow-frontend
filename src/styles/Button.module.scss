@@ -91,7 +91,7 @@
   padding-right: $btn-padding-x-lg;
   font-weight: 600;
   color: $dark;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   border-radius: 10px;
   position: relative;
   top: 0;
@@ -178,4 +178,17 @@
 
 .guide:hover {
   background-color: $darkblue;
+}
+
+//nothing - button as link
+.ex {
+  border: transparent;
+  background-color: transparent;
+  text-align: left;
+  font-size: 0.8rem;
+  color: $gray;
+}
+
+.ex:hover {
+  color: $purple;
 }

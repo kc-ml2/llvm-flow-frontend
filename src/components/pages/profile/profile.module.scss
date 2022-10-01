@@ -32,8 +32,9 @@
 }
 
 .list {
-  padding-top: 4rem;
-  padding-bottom: 15rem;
+  margin-top: 4rem;
+  margin-bottom: 15rem;
+
   table {
     border-collapse: collapse;
     margin: 0 auto;
@@ -44,6 +45,7 @@
     font-size: 1.1rem;
     font-weight: 600;
     border-bottom: 1px solid $dark;
+    background-color: $lightgray;
     td {
       padding-bottom: 1rem;
     }

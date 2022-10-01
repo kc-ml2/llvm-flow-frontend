@@ -6,6 +6,7 @@ import UploadLL from '@/components/pages/upload/uploadLL'
 import Login from '@/components/modules/login/Login'
 import Profile from '@/components/pages/profile/profile'
 import LLVMcfg from '@/components/pages/llvmcfg/llvmcfg'
+import Example from '@/components/pages/example/Example'
 import NavBar from './components/modules/common/NavBar'
 import Footer from './components/modules/common/Footer'
 import { useAppSelector, useAppDispatch } from '@/redux/hook'
@@ -34,7 +35,8 @@ function App() {
         <Route path="/uploadCPP" element={<UploadCPP />} />
         <Route path="/uploadLL" element={<UploadLL />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/llvmcfg" element={<LLVMcfg />} />
+        {/* <Route path="/llvmcfg" element={<LLVMcfg />} /> */}
+        <Route path="/example" element={<Example />} />
         {isLogin && <Route path="/profile" element={<Profile />} />}
         {isReady && <Route path="/llvmcfg" element={<LLVMcfg />} />}
       </Routes>

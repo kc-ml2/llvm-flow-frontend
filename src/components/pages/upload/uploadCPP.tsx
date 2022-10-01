@@ -61,6 +61,7 @@ function Upload() {
         .post(`${REACT_APP_API_URL}/uploadCPP/`, data, { headers: headers })
         .then((response) => {
           dispatch(setGraphData(response.data))
+          console.log(response.data)
           navigate('/llvmcfg')
         })
         .catch((response) => setOpenError(true))

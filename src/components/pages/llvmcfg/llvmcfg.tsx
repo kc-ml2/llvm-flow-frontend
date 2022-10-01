@@ -37,7 +37,11 @@ function LLVMcfg() {
       </div>
 
       <div className={styles.cfgName}>
-        <p> {before_json.name}</p>
+        <span>
+          <b>{before_json.name}</b>
+          <br></br>
+          <b>pass option:</b> {file_pass}
+        </span>
       </div>
 
       {isFull && (
