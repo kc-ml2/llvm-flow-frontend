@@ -1,8 +1,8 @@
 {
-  "name": "CFG for '_Z9is_sortedPii' function",
+  "name": "CFG for 'main' function",
   "directed": true,
   "strict": false,
-  "label": "CFG for '_Z9is_sortedPii' function",
+  "label": "CFG for 'main' function",
   "_subgraph_cnt": 0,
   "objects": [
     {
