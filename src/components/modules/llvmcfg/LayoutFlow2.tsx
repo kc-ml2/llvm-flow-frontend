@@ -80,6 +80,7 @@ const LayoutFlow2 = ({ llvmJson, llvmOutput, title }: LayoutFlowProps) => {
   const node = nodeinitial.map((object: any) => {
     return { ...object, isSame: 'no' }
   })
+
   const edge = llvmJson.edges
 
   const numberOfNode = llvmJson.objects.length
