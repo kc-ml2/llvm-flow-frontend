@@ -2,17 +2,30 @@
 /* eslint-disable multiline-ternary */
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useAppSelector } from '@/redux/hook'
+import { useAppSelector, useAppDispatch } from '@/redux/hook'
 import styles from './main.module.scss'
 import buttons from '@/styles/Button.module.scss'
 import example from '@/gif/example.gif'
+import exBefore from '../../../exData/exBefore.json'
+import exAfter from '../../../exData/exAfter.json'
+import { setGraphData } from '@/redux/features/graph/graphSlice'
 
 function Main() {
   const { isLogin } = useAppSelector((state) => state.auth)
 
   const navigate = useNavigate()
+  const dispatch = useAppDispatch()
 
   const handleExample = () => {
+    dispatch(
+      setGraphData({
+        before_json: exBefore,
+        before_output: ['Function', '%25', '%30', 'Function'],
+        after_json: exAfter,
+        after_output: ['1:', '%15', '%18', '2:'],
+        file_pass: '-simplifycfg -sroa -dse -globalopt -instcombine',
+      }),
+    )
     navigate('/example')
   }
 

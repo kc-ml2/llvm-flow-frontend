@@ -18,6 +18,11 @@ import buttons from '@/styles/Button.module.scss'
 import classNames from 'classnames/bind'
 import { useAppSelector } from '@/redux/hook'
 import { NavLink } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import exBefore from '../../../exData/exBefore.json'
+import exAfter from '../../../exData/exAfter.json'
+import { setGraphData } from '@/redux/features/graph/graphSlice'
 
 const NavBar = () => {
   const cx = classNames.bind(styles)
@@ -27,6 +32,22 @@ const NavBar = () => {
 
   const toggle = () => {
     setIsOpenDropdown(!isOpenDropdown)
+  }
+
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const handleExample = () => {
+    dispatch(
+      setGraphData({
+        before_json: exBefore,
+        before_output: ['Function', '%25', '%30', 'Function'],
+        after_json: exAfter,
+        after_output: ['1:', '%15', '%18', '2:'],
+        file_pass: '-simplifycfg -sroa -dse -globalopt -instcombine',
+      }),
+    )
+    navigate('/example')
   }
 
   return (
@@ -58,9 +79,9 @@ const NavBar = () => {
             </button>
           </NavItem>
           <NavItem className={styles.items}>
-            <NavLink to="/example">
-              <button className={buttons.nav}>Example</button>
-            </NavLink>
+            <button className={buttons.nav} onClick={handleExample}>
+              Example
+            </button>
           </NavItem>
           <NavItem className={styles.items}>
             <button className={buttons.nav}>Docs</button>
