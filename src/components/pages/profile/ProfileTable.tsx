@@ -6,13 +6,14 @@ import styles from './profile.module.scss'
 import pagination from './pagination.module.scss'
 import buttons from '@/styles/Button.module.scss'
 import axios from 'axios'
-import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 import ReactPaginate from 'react-paginate'
+import DeleteModal from '@/components/modules/profile/DeleteModal'
+import { setIsDeleteOpenTrue } from '@/redux/features/modal/deleteModalSlice'
+
 const { REACT_APP_API_URL } = process.env
 
 const ProfileTable = () => {
   const { token } = useAppSelector((state) => state.auth)
-  const [open, setOpen] = useState(false)
   const [items, setItems] = useState<any | undefined>(undefined)
   const [currentID, setCurrentID] = useState<number>()
   const [currentFolder, setCurrentFolder] = useState<string>('')
@@ -57,26 +58,8 @@ const ProfileTable = () => {
         dispatch(setGraphData(response.data))
         navigate('/llvmcfg')
       })
-  }
-
-  const deleteGraph = (currentID: any, currentFolder: any) => {
-    const headers = {
-      Authorization: 'Token ' + token,
-      // FIXME: boundary 해결하기!
-      'Content-type':
-        'multipart/form-data; boundary=177130003042384797933296855923',
-    }
-
-    axios
-      .delete(`${REACT_APP_API_URL}/delete/`, {
-        data: { filterID: currentID, folder: currentFolder },
-        headers: headers,
-      })
-      .then(() => {
-        window.location.reload()
-      })
-      .catch((response) => {
-        console.log(response)
+      .catch(() => {
+        alert('Error, there is no data.')
       })
   }
 
@@ -122,8 +105,8 @@ const ProfileTable = () => {
                   <button
                     className={buttons.mini_yellow}
                     onClick={() => {
-                      setOpen(true),
-                        setCurrentID(i[1]),
+                      dispatch(setIsDeleteOpenTrue())
+                      setCurrentID(i[1]),
                         setCurrentDate(
                           convertDate(i[2].substring(0, i[2].indexOf('/'))),
                         ),
@@ -134,45 +117,14 @@ const ProfileTable = () => {
                   >
                     delete
                   </button>
-                  <Modal
-                    isOpen={open}
-                    className={styles.modal}
-                    backdropClassName={styles.backdrop}
-                    size="lg"
-                    style={{ width: '100%' }}
-                  >
-                    <ModalHeader>
-                      Are you sure you want to delete this data?
-                    </ModalHeader>
-                    <ModalBody className={styles.modalBody}>
-                      <table>
-                        <tr>
-                          <th>date</th>
-                          <th>file name</th>
-                          <th>pass option</th>
-                        </tr>
-                        <tr>
-                          <td>{currentDate}</td>
-                          <td>{currentFile}</td>
-                          <td>{currentOption}</td>
-                        </tr>
-                      </table>
-                    </ModalBody>
-                    <ModalFooter>
-                      <button
-                        className={buttons.default}
-                        onClick={() => deleteGraph(currentID, currentFolder)}
-                      >
-                        Yes
-                      </button>
-                      <button
-                        className={buttons.default_light}
-                        onClick={() => setOpen(false)}
-                      >
-                        No
-                      </button>
-                    </ModalFooter>
-                  </Modal>
+
+                  <DeleteModal
+                    currentDate={currentDate}
+                    currentFile={currentFile}
+                    currentOption={currentOption}
+                    currentID={currentID}
+                    currentFolder={currentFolder}
+                  />
                 </td>
               </tr>
             ))}
