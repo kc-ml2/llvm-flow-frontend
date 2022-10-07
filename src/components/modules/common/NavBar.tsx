@@ -84,7 +84,15 @@ const NavBar = () => {
             </button>
           </NavItem>
           <NavItem className={styles.items}>
-            <button className={buttons.nav}>Docs</button>
+            <button className={buttons.nav}>
+              <a
+                href="https://kc-ml2.gitbook.io/llvm-flow/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Docs
+              </a>
+            </button>
           </NavItem>
           <NavItem className={styles.items}>
             <Dropdown isOpen={isOpenDropdown} toggle={toggle}>
