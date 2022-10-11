@@ -54,22 +54,15 @@ function Main() {
   }
 
   return (
-    <>
-      <section className={styles.main}>
+    <section className={styles.main}>
+      <section className={styles.title}>
         <section id={styles.description}>
-          <h1>LLVM-FLOW !</h1>
-          <h5>
-            Visualize <i>CFG of LLVM IR</i> using &nbsp;
-            <a
-              href="https://github.com/kc-ml2/llvm-block"
-              target="_blank"
-              rel="noreferrer"
-            >
-              LLVM-BLOCK
-            </a>
-          </h5>
+          <h1>LLVM-FLOW</h1>
+          <h3>
+            Visualize the LLVM CFG <i>interactively</i>.
+          </h3>
           <br></br>
-          <button onClick={handleUploadC} className={buttons.white}>
+          {/* <button onClick={handleUploadC} className={buttons.white}>
             Start with <b>.c</b> file
           </button>
           <br></br> <br></br>
@@ -79,7 +72,8 @@ function Main() {
           <br></br> <br></br>
           <button onClick={handleUploadLL} className={buttons.white}>
             Start with <b>.ll</b> file
-          </button>
+          </button> */}
+          <button className={buttons.white}>Getting Started</button>
         </section>
         <section id={styles.example}>
           <button className={buttons.ex} onClick={handleExample}>
@@ -89,7 +83,18 @@ function Main() {
           </button>
         </section>
       </section>
-    </>
+      <section className={styles.keyword}>
+        <section id={styles.first}>
+          <h4>😊 Open-source</h4>
+        </section>
+        <section id={styles.second}>
+          <h4>💡 Easy-to-use</h4>
+        </section>
+        <section id={styles.third}>
+          <h4>🚀 Various features</h4>
+        </section>
+      </section>
+    </section>
   )
 }
 

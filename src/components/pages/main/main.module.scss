@@ -1,55 +1,98 @@
 @import '../../../styles/variable';
 
 .main {
-  margin: 0 auto;
-  margin-top: 5rem;
   text-align: center;
+  margin: 0 auto;
   min-height: 70vh;
+  max-width: 90vw;
 
-  display: grid;
-  grid-template-columns: auto;
+  .title {
+    margin-top: 10rem;
 
-  #description {
-    h1 {
+    display: grid;
+    grid-template-columns: auto;
+
+    #description {
+      h1 {
+        font-weight: 700;
+        font-size: 3rem;
+      }
+
+      h3 {
+        font-weight: 600;
+      }
+
+      a {
+        color: $purple;
+        text-decoration: none;
+        font-weight: 600;
+        cursor: pointer;
+        position: relative;
+        top: 0;
+        transition: top ease 0.2s;
+      }
+      a:hover {
+        color: $purple;
+        font-weight: 600;
+        top: -2px;
+      }
+
+      i {
+        font-style: normal;
+        font-weight: 600;
+        border-bottom: 3.5px solid $purple;
+      }
+
+      grid-row: 1;
+      grid-column: 1;
+    }
+
+    #example {
+      grid-row: 1;
+      grid-column: 2;
+      text-align: left;
+      img {
+        max-width: 45rem;
+        height: auto;
+        border: 1px solid $gray;
+        border-radius: 5px;
+        border-bottom: 4px solid $gray;
+        border-right: 4px solid $gray;
+      }
+    }
+  }
+
+  .keyword {
+    display: grid;
+    grid-template-columns: auto;
+    margin-top: 8rem;
+
+    h4 {
       font-weight: 700;
     }
 
-    a {
-      color: $purple;
-      text-decoration: none;
-      font-weight: 600;
-      cursor: pointer;
-      position: relative;
-      top: 0;
-      transition: top ease 0.2s;
-    }
-    a:hover {
-      color: $purple;
-      font-weight: 600;
-      top: -2px;
+    #first {
+      grid-row: 1;
+      grid-column: 1;
+      margin-left: 1rem;
+      margin-right: 1rem;
+      max-width: 300px;
     }
 
-    i {
-      font-style: normal;
-      font-weight: 600;
-      border-bottom: 3.5px solid $purple;
+    #second {
+      grid-row: 1;
+      grid-column: 2;
+      margin-left: 1rem;
+      margin-right: 1rem;
+      max-width: 300px;
     }
 
-    grid-row: 1;
-    grid-column: 1;
-  }
-
-  #example {
-    grid-row: 1;
-    grid-column: 2;
-    text-align: left;
-    img {
-      max-width: 45rem;
-      height: auto;
-      border: 1px solid $gray;
-      border-radius: 5px;
-      border-bottom: 4px solid $gray;
-      border-right: 4px solid $gray;
+    #third {
+      grid-row: 1;
+      grid-column: 3;
+      margin-left: 1rem;
+      margin-right: 1rem;
+      max-width: 300px;
     }
   }
 }

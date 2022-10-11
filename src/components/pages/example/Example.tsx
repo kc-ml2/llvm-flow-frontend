@@ -11,9 +11,9 @@ function Example() {
         <span>
           You can experience the basic feature of <i>LLVM-FLOW</i> on this
           example page. &nbsp;
-          <i>LLVM-FLOW</i>&nbsp; visualizes interactive 'LLVM CFG' and allows
+          <i>LLVM-FLOW</i>&nbsp; visualizes 'LLVM CFG' interactively and allows
           you to compare optimization results at a glance. <br></br>
-          Sign up and experience more features of <i>LLVM-FLOW</i> for yourself!
+          Sign up and discover more features of <i>LLVM-FLOW</i> for yourself!
         </span>
       </div>
 
