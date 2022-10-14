@@ -1,35 +1,39 @@
 @import '../../../styles/variable';
 
-.footer {
-  background-color: white;
-  color: $purple;
-  margin-top: 3rem;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+.Footer {
+  background-color: $dark;
+  color: white;
+  min-height: 18vh;
   width: 100%;
+  text-align: center;
+  display: grid;
+  grid-template-columns: auto;
+  font-size: 12px;
 
-  .content {
-    margin-left: 8%;
-    margin-right: 8%;
+  .one {
+    grid-row: 1;
+    grid-column: 1;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+  }
 
-    .right {
-      text-align: end;
-      img {
-        margin-left: 1rem;
-      }
-    }
-    hr {
-      height: 1.5px;
-      opacity: 1;
-    }
+  .two {
+    grid-row: 1;
+    grid-column: 2;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+  }
 
-    h5 {
-      font-size: 1rem;
-    }
-
-    i {
-      font-size: 0.8rem;
-      font-style: normal;
+  .three {
+    grid-row: 1;
+    grid-column: 3;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    img {
+      margin-left: 1rem;
     }
   }
 }

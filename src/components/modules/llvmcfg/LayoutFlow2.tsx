@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import React, { useCallback } from 'react'
+import { useCallback, useState } from 'react'
 import ReactFlow, {
   addEdge,
   ConnectionLineType,
@@ -76,6 +76,8 @@ interface LayoutFlowProps {
 const LayoutFlow2 = ({ llvmJson, llvmOutput, title }: LayoutFlowProps) => {
   // const flowStyles = {  background: 'white' }
   // step1) json -> react flow에 맞는 형식으로 변경
+  const [vertical, setVertical] = useState<boolean>(true)
+  const [horizontal, setHorizontal] = useState<boolean>(false)
   const nodeinitial = llvmJson.objects
   const node = nodeinitial.map((object: any) => {
     return { ...object, isSame: 'no' }
@@ -190,7 +192,7 @@ const LayoutFlow2 = ({ llvmJson, llvmOutput, title }: LayoutFlowProps) => {
   const nodeColor = (node: any) => {
     switch (node.data.isSame) {
       case 'yes':
-        return COLORS.DARKYELLOW
+        return COLORS.PURPLE
       case 'no':
         return COLORS.GRAY
       default:
@@ -248,10 +250,24 @@ const LayoutFlow2 = ({ llvmJson, llvmOutput, title }: LayoutFlowProps) => {
         />
       </ReactFlow>
       <div className="controls">
-        <button onClick={() => onLayout('TB')} className={buttons.mini}>
+        <button
+          onClick={() => {
+            onLayout('TB')
+            setVertical(true)
+            setHorizontal(false)
+          }}
+          className={vertical === true ? buttons.mini : buttons.mini_gray}
+        >
           vertical layout
         </button>
-        <button onClick={() => onLayout('LR')} className={buttons.mini}>
+        <button
+          onClick={() => {
+            onLayout('LR')
+            setVertical(false)
+            setHorizontal(true)
+          }}
+          className={horizontal === true ? buttons.mini : buttons.mini_gray}
+        >
           horizontal layout
         </button>
       </div>

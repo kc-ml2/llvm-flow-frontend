@@ -12,12 +12,13 @@ export default memo(({ data }: any) => {
   const [fullmode, setFullmode] = useState<boolean>(isFull)
 
   const changeColor = (sameNode: any, targetNode: any) => {
-    if (targetNode.style.backgroundColor === 'rgb(255, 210, 96)') {
+    console.log(targetNode.style.backgroundColor)
+    if (targetNode.style.backgroundColor === 'rgb(224, 210, 255)') {
       sameNode.style.backgroundColor = 'white'
       targetNode.style.backgroundColor = 'white'
     } else if (targetNode.style.backgroundColor === 'white') {
-      sameNode.style.backgroundColor = COLORS.BACKYELLOW
-      targetNode.style.backgroundColor = COLORS.BACKYELLOW
+      sameNode.style.backgroundColor = COLORS.LIGHTPURPLE
+      targetNode.style.backgroundColor = COLORS.LIGHTPURPLE
     }
   }
 
@@ -72,7 +73,7 @@ export default memo(({ data }: any) => {
             ? {
                 right: '20%',
                 left: 'auto',
-                background: COLORS.YELLOW,
+                background: COLORS.PURPLE,
                 border: 'none',
                 borderRadius: '0px',
                 height: '3.5px',
@@ -116,7 +117,7 @@ export default memo(({ data }: any) => {
             ? {
                 right: '20%',
                 left: 'auto',
-                background: COLORS.YELLOW,
+                background: COLORS.PURPLE,
                 border: 'none',
                 borderRadius: '0px',
                 height: '3.5px',

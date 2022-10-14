@@ -22,7 +22,7 @@
 
     a:hover {
       color: $dark !important;
-      background-color: $lightpurple;
+      background-color: $gray;
       padding: 0.5rem;
       border-radius: 5px;
       font-weight: 600;
@@ -38,7 +38,7 @@
 .active {
   a {
     color: $dark !important;
-    background-color: $lightpurple;
+    background-color: $gray;
     padding: 0.5rem;
     border-radius: 5px;
   }

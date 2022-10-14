@@ -7,20 +7,20 @@ export default function App() {
   const { isFullIndex } = useAppSelector((state) => state.mode)
   const dispatch = useAppDispatch()
 
-  const selectedFontColor = '#fc851c'
-  const selectedBackgroundColor = '#fadf9b'
-  const fontColor = '#fc9628'
-  const backgroundColor = '#fbecc7'
+  const selectedFontColor = '#D2EC6A'
+  const selectedBackgroundColor = 'white'
+  const fontColor = 'white'
+  const backgroundColor = '#D2EC6A'
 
   const options = [
     {
-      label: 'simple',
+      label: 'SIMPLE',
       value: 'simple',
       selectedBackgroundColor: selectedBackgroundColor,
       selectedFontColor: selectedFontColor,
     },
     {
-      label: 'origin',
+      label: 'ORIGIN',
       value: 'origin',
       selectedBackgroundColor: selectedBackgroundColor,
       selectedFontColor: selectedFontColor,

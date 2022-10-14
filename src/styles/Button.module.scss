@@ -50,14 +50,15 @@
   font-weight: 600;
   color: white;
   font-size: 1rem;
-  border-radius: 10px;
-  position: relative;
-  top: 0;
-  transition: top ease 0.2s;
+  border-radius: 28px;
+  // position: relative;
+  // top: 0;
+  // transition: top ease 0.2s;
 }
 
 .default:hover {
-  top: -3px;
+  // top: -3px;
+  background-color: $darkpurple;
 }
 
 //default_light - delete:no
@@ -71,14 +72,15 @@
   font-weight: 600;
   color: $purple;
   font-size: 1rem;
-  border-radius: 10px;
-  position: relative;
-  top: 0;
-  transition: top ease 0.2s;
+  border-radius: 28px;
+  // position: relative;
+  // top: 0;
+  // transition: top ease 0.2s;
 }
 
 .default_light:hover {
-  top: -3px;
+  // top: -3px;
+  background-color: $deeppurple;
 }
 
 //white - get started
@@ -104,16 +106,16 @@
 
 //mini - purple
 .mini {
-  background-color: $lightpurple;
-  border: $lightpurple;
+  background-color: $purple;
+  border: transparent;
   padding-top: $btn-padding-y-sm;
   padding-bottom: $btn-padding-y-sm;
   padding-left: $btn-padding-x-sm;
   padding-right: $btn-padding-x-sm;
   font-weight: 600;
-  color: $purple;
+  color: white;
   font-size: 0.7rem;
-  border-radius: 7px;
+  border-radius: 28px;
 }
 
 .mini:hover {
@@ -122,42 +124,52 @@
 
 //mini - yellow
 .mini_yellow {
-  background-color: $lightyellow;
-  border: $lightyellow;
+  background-color: $highlight;
+  border: transparent;
   padding-top: $btn-padding-y-sm;
   padding-bottom: $btn-padding-y-sm;
   padding-left: $btn-padding-x-sm;
   padding-right: $btn-padding-x-sm;
   font-weight: 600;
-  color: $darkyellow;
+  color: white;
   font-size: 0.7rem;
-  border-radius: 7px;
+  border-radius: 28px;
 }
 
 .mini_yellow:hover {
-  background-color: $hoveryellow;
+  background-color: $hoverhighlight;
+}
+
+//mini - gray
+.mini_gray {
+  background-color: $gray;
+  border: transparent;
+  padding-top: $btn-padding-y-sm;
+  padding-bottom: $btn-padding-y-sm;
+  padding-left: $btn-padding-x-sm;
+  padding-right: $btn-padding-x-sm;
+  font-weight: 600;
+  color: white;
+  font-size: 0.7rem;
+  border-radius: 28px;
 }
 
 //basic - logout
 .basic {
-  background-color: $lightpurple;
-  border: 1px solid $lightpurple;
+  background-color: $gray;
+  border: transparent;
   padding-top: $btn-padding-y-sm;
   padding-bottom: $btn-padding-y-sm;
   padding-left: $btn-padding-x-sm;
   padding-right: $btn-padding-x-sm;
   font-weight: 600;
-  color: $purple;
+  color: white;
   font-size: 1rem;
-  border-radius: 10px;
-  position: relative;
-  top: 0;
-  transition: top ease 0.2s;
+  border-radius: 28px;
 }
 
 .basic:hover {
-  top: -3px;
-  background-color: $darkpurple;
+  background-color: $purple;
 }
 
 //guide  - open guide
@@ -171,7 +183,7 @@
   font-weight: 500;
   color: $blue;
   font-size: 0.8rem;
-  border-radius: 15px;
+  border-radius: 28px;
   min-height: 40px;
   z-index: 10 !important;
 }

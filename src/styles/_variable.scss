@@ -1,16 +1,14 @@
 // color
-$dark: #1a0544 !default;
-$sub: #1a0544cb !default;
-$light: #f8f8f8 !default;
+$dark: #1c1c1c !default;
+$light: #f5f5f5 !default;
 $lightgray: #f4f4f4 !default;
-$gray: #c4c4c4 !default;
+$gray: #e1e1e1 !default;
 $darkgray: #eaeaea !default;
-$purple: #5b2eb6 !default;
+$purple: #9966ff !default;
+$darkpurple: #8243ff !default;
 $lightpurple: #f0e9ff !default;
-$darkpurple: #e0d6fa !default;
-$yellow: #ffc342 !default;
+$deeppurple: #e0d2ff !default;
 $lightyellow: #fbecc7 !default;
-$darkyellow: #fc851c !default;
 $hoveryellow: #f9e3ac !default;
 $backyellow: #ffd260 !default;
 $blue: #1b64da !default;
@@ -18,6 +16,9 @@ $lightblue: #cadbf6 !default;
 $darkblue: #a7c5f6 !default;
 $red: #ef5350 !default;
 $lightred: #fceaef !default;
+
+$highlight: #d2ec6a !default;
+$hoverhighlight: #bdda4c !default;
 
 // button
 $btn-padding-y: 7px !default;

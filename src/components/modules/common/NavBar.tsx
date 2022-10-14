@@ -1,7 +1,7 @@
 /* eslint-disable multiline-ternary */
 import React, { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import logo from '@/images/ML2_logo.png'
+import logo from '@/images/logo.png'
 import {
   Collapse,
   Navbar,
@@ -53,7 +53,7 @@ const NavBar = () => {
   return (
     <Navbar expand="md" className={cx('NavBar', 'fixedTop')}>
       <NavbarBrand href="/" className={styles.logo}>
-        <img src={logo} alt="logo" height="28" width="98.64"></img>
+        <img src={logo} alt="logo" height="50" width="136.36"></img>
       </NavbarBrand>
       <NavbarToggler
         onClick={() => {
