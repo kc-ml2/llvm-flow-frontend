@@ -16,6 +16,9 @@
     i {
       font-style: normal;
       color: $highlight;
+      background-color: $dark;
+      padding: 0.5rem;
+      border-radius: 10px;
     }
 
     p {
@@ -59,7 +62,7 @@
     font-weight: 500;
     tr:hover {
       color: $purple;
-      background-color: $lightgray;
+      background-color: $light;
     }
 
     #passOption {
