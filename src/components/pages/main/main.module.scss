@@ -96,3 +96,24 @@
     }
   }
 }
+
+#modal {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 20%;
+  margin-left: auto;
+  margin-right: auto;
+
+  #modalBody {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+
+    button {
+      margin: 0.5rem;
+    }
+  }
+}

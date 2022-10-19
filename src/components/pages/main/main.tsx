@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 /* eslint-disable multiline-ternary */
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAppSelector, useAppDispatch } from '@/redux/hook'
 import styles from './main.module.scss'
@@ -9,9 +9,11 @@ import example from '@/gif/example.gif'
 import exBefore from '../../../exData/exBefore.json'
 import exAfter from '../../../exData/exAfter.json'
 import { setGraphData } from '@/redux/features/graph/graphSlice'
+import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 
 function Main() {
   const { isLogin } = useAppSelector((state) => state.auth)
+  const [open, setOpen] = useState<boolean>(false)
 
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
@@ -62,18 +64,26 @@ function Main() {
             Visualize the LLVM CFG <i>interactively</i>.
           </h3>
           <br></br>
-          {/* <button onClick={handleUploadC} className={buttons.white}>
-            Start with <b>.c</b> file
+          <br></br>
+          <button className={buttons.white} onClick={() => setOpen(true)}>
+            Getting Started
           </button>
-          <br></br> <br></br>
-          <button onClick={handleUploadCPP} className={buttons.white}>
-            Start with <b>.cpp</b> file
-          </button>
-          <br></br> <br></br>
-          <button onClick={handleUploadLL} className={buttons.white}>
-            Start with <b>.ll</b> file
-          </button> */}
-          <button className={buttons.white}>Getting Started</button>
+          <Modal isOpen={open} toggle={() => setOpen(!open)} id={styles.modal}>
+            <ModalBody id={styles.modalBody}>
+              🗂️ You can upload the following types of files:
+              <br></br>
+              <br></br>
+              <button onClick={handleUploadC} className={buttons.mini_white}>
+                Start with <b>.c</b>
+              </button>
+              <button onClick={handleUploadCPP} className={buttons.mini_white}>
+                Start with <b>.cpp</b>
+              </button>
+              <button onClick={handleUploadLL} className={buttons.mini_white}>
+                Start with <b>.ll</b>
+              </button>
+            </ModalBody>
+          </Modal>
         </section>
         <section id={styles.example}>
           <button className={buttons.ex} onClick={handleExample}>
