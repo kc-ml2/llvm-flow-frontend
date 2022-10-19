@@ -15,10 +15,10 @@ interface GraphState {
 
 const initialState: GraphState = {
   before_json: exBefore,
-  before_output: ['Function', '%25', '%30', 'Function'],
+  before_output: ['Function', '%12', '%14', '%15', '%34', 'Function'],
   after_json: exAfter,
-  after_output: ['1:', '%15', '%18', '2:'],
-  file_pass: '-simplifycfg -sroa -dse -globalopt -instcombine',
+  after_output: ['1:', '%12', '%14', '%15', '%33', '2:'],
+  file_pass: '-float2int -coro-elide -ipconstprop -simplifycfg',
   isReady: false,
   filterID: undefined,
 }
