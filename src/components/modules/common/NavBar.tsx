@@ -53,7 +53,7 @@ const NavBar = () => {
   return (
     <Navbar expand="md" className={cx('NavBar', 'fixedTop')}>
       <NavbarBrand href="/" className={styles.logo}>
-        <img src={logo} alt="logo" height="50" width="136.36"></img>
+        <img src={logo} alt="logo" height="46" width="125.45"></img>
       </NavbarBrand>
       <NavbarToggler
         onClick={() => {
