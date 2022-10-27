@@ -14,6 +14,7 @@ import Stack from '@mui/material/Stack'
 import IconButton from '@mui/material/IconButton'
 import Collapse from '@mui/material/Collapse'
 import CloseIcon from '@mui/icons-material/Close'
+import { NavLink } from 'react-router-dom'
 
 function Upload() {
   const { isLogin, token } = useAppSelector((state) => state.auth)
@@ -69,6 +70,17 @@ function Upload() {
 
   return (
     <section className={styles.upload}>
+      <div className={styles.navlink}>
+        <NavLink to="/uploadC" id={styles.active}>
+          with .c file
+        </NavLink>
+        <NavLink to="/uploadCPP" id={styles.deactive}>
+          with .cpp file
+        </NavLink>
+        <NavLink to="/uploadLL" id={styles.deactive}>
+          with .ll file
+        </NavLink>
+      </div>
       <form onSubmit={handleSubmit} method="post" encType="multipart/form-data">
         <div className={styles.file}>
           <label htmlFor="input-file">.c File Upload</label>

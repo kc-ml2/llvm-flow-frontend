@@ -61,40 +61,6 @@
       }
     }
   }
-
-  .keyword {
-    display: grid;
-    grid-template-columns: auto;
-    margin-top: 8rem;
-
-    h4 {
-      font-weight: 700;
-    }
-
-    #first {
-      grid-row: 1;
-      grid-column: 1;
-      margin-left: 1rem;
-      margin-right: 1rem;
-      max-width: 300px;
-    }
-
-    #second {
-      grid-row: 1;
-      grid-column: 2;
-      margin-left: 1rem;
-      margin-right: 1rem;
-      max-width: 300px;
-    }
-
-    #third {
-      grid-row: 1;
-      grid-column: 3;
-      margin-left: 1rem;
-      margin-right: 1rem;
-      max-width: 300px;
-    }
-  }
 }
 
 #modal {

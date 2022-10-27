@@ -1,16 +1,8 @@
 export const COLORS = {
-  DARK: '#1C1C1C',
-  LIGHT: '#f8f8f8',
   LIGHTGRAY: '#f4f4f4',
   GRAY: '#c4c4c4',
   DARKGRAY: ' #eaeaea ',
   PURPLE: '#9966ff',
   LIGHTPURPLE: '#e0d2ff',
-  DARKPURPLE: ' #e0d6fa',
-  YELLOW: '#ffc342',
-  LIGHTYELLOW: '#fbecc7',
-  DARKYELLOW: '#fc851c',
-  HOVERYELLOW: '#f9e3ac',
-  BACKYELLOW: '#FFD260',
-  GREEN: '#15c47e ',
+  GREEN: '#c9e94d ',
 }

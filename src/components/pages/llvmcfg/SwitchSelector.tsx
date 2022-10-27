@@ -1,16 +1,17 @@
 import SwitchSelector from 'react-switch-selector'
 import { useAppSelector, useAppDispatch } from '@/redux/hook'
 import { setIsFullFalse, setIsFullTrue } from '@/redux/features/mode/modeSlice'
+import { COLORS } from '@/const/color'
 
 export default function App() {
   //   options index 0 = simple / options index 1 = origin,  redux에선 해당 값을 isFullIndex로 사용
   const { isFullIndex } = useAppSelector((state) => state.mode)
   const dispatch = useAppDispatch()
 
-  const selectedFontColor = '#D2EC6A'
+  const selectedFontColor = COLORS.GREEN
   const selectedBackgroundColor = 'white'
   const fontColor = 'white'
-  const backgroundColor = '#D2EC6A'
+  const backgroundColor = COLORS.GREEN
 
   const options = [
     {

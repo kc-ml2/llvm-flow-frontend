@@ -9,9 +9,6 @@ import {
   NavbarToggler,
   Nav,
   NavItem,
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
 } from 'reactstrap'
 import styles from './NavBar.module.scss'
 import buttons from '@/styles/Button.module.scss'
@@ -28,11 +25,6 @@ const NavBar = () => {
   const cx = classNames.bind(styles)
   const { isLogin } = useAppSelector((state) => state.auth)
   const [isOpen, setIsOpen] = useState(false)
-  const [isOpenDropdown, setIsOpenDropdown] = useState(false)
-
-  const toggle = () => {
-    setIsOpenDropdown(!isOpenDropdown)
-  }
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -68,21 +60,15 @@ const NavBar = () => {
       <Collapse navbar isOpen={isOpen} className={styles.right}>
         <Nav navbar className={styles.nav}>
           <NavItem className={styles.items}>
-            <button className={buttons.nav}>
-              <a
-                href="https://github.com/kc-ml2/llvm-flow"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Github
-              </a>
-            </button>
+            <NavLink to="/uploadC">
+              <button className={buttons.nav}>Start</button>
+            </NavLink>
           </NavItem>
-          <NavItem className={styles.items}>
+          {/* <NavItem className={styles.items}>
             <button className={buttons.nav} onClick={handleExample}>
-              Example
+              Tutorial
             </button>
-          </NavItem>
+          </NavItem> */}
           <NavItem className={styles.items}>
             <button className={buttons.nav}>
               <a
@@ -95,28 +81,15 @@ const NavBar = () => {
             </button>
           </NavItem>
           <NavItem className={styles.items}>
-            <Dropdown isOpen={isOpenDropdown} toggle={toggle}>
-              <DropdownToggle caret color="white" className={styles.dropdown}>
-                Start
-              </DropdownToggle>
-              <DropdownMenu>
-                <NavLink to="/uploadC">
-                  <button className={buttons.nav}>
-                    with <b>.c</b> file
-                  </button>
-                </NavLink>
-                <NavLink to="/uploadCPP">
-                  <button className={buttons.nav}>
-                    with <b>.cpp</b> file
-                  </button>
-                </NavLink>
-                <NavLink to="/uploadLL">
-                  <button className={buttons.nav}>
-                    with <b>.ll</b> file
-                  </button>
-                </NavLink>
-              </DropdownMenu>
-            </Dropdown>
+            <button className={buttons.nav}>
+              <a
+                href="https://github.com/kc-ml2/llvm-flow"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Github
+              </a>
+            </button>
           </NavItem>
           <NavItem className={styles.items}>
             {isLogin ? (

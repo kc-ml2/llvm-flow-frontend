@@ -14,6 +14,7 @@ import Stack from '@mui/material/Stack'
 import IconButton from '@mui/material/IconButton'
 import Collapse from '@mui/material/Collapse'
 import CloseIcon from '@mui/icons-material/Close'
+import { NavLink } from 'react-router-dom'
 
 function Upload() {
   const { isLogin, token } = useAppSelector((state) => state.auth)
@@ -72,6 +73,17 @@ function Upload() {
 
   return (
     <section className={styles.upload}>
+      <div className={styles.navlink}>
+        <NavLink to="/uploadC" id={styles.deactive}>
+          with .c file
+        </NavLink>
+        <NavLink to="/uploadCPP" id={styles.deactive}>
+          with .cpp file
+        </NavLink>
+        <NavLink to="/uploadLL" id={styles.active}>
+          with .ll file
+        </NavLink>
+      </div>
       <div className={styles.clang}>
         <span>
           ⚠️ Please include the following commands when compiling with clang.

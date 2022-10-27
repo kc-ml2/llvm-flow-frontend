@@ -7,6 +7,32 @@
   margin-bottom: 5rem;
   min-height: 70vh;
 
+  .navlink {
+    text-align: center;
+    margin-bottom: 5rem;
+    a {
+      margin: 1rem;
+      text-decoration: none;
+      padding-left: 1rem;
+      padding-top: 0.5rem;
+      padding-right: 1rem;
+      padding-bottom: 0.5rem;
+    }
+
+    #active {
+      color: white;
+      background-color: $purple;
+      border: 2px solid $purple;
+      border-radius: 25px;
+    }
+
+    #deactive {
+      color: $purple;
+      border: 2px solid $purple;
+      border-radius: 25px;
+    }
+  }
+
   .file {
     display: grid;
     grid-template-columns: 1fr 3fr;
@@ -14,10 +40,16 @@
 
     label {
       font-weight: 600;
-      font-size: 1.3rem;
       grid-row: 1;
       grid-column: 1;
+      color: white;
+      background-color: $dark;
+      border-radius: 3px;
+      width: 90%;
+      padding: 4px;
+      padding-left: 10px;
     }
+
     input {
       font-size: 1rem !important;
       width: 100%;
@@ -31,11 +63,17 @@
     display: grid;
     grid-template-columns: 1fr 3fr;
     padding-bottom: 1rem;
+
     label {
       font-weight: 600;
-      font-size: 1.3rem;
       grid-row: 1;
       grid-column: 1;
+      color: white;
+      background-color: $dark;
+      border-radius: 3px;
+      width: 90%;
+      padding: 4px;
+      padding-left: 10px;
     }
     input {
       border: 1px solid $dark;

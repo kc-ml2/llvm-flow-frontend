@@ -13,7 +13,7 @@ import ReactFlow, {
 } from 'react-flow-renderer'
 import dagre from 'dagre'
 import CustomNode from './CustomNode'
-import ResizableBox from '../common/ResizableBox'
+import ResizableBox from '@/components/modules/resizableBox/ResizableBox'
 import './LayoutFlow.scss'
 import buttons from '@/styles/Button.module.scss'
 import { COLORS } from '@/const/color'

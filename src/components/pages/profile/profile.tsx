@@ -24,6 +24,9 @@ const Profile = () => {
                 type="file"
                 name="pic"
                 accept="image/*"
+                onChange={(e) => {
+                  console.log(e.target.value)
+                }}
               />
               <label>+</label>
             </div>

@@ -5,7 +5,7 @@ import Helper from './Helper'
 import SlidingGuide from './SlidingGuide'
 import { useAppSelector } from '@/redux/hook'
 import styles from './llvmcfg.module.scss'
-import Loading from '@/components/modules/common/Loading'
+import Loading from '@/components/modules/loading/Loading'
 
 function LLVMcfg() {
   const { file_pass, before_json, before_output, after_json, after_output } =

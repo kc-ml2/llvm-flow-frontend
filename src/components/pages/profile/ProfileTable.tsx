@@ -7,7 +7,7 @@ import pagination from './pagination.module.scss'
 import buttons from '@/styles/Button.module.scss'
 import axios from 'axios'
 import ReactPaginate from 'react-paginate'
-import DeleteModal from '@/components/modules/profile/DeleteModal'
+import DeleteModal from '@/components/pages/profile/DeleteModal'
 import { setIsDeleteOpenTrue } from '@/redux/features/modal/deleteModalSlice'
 
 const { REACT_APP_API_URL } = process.env
