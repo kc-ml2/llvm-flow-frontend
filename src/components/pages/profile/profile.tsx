@@ -39,7 +39,7 @@ const Profile = () => {
           </p>
           <br></br>
           <button
-            className={buttons.basic}
+            className={buttons.default}
             onClick={() => {
               localStorage.removeItem('user')
               dispatch(setLogout())

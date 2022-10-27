@@ -74,13 +74,13 @@ const DeleteModal = ({
       </ModalBody>
       <ModalFooter>
         <button
-          className={buttons.default}
+          className={buttons.mini}
           onClick={() => deleteGraph(currentID, currentFolder)}
         >
           Yes
         </button>
         <button
-          className={buttons.default_light}
+          className={buttons.mini}
           onClick={() => {
             dispatch(setIsDeleteOpenFalse())
           }}

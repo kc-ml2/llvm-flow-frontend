@@ -28,6 +28,7 @@
 
       button {
         margin-bottom: 1rem;
+        font-size: 12px;
       }
     }
 
@@ -118,7 +119,6 @@
     font-weight: 500;
     tr:hover {
       color: $purple;
-      background-color: $light;
     }
 
     #passOption {

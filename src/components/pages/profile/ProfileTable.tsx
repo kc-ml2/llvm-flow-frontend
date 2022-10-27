@@ -103,7 +103,7 @@ const ProfileTable = () => {
                 </td>
                 <td>
                   <button
-                    className={buttons.mini_yellow}
+                    className={buttons.mini_fill}
                     onClick={() => {
                       dispatch(setIsDeleteOpenTrue())
                       setCurrentID(i[1]),

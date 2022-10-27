@@ -4,13 +4,14 @@ import Guide from './Guide'
 import 'react-sliding-pane/dist/react-sliding-pane.css'
 import styles from './SlidingGuide.module.scss'
 import buttons from '@/styles/Button.module.scss'
+import guide from '@/images/guide.png'
 
 const SlidingGuide = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   return (
     <div>
-      <button onClick={() => setIsOpen(true)} className={buttons.guide}>
-        🔎 Open Guide
+      <button onClick={() => setIsOpen(true)} className={buttons.default}>
+        <img src={guide} width="16.84" height="22" /> Open Guide
       </button>
       <SlidingPane
         className={styles.sliding}

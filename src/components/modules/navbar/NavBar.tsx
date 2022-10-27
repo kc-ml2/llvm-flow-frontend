@@ -94,7 +94,7 @@ const NavBar = () => {
           <NavItem className={styles.items}>
             {isLogin ? (
               <NavLink to="/profile">
-                <button className={buttons.default}>Profile</button>
+                <button className={buttons.default_fill}>Profile</button>
               </NavLink>
             ) : (
               <NavLink to="/login">
