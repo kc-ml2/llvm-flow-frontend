@@ -17,24 +17,26 @@ import CloseIcon from '@mui/icons-material/Close'
 import { NavLink } from 'react-router-dom'
 
 function Upload() {
-  const { isLogin, token } = useAppSelector((state) => state.auth)
+  // const { isLogin, token } = useAppSelector((state) => state.auth)
   const [pass, setPass] = useState<string>('')
+  const [label, setLabel] = useState<string>('')
   const [openWarning, setOpenWarning] = useState(false)
   const [openError, setOpenError] = useState(false)
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
 
-  useEffect(() => {
-    if (!isLogin) {
-      navigate('/login')
-    }
-  })
+  // useEffect(() => {
+  //   if (!isLogin) {
+  //     navigate('/login')
+  //   }
+  // })
 
   const handleSubmit = async (e: any) => {
     e.preventDefault()
 
-    const content = e.target[0].files
-    const transformpass = e.target[1].value
+    const profileLabel = e.target[0].value
+    const content = e.target[1].files
+    const transformpass = e.target[2].value
 
     if (content.length == 0 || transformpass.length == 0) {
       setOpenWarning(true)
@@ -44,6 +46,7 @@ function Upload() {
         data.append('content', content[i])
       }
       data.append('transformpass', transformpass)
+      data.append('profileLabel', profileLabel)
 
       // for (const value of data.entries()) {
       //   console.log(value)
@@ -52,7 +55,7 @@ function Upload() {
       // const response = await getCompilerOutput({ data, token })
 
       const headers = {
-        Authorization: 'Token ' + token,
+        // Authorization: 'Token ' + token,
         // FIXME: boundary 해결하기!
         'Content-type':
           'multipart/form-data; boundary=177130003042384797933296855923',
@@ -83,6 +86,18 @@ function Upload() {
         </NavLink>
       </div>
       <form onSubmit={handleSubmit} method="post" encType="multipart/form-data">
+        <div>
+          <label>label</label>
+          <input
+            type="text"
+            name="label"
+            placeholder=""
+            id="input-text"
+            onChange={(e) => {
+              setLabel(e.target.value)
+            }}
+          />
+        </div>
         <div className={styles.file}>
           <label htmlFor="input-file">.cpp File Upload</label>
           <input

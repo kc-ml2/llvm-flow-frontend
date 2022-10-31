@@ -23,7 +23,7 @@ import { setGraphData } from '@/redux/features/graph/graphSlice'
 
 const NavBar = () => {
   const cx = classNames.bind(styles)
-  const { isLogin } = useAppSelector((state) => state.auth)
+  // const { isLogin } = useAppSelector((state) => state.auth)
   const [isOpen, setIsOpen] = useState(false)
 
   const dispatch = useDispatch()
@@ -92,7 +92,7 @@ const NavBar = () => {
             </button>
           </NavItem>
           <NavItem className={styles.items}>
-            {isLogin ? (
+            {/* {isLogin ? (
               <NavLink to="/profile">
                 <button className={buttons.default_fill}>Profile</button>
               </NavLink>
@@ -100,7 +100,10 @@ const NavBar = () => {
               <NavLink to="/login">
                 <button className={buttons.default}>Sign In</button>
               </NavLink>
-            )}
+            )} */}
+            <NavLink to="/login">
+              <button className={buttons.default}>Sign In</button>
+            </NavLink>
           </NavItem>
         </Nav>
       </Collapse>

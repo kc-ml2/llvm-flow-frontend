@@ -7,7 +7,7 @@ import ProfileTable from './ProfileTable'
 import profile from '@/images/profile.png'
 
 const Profile = () => {
-  const { email } = useAppSelector((state) => state.auth)
+  // const { email } = useAppSelector((state) => state.auth)
 
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
@@ -34,11 +34,11 @@ const Profile = () => {
         </div>
         <div className={styles.profileMail}>
           <p>Welcome !</p>
-          <p>
+          {/* <p>
             <i>{email}</i>
-          </p>
+          </p> */}
           <br></br>
-          <button
+          {/* <button
             className={buttons.default}
             onClick={() => {
               localStorage.removeItem('user')
@@ -47,7 +47,7 @@ const Profile = () => {
             }}
           >
             Log out
-          </button>
+          </button> */}
         </div>
       </div>
       <div className={styles.list}>
