@@ -84,6 +84,19 @@
 }
 
 .mini_fill {
+  background-color: $purple;
+  border: 2px solid $purple;
+  border-radius: 28px;
+  padding-top: $btn-padding-y-sm;
+  padding-bottom: $btn-padding-y-sm;
+  padding-left: $btn-padding-x;
+  padding-right: $btn-padding-x;
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+.mini_gray {
   background-color: $gray;
   border: 2px solid $gray;
   border-radius: 28px;
@@ -94,4 +107,10 @@
   color: white;
   font-size: 0.7rem;
   font-weight: 500;
+}
+
+//transparent - main page
+.transparent {
+  background-color: transparent;
+  border: transparent;
 }

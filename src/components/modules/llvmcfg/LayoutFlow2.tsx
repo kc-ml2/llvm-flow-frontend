@@ -256,7 +256,7 @@ const LayoutFlow2 = ({ llvmJson, llvmOutput, title }: LayoutFlowProps) => {
             setVertical(true)
             setHorizontal(false)
           }}
-          className={vertical === true ? buttons.mini : buttons.mini_gray}
+          className={vertical === true ? buttons.mini_fill : buttons.mini_gray}
         >
           vertical layout
         </button>
@@ -266,7 +266,9 @@ const LayoutFlow2 = ({ llvmJson, llvmOutput, title }: LayoutFlowProps) => {
             setVertical(false)
             setHorizontal(true)
           }}
-          className={horizontal === true ? buttons.mini : buttons.mini_gray}
+          className={
+            horizontal === true ? buttons.mini_fill : buttons.mini_gray
+          }
         >
           horizontal layout
         </button>

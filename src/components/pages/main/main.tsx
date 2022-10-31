@@ -9,6 +9,7 @@ import example from '@/gif/example.gif'
 import exBefore from '../../../exData/exBefore.json'
 import exAfter from '../../../exData/exAfter.json'
 import { setGraphData } from '@/redux/features/graph/graphSlice'
+import check from '@/images/check.png'
 
 function Main() {
   const navigate = useNavigate()
@@ -30,22 +31,16 @@ function Main() {
   return (
     <section className={styles.main}>
       <section className={styles.title}>
-        <section id={styles.description}>
-          <h1>LLVM-FLOW</h1>
-          <h3>
-            Visualize the LLVM CFG <i>interactively</i>.
-          </h3>
-          <br></br>
-          <br></br>
-          <button className={buttons.white}>Getting Started</button>
-        </section>
-        <section id={styles.example}>
-          <button className={buttons.ex} onClick={handleExample}>
-            <img src={example}></img>
-            <br></br>
-            example →
-          </button>
-        </section>
+        <h1>LLVM-FLOW</h1>
+        <h3>Visualize the LLVM CFG interactively.</h3>
+        <button className={buttons.default}>
+          <img src={check} height="18.3" width="25" /> &nbsp; Tutorial
+        </button>
+      </section>
+      <section className={styles.example}>
+        <button className={buttons.transparent} onClick={handleExample}>
+          <img src={example} />
+        </button>
       </section>
     </section>
   )
