@@ -16,13 +16,14 @@ const Profile = () => {
   const dispatch = useAppDispatch()
 
   const handleSubmit = () => {
-    const data = { Identifier: userName }
-
     const headers = {
       'Content-type': 'application/json',
     }
+
     axios
-      .post(`${REACT_APP_API_URL}/profile/`, data, { headers: headers })
+      .get(`${REACT_APP_API_URL}/profile?Identifier=${userName}`, {
+        headers: headers,
+      })
       .then((response) => {
         setItems(response.data.data.reverse())
         console.log(response)
