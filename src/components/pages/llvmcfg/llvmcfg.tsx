@@ -1,7 +1,6 @@
 /* eslint-disable camelcase */
 import React, { Suspense, useEffect } from 'react'
 import SwitchSelector from '@/components/pages/llvmcfg/SwitchSelector'
-import Helper from './Helper'
 import SlidingGuide from './SlidingGuide'
 import { useAppSelector } from '@/redux/hook'
 import styles from './llvmcfg.module.scss'

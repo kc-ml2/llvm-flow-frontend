@@ -23,7 +23,6 @@ import { setGraphData } from '@/redux/features/graph/graphSlice'
 
 const NavBar = () => {
   const cx = classNames.bind(styles)
-  // const { isLogin } = useAppSelector((state) => state.auth)
   const [isOpen, setIsOpen] = useState(false)
 
   const dispatch = useDispatch()
@@ -70,6 +69,11 @@ const NavBar = () => {
             </button>
           </NavItem> */}
           <NavItem className={styles.items}>
+            <NavLink to="/profile">
+              <button className={buttons.nav}>Board</button>
+            </NavLink>
+          </NavItem>
+          <NavItem className={styles.items}>
             <button className={buttons.nav}>
               <a
                 href="https://kc-ml2.gitbook.io/llvm-flow/"
@@ -90,20 +94,6 @@ const NavBar = () => {
                 Github
               </a>
             </button>
-          </NavItem>
-          <NavItem className={styles.items}>
-            {/* {isLogin ? (
-              <NavLink to="/profile">
-                <button className={buttons.default_fill}>Profile</button>
-              </NavLink>
-            ) : (
-              <NavLink to="/login">
-                <button className={buttons.default}>Sign In</button>
-              </NavLink>
-            )} */}
-            <NavLink to="/login">
-              <button className={buttons.default}>Sign In</button>
-            </NavLink>
           </NavItem>
         </Nav>
       </Collapse>

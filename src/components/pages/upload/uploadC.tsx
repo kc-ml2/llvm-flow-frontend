@@ -7,7 +7,6 @@ import axios from 'axios'
 import { setGraphData } from '@/redux/features/graph/graphSlice'
 import styles from './upload.module.scss'
 import buttons from '@/styles/Button.module.scss'
-const { REACT_APP_API_URL } = process.env
 import Alert from '@mui/material/Alert'
 import AlertTitle from '@mui/material/AlertTitle'
 import Stack from '@mui/material/Stack'
@@ -15,28 +14,30 @@ import IconButton from '@mui/material/IconButton'
 import Collapse from '@mui/material/Collapse'
 import CloseIcon from '@mui/icons-material/Close'
 import { NavLink } from 'react-router-dom'
+const { REACT_APP_API_URL } = process.env
 
 function Upload() {
-  // const { isLogin, token } = useAppSelector((state) => state.auth)
   const [pass, setPass] = useState<string>('')
-  const [label, setLabel] = useState<string>('')
   const [openWarning, setOpenWarning] = useState(false)
   const [openError, setOpenError] = useState(false)
+  const [profileLabel, setProfileLabel] = useState<string>('')
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
+  const { nickname } = useAppSelector((state) => state.auth)
 
-  // useEffect(() => {
-  //   if (!isLogin) {
-  //     navigate('/login')
-  //   }
-  // })
+  useEffect(() => {
+    if (nickname) {
+      setProfileLabel(nickname)
+    } else {
+      navigate('/Nickname')
+    }
+  }, [])
 
   const handleSubmit = async (e: any) => {
     e.preventDefault()
 
-    const profileLabel = e.target[0].value
-    const content = e.target[1].files
-    const transformpass = e.target[2].value
+    const content = e.target[0].files
+    const transformpass = e.target[1].value
 
     if (content.length == 0 || transformpass.length == 0) {
       setOpenWarning(true)
@@ -47,12 +48,6 @@ function Upload() {
       }
       data.append('transformpass', transformpass)
       data.append('profileLabel', profileLabel)
-
-      // for (const value of data.entries()) {
-      //   console.log(value)
-      // }
-
-      // const response = await getCompilerOutput({ data, token })
 
       const headers = {
         // Authorization: 'Token ' + token,
@@ -85,18 +80,6 @@ function Upload() {
         </NavLink>
       </div>
       <form onSubmit={handleSubmit} method="post" encType="multipart/form-data">
-        <div>
-          <label>label</label>
-          <input
-            type="text"
-            name="label"
-            placeholder=""
-            id="input-text"
-            onChange={(e) => {
-              setLabel(e.target.value)
-            }}
-          />
-        </div>
         <div className={styles.file}>
           <label htmlFor="input-file">.c File Upload</label>
           <input
