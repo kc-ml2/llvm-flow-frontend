@@ -34,7 +34,7 @@ const ProfileTable = ({ items }: any) => {
         'multipart/form-data; boundary=177130003042384797933296855923',
     }
     axios
-      .post(`${REACT_APP_API_URL}/profile/`, payload, {
+      .post(`${REACT_APP_API_URL}/show/`, payload, {
         headers: headers,
       })
       .then((response) => {
