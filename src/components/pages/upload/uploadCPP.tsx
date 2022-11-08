@@ -102,6 +102,10 @@ function Upload() {
             }}
           />
         </div>
+        <div className={styles.userName}>
+          <p id={styles.label}>User Name</p>
+          <p id={styles.tag}>{nickname}</p>
+        </div>
 
         {/* Warning & Error Alert */}
 

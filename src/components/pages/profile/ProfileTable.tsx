@@ -9,12 +9,10 @@ import axios from 'axios'
 import ReactPaginate from 'react-paginate'
 import DeleteModal from '@/components/pages/profile/DeleteModal'
 import { setIsDeleteOpenTrue } from '@/redux/features/modal/deleteModalSlice'
-
 const { REACT_APP_API_URL } = process.env
 
-const ProfileTable = () => {
-  // const { token } = useAppSelector((state) => state.auth)
-  const [items, setItems] = useState<any | undefined>(undefined)
+const ProfileTable = ({ items }: any) => {
+  // const [items, setItems] = useState<any | undefined>(undefined)
   const [currentID, setCurrentID] = useState<number>()
   const [currentFolder, setCurrentFolder] = useState<string>('')
   const [currentDate, setCurrentDate] = useState<string>('')
@@ -23,21 +21,6 @@ const ProfileTable = () => {
 
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
-
-  useEffect(() => {
-    const headers = {
-      // Authorization: 'Token ' + token,
-      // FIXME: boundary 해결하기!
-      'Content-type':
-        'multipart/form-data; boundary=177130003042384797933296855923',
-    }
-
-    axios
-      .get(`${REACT_APP_API_URL}/profile/`, { headers: headers })
-      .then((response) => {
-        setItems(response.data.data.reverse())
-      })
-  }, [])
 
   const showGraph = (i: any) => {
     const payload = new FormData()
