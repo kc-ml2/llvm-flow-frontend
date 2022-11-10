@@ -35,8 +35,8 @@ const Profile = () => {
 
   return (
     <section className={styles.profile}>
-      <div className={styles.user}>
-        <div className={styles.pass}>
+      <div className={styles.search}>
+        <div className={styles.input}>
           <label htmlFor="input-text">User Name</label>
           <input
             type="text"
@@ -47,7 +47,11 @@ const Profile = () => {
               setUserName(e.target.value)
             }}
           />
-          <button onClick={handleSubmit}>Search</button>
+        </div>
+        <div className={styles.submit}>
+          <button onClick={handleSubmit} className={buttons.default}>
+            Search
+          </button>
         </div>
       </div>
       <div className={styles.list}>

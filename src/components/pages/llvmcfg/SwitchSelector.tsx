@@ -38,7 +38,7 @@ export default function App() {
 
   return (
     <div>
-      <div style={{ width: 150, height: 40 }}>
+      <div style={{ width: 150, height: 35 }}>
         <SwitchSelector
           onChange={handleToogle}
           options={options}

@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Main from '@/components/pages/main/main'
-import Nickname from '@/components/pages/nickname/Nickname'
 import UploadC from '@/components/pages/upload/uploadC'
 import UploadCPP from '@/components/pages/upload/uploadCPP'
 import UploadLL from '@/components/pages/upload/uploadLL'
@@ -30,7 +29,6 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/nickname" element={<Nickname />} />
         <Route path="/uploadC" element={<UploadC />} />
         <Route path="/uploadCPP" element={<UploadCPP />} />
         <Route path="/uploadLL" element={<UploadLL />} />

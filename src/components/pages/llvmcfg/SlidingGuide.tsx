@@ -9,7 +9,7 @@ import guide from '@/images/guide.png'
 const SlidingGuide = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   return (
-    <div>
+    <div className={styles.guide}>
       <button onClick={() => setIsOpen(true)} className={buttons.default}>
         <img src={guide} width="16.84" height="22" /> Open Guide
       </button>

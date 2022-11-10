@@ -12,7 +12,6 @@ import { setIsDeleteOpenTrue } from '@/redux/features/modal/deleteModalSlice'
 const { REACT_APP_API_URL } = process.env
 
 const ProfileTable = ({ items }: any) => {
-  // const [items, setItems] = useState<any | undefined>(undefined)
   const [currentID, setCurrentID] = useState<number>()
   const [currentFolder, setCurrentFolder] = useState<string>('')
   const [currentDate, setCurrentDate] = useState<string>('')
@@ -69,7 +68,7 @@ const ProfileTable = ({ items }: any) => {
             <td>file name</td>
             <td>pass option</td>
             <td>show graph</td>
-            <td>delete</td>
+            {/* <td>delete</td> */}
           </tr>
         </thead>
         <tbody>
@@ -84,7 +83,7 @@ const ProfileTable = ({ items }: any) => {
                     start
                   </button>
                 </td>
-                <td>
+                {/* <td>
                   <button
                     className={buttons.mini_gray}
                     onClick={() => {
@@ -108,7 +107,7 @@ const ProfileTable = ({ items }: any) => {
                     currentID={currentID}
                     currentFolder={currentFolder}
                   />
-                </td>
+                </td> */}
               </tr>
             ))}
         </tbody>

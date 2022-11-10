@@ -58,11 +58,6 @@ const NavBar = () => {
       </NavbarToggler>
       <Collapse navbar isOpen={isOpen} className={styles.right}>
         <Nav navbar className={styles.nav}>
-          <NavItem className={styles.items}>
-            <NavLink to="/uploadC">
-              <button className={buttons.nav}>Start</button>
-            </NavLink>
-          </NavItem>
           {/* <NavItem className={styles.items}>
             <button className={buttons.nav} onClick={handleExample}>
               Tutorial
@@ -94,6 +89,11 @@ const NavBar = () => {
                 Github
               </a>
             </button>
+          </NavItem>
+          <NavItem className={styles.items}>
+            <NavLink to="/uploadC">
+              <button className={buttons.default}>Start</button>
+            </NavLink>
           </NavItem>
         </Nav>
       </Collapse>

@@ -7,85 +7,34 @@
   min-height: 100vh;
   margin-top: auto;
 
-  .user {
-    font-size: 1.5rem;
-    font-weight: 600;
-    display: grid;
-    grid-template-columns: 180px 600px;
-
-    .profileMail {
-      grid-row: 1;
-      grid-column: 2;
-      height: 150px;
-      font-size: 1rem;
-      i {
-        font-style: normal;
-        color: $highlight;
+  .search {
+    margin: 0 auto;
+    text-align: center;
+    max-width: 800px;
+    .input {
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      label {
+        font-weight: 600;
+        grid-row: 1;
+        grid-column: 1;
+        color: white;
         background-color: $dark;
-        padding: 0.5rem;
-        border-radius: 5px;
+        border-radius: 3px;
+        width: 90%;
+        padding: 4px;
+        padding-left: 10px;
       }
 
-      button {
-        margin-bottom: 1rem;
-        font-size: 12px;
+      input {
+        font-size: 1rem !important;
+        width: 100%;
+        grid-row: 1;
+        grid-column: 2;
       }
     }
-
-    .profileImg {
-      grid-row: 1;
-      grid-column: 1;
-      width: 150px;
-      height: 150px;
-      margin-bottom: 1rem;
-
-      .outer {
-        position: relative;
-        img {
-          border-radius: 100%;
-          width: 150px;
-          height: 150px;
-        }
-
-        .inner {
-          background-color: $light;
-          width: 40px;
-          height: 40px;
-          border-radius: 100%;
-          position: absolute;
-          bottom: 0;
-          right: 0;
-        }
-
-        .inner:hover {
-          background-color: $lightgray;
-        }
-        .inputfile {
-          opacity: 0;
-          overflow: hidden;
-          position: absolute;
-          z-index: 1;
-          width: 40px;
-          height: 40px;
-        }
-        .inputfile + label {
-          font-size: 1.25rem;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-          display: inline-block;
-          overflow: hidden;
-          width: 40px;
-          height: 40px;
-          pointer-events: none;
-          cursor: pointer;
-          line-height: 40px;
-          text-align: center;
-          color: $dark;
-        }
-        .inputfile + label svg {
-          fill: #fff;
-        }
-      }
+    .submit {
+      padding: 1rem;
     }
   }
 }

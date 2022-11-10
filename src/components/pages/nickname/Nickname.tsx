@@ -11,7 +11,6 @@ import IconButton from '@mui/material/IconButton'
 import CloseIcon from '@mui/icons-material/Close'
 import { useNavigate } from 'react-router-dom'
 import { setAuthData } from '@/redux/features/auth/authSlice'
-import { useAppDispatch } from '@/redux/hook'
 import { useDispatch } from 'react-redux'
 
 const Helper = () => {
@@ -37,8 +36,8 @@ const Helper = () => {
         .then((response) => {
           console.log(response)
           if (response.status === 0) {
-            localStorage.setItem('nickname', JSON.stringify(nickname))
-            dispatch(setAuthData(JSON.stringify(nickname)))
+            localStorage.setItem('nickname', nickname)
+            dispatch(setAuthData(nickname))
             navigate(-1)
           } else {
             setOpenWarning(true)
@@ -60,7 +59,7 @@ const Helper = () => {
 
   return (
     <section className={styles.nickname}>
-      <h1>Nickname</h1>
+      <h1>User Name</h1>
       <form onSubmit={handleSubmit} method="post" encType="multipart/form-data">
         <input
           type="text"

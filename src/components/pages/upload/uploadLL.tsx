@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useState } from 'react'
 // import uploadAPI from '@/api/http-upload'
 // import getCompilerOutput from '@/api/http-upload'
 import { useAppSelector, useAppDispatch } from '@/redux/hook'
@@ -14,33 +14,31 @@ import IconButton from '@mui/material/IconButton'
 import Collapse from '@mui/material/Collapse'
 import CloseIcon from '@mui/icons-material/Close'
 import { NavLink } from 'react-router-dom'
+import { setAuthData } from '@/redux/features/auth/authSlice'
 const { REACT_APP_API_URL } = process.env
 
 function Upload() {
+  const navigate = useNavigate()
+  const dispatch = useAppDispatch()
   const [pass, setPass] = useState<string>('')
   const [file, setFile] = useState<string>('')
   const [openWarning, setOpenWarning] = useState(false)
   const [openError, setOpenError] = useState(false)
-  const [profileLabel, setProfileLabel] = useState<string>('')
-  const navigate = useNavigate()
-  const dispatch = useAppDispatch()
   const { nickname } = useAppSelector((state) => state.auth)
-
-  useEffect(() => {
-    if (nickname) {
-      setProfileLabel(nickname)
-    } else {
-      navigate('/Nickname')
-    }
-  }, [])
+  const [inputName, setInputName] = useState<string | undefined>(nickname)
 
   const handleSubmit = async (e: any) => {
     e.preventDefault()
 
-    const content = e.target[0].files
-    const transformpass = e.target[1].value
+    const profileLabel = e.target[0].value
+    const content = e.target[1].files
+    const transformpass = e.target[2].value
 
-    if (content.length == 0 || transformpass.length == 0) {
+    if (
+      content.length == 0 ||
+      transformpass.length == 0 ||
+      profileLabel.length == 0
+    ) {
       setOpenWarning(true)
     } else {
       const data = new FormData()
@@ -58,9 +56,11 @@ function Upload() {
       }
 
       axios
-        .post(`${REACT_APP_API_URL}/uploadC/`, data, { headers: headers })
+        .post(`${REACT_APP_API_URL}/uploadLL/`, data, { headers: headers })
         .then((response) => {
           dispatch(setGraphData(response.data))
+          localStorage.setItem('nickname', profileLabel)
+          dispatch(setAuthData(profileLabel))
           navigate('/llvmcfg')
         })
         .catch((response) => setOpenError(true))
@@ -94,6 +94,15 @@ function Upload() {
       </div>
 
       <form onSubmit={handleSubmit} method="post" encType="multipart/form-data">
+        <div className={styles.userName}>
+          <label htmlFor="input-text">User Name</label>
+          <input
+            type="text"
+            name="profileLabel"
+            placeholder={inputName}
+            id="input-text"
+          />
+        </div>
         <div className={styles.file}>
           <label htmlFor="input-file">.ll File Upload</label>
           <input
@@ -119,11 +128,6 @@ function Upload() {
             }}
           />
         </div>
-        <div className={styles.userName}>
-          <p id={styles.label}>User Name</p>
-          <p id={styles.tag}>{nickname}</p>
-        </div>
-
         {/* Warning & Error Alert */}
 
         <Stack>
@@ -175,7 +179,7 @@ function Upload() {
               <AlertTitle>
                 <b>Warning</b>
               </AlertTitle>
-              File and pass option must be filled out!
+              User Name, File and Pass Option must be filled out!
             </Alert>
           </Collapse>
         </Stack>
