@@ -9,6 +9,7 @@ import axios from 'axios'
 import ReactPaginate from 'react-paginate'
 import DeleteModal from '@/components/pages/profile/DeleteModal'
 import { setIsDeleteOpenTrue } from '@/redux/features/modal/deleteModalSlice'
+import PersonIcon from '@mui/icons-material/Person'
 const { REACT_APP_API_URL } = process.env
 
 const ProfileTable = ({ items }: any) => {
@@ -77,7 +78,10 @@ const ProfileTable = ({ items }: any) => {
             currentItems.map((i: any) => (
               <tr key={i}>
                 <td>{convertDate(i[2].substring(0, i[2].indexOf('/')))}</td>
-                <td>{i[3]}</td>
+                <td>
+                  <PersonIcon /> &nbsp;
+                  {i[3]}
+                </td>
                 <td>{i[2].substring(i[2].indexOf('/') + 1)}</td>
                 <td id={styles.passOption}>{i[0]}</td>
                 <td>
