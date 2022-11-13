@@ -37,9 +37,9 @@ function LLVMcfg() {
 
       <div className={styles.cfgName}>
         <span>
-          <b>{before_json.name}</b>
+          {before_json.name}
           <br></br>
-          <b>pass option:</b> {file_pass}
+          pass option = <i>{file_pass}</i>
         </span>
       </div>
 
