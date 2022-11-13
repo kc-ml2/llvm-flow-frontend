@@ -1,15 +1,18 @@
 @import '../../../styles/variable';
 
 .upload {
-  width: 50vw;
   margin: 0 auto;
   margin-top: 5rem;
   margin-bottom: 5rem;
   min-height: 70vh;
+  max-width: 1200px;
+  width: 50%;
 
   .navlink {
-    text-align: center;
     margin-bottom: 5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     a {
       margin: 1rem;
       text-decoration: none;
@@ -163,5 +166,18 @@
   text-align: center;
   input {
     font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .upload {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .upload {
+    width: 90%;
   }
 }

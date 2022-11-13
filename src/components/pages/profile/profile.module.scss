@@ -2,8 +2,8 @@
 
 .profile {
   padding-top: 5rem;
-  padding-left: 8%;
-  padding-right: 8%;
+  max-width: 1200px;
+  margin: 0 auto;
   min-height: 100vh;
   margin-top: auto;
 
@@ -73,5 +73,12 @@
     #passOption {
       font-size: 0.8rem;
     }
+  }
+}
+
+@media (max-width: 1200px) {
+  .profile {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }

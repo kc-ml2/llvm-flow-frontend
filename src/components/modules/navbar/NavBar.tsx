@@ -42,62 +42,64 @@ const NavBar = () => {
   }
 
   return (
-    <Navbar expand="md" className={cx('NavBar', 'fixedTop')}>
-      <NavbarBrand href="/" className={styles.logo}>
-        <img src={logo} alt="logo" height="46" width="125.45"></img>
-      </NavbarBrand>
-      <NavbarToggler
-        onClick={() => {
-          setIsOpen(!isOpen)
-        }}
-        className={styles.toggler}
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </NavbarToggler>
-      <Collapse navbar isOpen={isOpen} className={styles.right}>
-        <Nav navbar className={styles.nav}>
-          {/* <NavItem className={styles.items}>
+    <section className={styles.container}>
+      <Navbar expand="md" className={cx('NavBar', 'fixedTop')}>
+        <NavbarBrand href="/" className={styles.logo}>
+          <img src={logo} alt="logo" height="46" width="125.45"></img>
+        </NavbarBrand>
+        <NavbarToggler
+          onClick={() => {
+            setIsOpen(!isOpen)
+          }}
+          className={styles.toggler}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </NavbarToggler>
+        <Collapse navbar isOpen={isOpen} className={styles.right}>
+          <Nav navbar className={styles.nav}>
+            {/* <NavItem className={styles.items}>
             <button className={buttons.nav} onClick={handleExample}>
               Tutorial
             </button>
           </NavItem> */}
-          <NavItem className={styles.items}>
-            <NavLink to="/profile">
-              <button className={buttons.nav}>Board</button>
-            </NavLink>
-          </NavItem>
-          <NavItem className={styles.items}>
-            <button className={buttons.nav}>
-              <a
-                href="https://kc-ml2.gitbook.io/llvm-flow/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Docs
-              </a>
-            </button>
-          </NavItem>
-          <NavItem className={styles.items}>
-            <button className={buttons.nav}>
-              <a
-                href="https://github.com/kc-ml2/llvm-flow"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Github
-              </a>
-            </button>
-          </NavItem>
-          <NavItem className={styles.items}>
-            <NavLink to="/uploadC">
-              <button className={buttons.default}>Start</button>
-            </NavLink>
-          </NavItem>
-        </Nav>
-      </Collapse>
-    </Navbar>
+            <NavItem className={styles.items}>
+              <NavLink to="/profile">
+                <button className={buttons.nav}>Board</button>
+              </NavLink>
+            </NavItem>
+            <NavItem className={styles.items}>
+              <button className={buttons.nav}>
+                <a
+                  href="https://kc-ml2.gitbook.io/llvm-flow/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Docs
+                </a>
+              </button>
+            </NavItem>
+            <NavItem className={styles.items}>
+              <button className={buttons.nav}>
+                <a
+                  href="https://github.com/kc-ml2/llvm-flow"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Github
+                </a>
+              </button>
+            </NavItem>
+            <NavItem className={styles.items}>
+              <NavLink to="/uploadC">
+                <button className={buttons.default}>Start</button>
+              </NavLink>
+            </NavItem>
+          </Nav>
+        </Collapse>
+      </Navbar>
+    </section>
   )
 }
 

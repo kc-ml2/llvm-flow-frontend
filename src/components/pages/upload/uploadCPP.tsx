@@ -58,7 +58,7 @@ function Upload() {
         .post(`${REACT_APP_API_URL}/uploadCPP/`, data, { headers: headers })
         .then((response) => {
           dispatch(setGraphData(response.data))
-          localStorage.setItem('nickname', profileLabel)
+          localStorage.setItem('nickname', JSON.stringify(profileLabel))
           dispatch(setAuthData(profileLabel))
           navigate('/llvmcfg')
         })
