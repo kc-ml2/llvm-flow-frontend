@@ -10,7 +10,11 @@ const SlidingGuide = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   return (
     <div className={styles.guide}>
-      <button onClick={() => setIsOpen(true)} className={buttons.default}>
+      <button
+        onClick={() => setIsOpen(true)}
+        className={buttons.default}
+        style={{ height: 44 }}
+      >
         <img src={guide} width="16.84" height="22" /> Open Guide
       </button>
       <SlidingPane
