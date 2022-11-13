@@ -12,11 +12,11 @@ import { setIsDeleteOpenTrue } from '@/redux/features/modal/deleteModalSlice'
 const { REACT_APP_API_URL } = process.env
 
 const ProfileTable = ({ items }: any) => {
-  const [currentID, setCurrentID] = useState<number>()
-  const [currentFolder, setCurrentFolder] = useState<string>('')
-  const [currentDate, setCurrentDate] = useState<string>('')
-  const [currentFile, setCurrentFile] = useState<string>('')
-  const [currentOption, setCurrentOption] = useState<string>('')
+  // const [currentID, setCurrentID] = useState<number>()
+  // const [currentFolder, setCurrentFolder] = useState<string>('')
+  // const [currentDate, setCurrentDate] = useState<string>('')
+  // const [currentFile, setCurrentFile] = useState<string>('')
+  // const [currentOption, setCurrentOption] = useState<string>('')
 
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
@@ -65,7 +65,8 @@ const ProfileTable = ({ items }: any) => {
         <thead>
           <tr>
             <td>date</td>
-            <td>file name</td>
+            <td>user name</td>
+            <td>file</td>
             <td>pass option</td>
             <td>show graph</td>
             {/* <td>delete</td> */}
@@ -76,6 +77,7 @@ const ProfileTable = ({ items }: any) => {
             currentItems.map((i: any) => (
               <tr key={i}>
                 <td>{convertDate(i[2].substring(0, i[2].indexOf('/')))}</td>
+                <td>{i[3]}</td>
                 <td>{i[2].substring(i[2].indexOf('/') + 1)}</td>
                 <td id={styles.passOption}>{i[0]}</td>
                 <td>
