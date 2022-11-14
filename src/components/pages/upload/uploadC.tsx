@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 // import uploadAPI from '@/api/http-upload'
 // import getCompilerOutput from '@/api/http-upload'
 import { useAppSelector, useAppDispatch } from '@/redux/hook'
@@ -7,7 +7,6 @@ import axios from 'axios'
 import { setGraphData } from '@/redux/features/graph/graphSlice'
 import styles from './upload.module.scss'
 import buttons from '@/styles/Button.module.scss'
-const { REACT_APP_API_URL } = process.env
 import Alert from '@mui/material/Alert'
 import AlertTitle from '@mui/material/AlertTitle'
 import Stack from '@mui/material/Stack'
@@ -15,28 +14,31 @@ import IconButton from '@mui/material/IconButton'
 import Collapse from '@mui/material/Collapse'
 import CloseIcon from '@mui/icons-material/Close'
 import { NavLink } from 'react-router-dom'
+import { setAuthData } from '@/redux/features/auth/authSlice'
+import PassOption from './passOption'
+const { REACT_APP_API_URL } = process.env
 
 function Upload() {
-  const { isLogin, token } = useAppSelector((state) => state.auth)
+  const navigate = useNavigate()
+  const dispatch = useAppDispatch()
   const [pass, setPass] = useState<string>('')
   const [openWarning, setOpenWarning] = useState(false)
   const [openError, setOpenError] = useState(false)
-  const navigate = useNavigate()
-  const dispatch = useAppDispatch()
-
-  useEffect(() => {
-    if (!isLogin) {
-      navigate('/login')
-    }
-  })
+  const { nickname } = useAppSelector((state) => state.auth)
+  const [inputName, setInputName] = useState<string | undefined>(nickname)
 
   const handleSubmit = async (e: any) => {
     e.preventDefault()
 
-    const content = e.target[0].files
-    const transformpass = e.target[1].value
+    const profileLabel = e.target[0].value
+    const content = e.target[1].files
+    const transformpass = e.target[2].value
 
-    if (content.length == 0 || transformpass.length == 0) {
+    if (
+      content.length == 0 ||
+      transformpass.length == 0 ||
+      profileLabel.length == 0
+    ) {
       setOpenWarning(true)
     } else {
       const data = new FormData()
@@ -44,15 +46,10 @@ function Upload() {
         data.append('content', content[i])
       }
       data.append('transformpass', transformpass)
-
-      // for (const value of data.entries()) {
-      //   console.log(value)
-      // }
-
-      // const response = await getCompilerOutput({ data, token })
+      data.append('profileLabel', profileLabel)
 
       const headers = {
-        Authorization: 'Token ' + token,
+        // Authorization: 'Token ' + token,
         // FIXME: boundary 해결하기!
         'Content-type':
           'multipart/form-data; boundary=177130003042384797933296855923',
@@ -62,6 +59,8 @@ function Upload() {
         .post(`${REACT_APP_API_URL}/uploadC/`, data, { headers: headers })
         .then((response) => {
           dispatch(setGraphData(response.data))
+          localStorage.setItem('nickname', JSON.stringify(profileLabel))
+          dispatch(setAuthData(profileLabel))
           navigate('/llvmcfg')
         })
         .catch((response) => setOpenError(true))
@@ -82,6 +81,15 @@ function Upload() {
         </NavLink>
       </div>
       <form onSubmit={handleSubmit} method="post" encType="multipart/form-data">
+        <div className={styles.userName}>
+          <label htmlFor="input-text">User Name</label>
+          <input
+            type="text"
+            name="profileLabel"
+            placeholder={inputName}
+            id="input-text"
+          />
+        </div>
         <div className={styles.file}>
           <label htmlFor="input-file">.c File Upload</label>
           <input
@@ -93,7 +101,7 @@ function Upload() {
           />
         </div>
         <div className={styles.pass}>
-          <label htmlFor="input-text">Pass Option</label>
+          <label htmlFor="input-text">LLVM's passes</label>
           <input
             type="text"
             name="transformpass"
@@ -129,7 +137,7 @@ function Upload() {
               <AlertTitle>
                 <b>LLVM Command Error</b>
               </AlertTitle>
-              Please check pass option and file again!
+              Please check LLVM's passes and file again!
             </Alert>
           </Collapse>
         </Stack>
@@ -156,7 +164,7 @@ function Upload() {
               <AlertTitle>
                 <b>Warning</b>
               </AlertTitle>
-              File and pass option must be filled out!
+              User Name, File and Pass Option must be filled out!
             </Alert>
           </Collapse>
         </Stack>
@@ -179,6 +187,8 @@ function Upload() {
           ></input>
         </div>
       </form>
+
+      <PassOption />
     </section>
   )
 }

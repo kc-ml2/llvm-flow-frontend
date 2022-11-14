@@ -2,38 +2,52 @@
 
 .Footer {
   background-color: $dark;
-  color: white;
-  min-height: 18vh;
-  width: 100%;
-  text-align: center;
-  display: grid;
-  grid-template-columns: auto;
-  font-size: 12px;
 
-  .one {
-    grid-row: 1;
-    grid-column: 1;
-    display: flex;
-    align-items: center;
+  .container {
+    color: white;
+    min-height: 18vh;
+    width: 100%;
+    text-align: center;
+    display: grid;
+    grid-template-columns: auto;
+    font-size: 12px;
+    max-width: 1200px;
     margin: 0 auto;
+    .one {
+      grid-row: 1;
+      grid-column: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    .two {
+      grid-row: 1;
+      grid-column: 2;
+      display: flex;
+      align-items: center;
+      margin: 0 auto;
+    }
+
+    .three {
+      grid-row: 1;
+      grid-column: 3;
+      display: flex;
+      align-items: center;
+      float: right;
+      margin-left: auto;
+
+      img {
+        margin-left: 1rem;
+      }
+    }
   }
+}
 
-  .two {
-    grid-row: 1;
-    grid-column: 2;
-    display: flex;
-    align-items: center;
-    margin: 0 auto;
-  }
-
-  .three {
-    grid-row: 1;
-    grid-column: 3;
-    display: flex;
-    align-items: center;
-    margin: 0 auto;
-    img {
-      margin-left: 1rem;
+@media (max-width: 1200px) {
+  .Footer {
+    .container {
+      padding-left: 1rem;
+      padding-right: 1rem;
     }
   }
 }

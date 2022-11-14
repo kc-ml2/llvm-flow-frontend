@@ -4,7 +4,7 @@
   text-align: center;
   margin: 0 auto;
   min-height: 70vh;
-  max-width: 90vw;
+  max-width: 1200px;
 
   .title {
     text-align: center;
@@ -63,5 +63,12 @@
     button {
       margin: 0.5rem;
     }
+  }
+}
+
+@media (max-width: 1200px) {
+  .main {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }

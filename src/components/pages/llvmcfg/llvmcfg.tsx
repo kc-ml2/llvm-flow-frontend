@@ -1,7 +1,6 @@
 /* eslint-disable camelcase */
 import React, { Suspense, useEffect } from 'react'
 import SwitchSelector from '@/components/pages/llvmcfg/SwitchSelector'
-import Helper from './Helper'
 import SlidingGuide from './SlidingGuide'
 import { useAppSelector } from '@/redux/hook'
 import styles from './llvmcfg.module.scss'
@@ -38,9 +37,9 @@ function LLVMcfg() {
 
       <div className={styles.cfgName}>
         <span>
-          <b>{before_json.name}</b>
+          {before_json.name}
           <br></br>
-          <b>pass option:</b> {file_pass}
+          LLVM's passes = <i>{file_pass}</i>
         </span>
       </div>
 

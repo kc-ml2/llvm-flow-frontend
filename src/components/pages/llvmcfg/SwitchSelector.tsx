@@ -2,51 +2,38 @@ import SwitchSelector from 'react-switch-selector'
 import { useAppSelector, useAppDispatch } from '@/redux/hook'
 import { setIsFullFalse, setIsFullTrue } from '@/redux/features/mode/modeSlice'
 import { COLORS } from '@/const/color'
+import origin from '@/images/origin.png'
+import simple from '@/images/simple.png'
 
 export default function App() {
-  //   options index 0 = simple / options index 1 = origin,  redux에선 해당 값을 isFullIndex로 사용
+  //   isFullIndex 0 = simple / 1 = origin
   const { isFullIndex } = useAppSelector((state) => state.mode)
   const dispatch = useAppDispatch()
 
-  const selectedFontColor = COLORS.GREEN
-  const selectedBackgroundColor = 'white'
-  const fontColor = 'white'
-  const backgroundColor = COLORS.GREEN
-
-  const options = [
-    {
-      label: 'SIMPLE',
-      value: 'simple',
-      selectedBackgroundColor: selectedBackgroundColor,
-      selectedFontColor: selectedFontColor,
-    },
-    {
-      label: 'ORIGIN',
-      value: 'origin',
-      selectedBackgroundColor: selectedBackgroundColor,
-      selectedFontColor: selectedFontColor,
-    },
-  ]
-
-  const handleToogle = (newValue: any) => {
-    if (newValue === 'simple') {
+  const handleToggle = () => {
+    if (isFullIndex === 1) {
       dispatch(setIsFullFalse())
-    } else if (newValue === 'origin') {
+    } else if (isFullIndex === 0) {
       dispatch(setIsFullTrue())
+    }
+  }
+
+  const switchImg = () => {
+    if (isFullIndex === 0) {
+      return simple
+    } else if (isFullIndex === 1) {
+      return origin
     }
   }
 
   return (
     <div>
-      <div style={{ width: 150, height: 40 }}>
-        <SwitchSelector
-          onChange={handleToogle}
-          options={options}
-          backgroundColor={backgroundColor}
-          fontColor={fontColor}
-          initialSelectedIndex={isFullIndex}
-        />
-      </div>
+      <button
+        onClick={handleToggle}
+        style={{ backgroundColor: 'transparent', border: 'transparent' }}
+      >
+        <img src={switchImg()} width="140" height="44" />
+      </button>
     </div>
   )
 }

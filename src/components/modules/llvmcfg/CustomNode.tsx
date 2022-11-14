@@ -12,7 +12,6 @@ export default memo(({ data }: any) => {
   const [fullmode, setFullmode] = useState<boolean>(isFull)
 
   const changeColor = (sameNode: any, targetNode: any) => {
-    console.log(targetNode.style.backgroundColor)
     if (targetNode.style.backgroundColor === 'rgb(224, 210, 255)') {
       sameNode.style.backgroundColor = 'white'
       targetNode.style.backgroundColor = 'white'

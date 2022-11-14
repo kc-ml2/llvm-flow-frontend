@@ -4,7 +4,6 @@ import buttons from '../../../styles/Button.module.scss'
 import axios from 'axios'
 import { useAppSelector, useAppDispatch } from '@/redux/hook'
 import { setIsDeleteOpenFalse } from '@/redux/features/modal/deleteModalSlice'
-import { dispatch } from 'd3'
 import { useDispatch } from 'react-redux'
 const { REACT_APP_API_URL } = process.env
 
@@ -25,11 +24,11 @@ const DeleteModal = ({
 }: DeleteProps) => {
   const { isDeleteOpen } = useAppSelector((state) => state.deleteModal)
   const dispatch = useDispatch()
-  const { token } = useAppSelector((state) => state.auth)
+  // const { token } = useAppSelector((state) => state.auth)
 
   const deleteGraph = (currentID: any, currentFolder: any) => {
     const headers = {
-      Authorization: 'Token ' + token,
+      // Authorization: 'Token ' + token,
       // FIXME: boundary 해결하기!
       'Content-type':
         'multipart/form-data; boundary=177130003042384797933296855923',
@@ -63,7 +62,7 @@ const DeleteModal = ({
           <tr>
             <th>date</th>
             <th>file name</th>
-            <th>pass option</th>
+            <th>LLVM's passes</th>
           </tr>
           <tr>
             <td>{currentDate}</td>
