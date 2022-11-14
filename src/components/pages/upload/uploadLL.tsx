@@ -83,11 +83,14 @@ function Upload() {
       </div>
       <div className={styles.clang}>
         <span>
-          ⚠️ Please include the following commands when compiling with clang.
+          ⚠️ <br></br>
+          LLVM-FLOW searches the same basic blocks between IR modules using
+          <b> debug information.</b> <br></br>
+          So, when compiling with clang,{' '}
+          <b>please include the following commands.</b>
         </span>
         <br></br>
         <span id={styles.clangex}>
-          ex.
           <i>
             clang <b>-O0 -g -Xclang -disable-O0-optnone</b> -emit-llvm -S
           </i>
