@@ -62,7 +62,7 @@ const DeleteModal = ({
           <tr>
             <th>date</th>
             <th>file name</th>
-            <th>pass option</th>
+            <th>LLVM's passes</th>
           </tr>
           <tr>
             <td>{currentDate}</td>

@@ -15,6 +15,7 @@ import Collapse from '@mui/material/Collapse'
 import CloseIcon from '@mui/icons-material/Close'
 import { NavLink } from 'react-router-dom'
 import { setAuthData } from '@/redux/features/auth/authSlice'
+import PassOption from './passOption'
 const { REACT_APP_API_URL } = process.env
 
 function Upload() {
@@ -117,7 +118,7 @@ function Upload() {
           />
         </div>
         <div className={styles.pass}>
-          <label htmlFor="input-text">Pass Option</label>
+          <label htmlFor="input-text">LLVM's passes</label>
           <input
             type="text"
             name="transformpass"
@@ -152,7 +153,7 @@ function Upload() {
               <AlertTitle>
                 <b>LLVM Command Error</b>
               </AlertTitle>
-              Please check pass option and file again!
+              Please check LLVM's passes and file again!
             </Alert>
           </Collapse>
         </Stack>
@@ -200,6 +201,8 @@ function Upload() {
           ></input>
         </div>
       </form>
+
+      <PassOption />
     </section>
   )
 }

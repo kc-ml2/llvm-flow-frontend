@@ -1,0 +1,85 @@
+@import '../../../styles/variable';
+
+.container {
+  margin: 0 auto;
+  margin-top: 2rem;
+  border: 1px solid $gray;
+  border-radius: 5px;
+  padding: 0.5rem;
+
+  #reference {
+    text-align: end;
+    a {
+      color: $dark;
+    }
+    a:hover {
+      color: $gray;
+    }
+  }
+
+  #title {
+    font-size: 0.9rem;
+    color: $dark;
+    button {
+      background-color: transparent;
+      border: transparent;
+      font-weight: 600;
+    }
+  }
+
+  #pass_a {
+    font-size: 0.8rem;
+    .tooltip {
+      display: inline-block;
+      color: $dark;
+      font-weight: bold;
+      margin: 0.5rem;
+      padding: 0.5rem;
+      background-color: $lightgray;
+      border-radius: 5px;
+    }
+
+    .tooltip_text {
+      display: none;
+      position: absolute;
+      border: 1px solid;
+      border-radius: 5px;
+      padding: 5px;
+      font-size: 0.8em;
+      color: white;
+      background: $dark;
+    }
+
+    .tooltip:hover .tooltip_text {
+      display: block;
+    }
+  }
+
+  #pass_t {
+    font-size: 0.8rem;
+    .tooltip {
+      display: inline-block;
+      color: $dark;
+      font-weight: bold;
+      margin: 0.5rem;
+      padding: 0.5rem;
+      background-color: $lightgray;
+      border-radius: 5px;
+    }
+
+    .tooltip_text {
+      display: none;
+      position: absolute;
+      border: 1px solid;
+      border-radius: 5px;
+      padding: 5px;
+      font-size: 0.8em;
+      color: white;
+      background: $dark;
+    }
+
+    .tooltip:hover .tooltip_text {
+      display: block;
+    }
+  }
+}

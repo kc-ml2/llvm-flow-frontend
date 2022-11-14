@@ -39,7 +39,7 @@ function LLVMcfg() {
         <span>
           {before_json.name}
           <br></br>
-          pass option = <i>{file_pass}</i>
+          LLVM's passes = <i>{file_pass}</i>
         </span>
       </div>
 

@@ -68,7 +68,7 @@ const ProfileTable = ({ items }: any) => {
             <td>date</td>
             <td>user name</td>
             <td>file</td>
-            <td>pass option</td>
+            <td>LLVM's passes</td>
             <td>show graph</td>
             {/* <td>delete</td> */}
           </tr>
