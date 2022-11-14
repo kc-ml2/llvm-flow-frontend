@@ -29,6 +29,7 @@
 
   #pass_a {
     font-size: 0.8rem;
+    display: none;
     .tooltip {
       display: inline-block;
       color: $dark;
@@ -57,6 +58,7 @@
 
   #pass_t {
     font-size: 0.8rem;
+    display: none;
     .tooltip {
       display: inline-block;
       color: $dark;
