@@ -5,6 +5,8 @@
   position: relative;
   border: 1px solid $darkgray;
   z-index: 0 !important;
+  background-color: $cfg;
+  // background-color: white;
 
   h4 {
     padding-left: 1rem;

@@ -62,10 +62,7 @@ function PassOption() {
       </section>
       {/* */}
       <section id={styles.reference}>
-        <a
-          href="https://llvm.org/docs/Passes.html#analysis-passes"
-          target="_blacnk"
-        >
+        <a href="https://llvm.org/docs/Passes.html" target="_blacnk">
           <MenuBookIcon /> reference
         </a>
       </section>

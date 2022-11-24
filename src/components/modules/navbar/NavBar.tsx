@@ -43,7 +43,7 @@ const NavBar = () => {
 
   return (
     <section className={styles.container}>
-      <Navbar expand="md" className={cx('NavBar', 'fixedTop')}>
+      <Navbar expand="md" className={styles.NavBar}>
         <NavbarBrand href="/" className={styles.logo}>
           <img src={logo} alt="logo" height="46" width="125.45"></img>
         </NavbarBrand>
@@ -65,7 +65,7 @@ const NavBar = () => {
             </button>
           </NavItem> */}
             <NavItem className={styles.items}>
-              <NavLink to="/profile">
+              <NavLink to="/board">
                 <button className={buttons.nav}>Board</button>
               </NavLink>
             </NavItem>

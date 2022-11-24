@@ -25,7 +25,7 @@ function Main() {
         file_pass: '-simplifycfg -sroa -dse -globalopt -instcombine',
       }),
     )
-    navigate('/example')
+    navigate('/tutorial')
   }
 
   return (
@@ -33,7 +33,7 @@ function Main() {
       <section className={styles.title}>
         <h1>LLVM-FLOW</h1>
         <h3>Visualize the LLVM CFG interactively.</h3>
-        <button className={buttons.default}>
+        <button className={buttons.default} onClick={handleExample}>
           <img src={check} height="18.3" width="25" /> &nbsp; Tutorial
         </button>
       </section>
