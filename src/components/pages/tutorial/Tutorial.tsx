@@ -9,6 +9,7 @@ import Filter1Icon from '@mui/icons-material/Filter1'
 import Filter2Icon from '@mui/icons-material/Filter2'
 import Filter3Icon from '@mui/icons-material/Filter3'
 import Filter4Icon from '@mui/icons-material/Filter4'
+import BookmarksIcon from '@mui/icons-material/Bookmarks'
 import SouthIcon from '@mui/icons-material/South'
 import tutorial1 from '@/images/tutorial1.png'
 import tutorial2 from '@/images/tutorial2.png'
@@ -67,7 +68,7 @@ function Example() {
           <a href="https://llvmflow.kc-ml2.com/uploadC" target="_blank">
             start page
           </a>{' '}
-          as follows.
+          .
         </span>
         <img src={tutorial1} />
         <span>
@@ -85,18 +86,19 @@ function Example() {
             Submit
           </button>
           <div id={styles.submit} style={{ display: 'none' }}>
-            Check the results below <SouthIcon />
+            Check the results below <Filter3Icon />
+            <SouthIcon />
           </div>
         </span>
       </section>
-      <section id={styles.cfg}>
+      <section id={styles.basic}>
         <h4>
           <Filter3Icon /> Compare the CFG interactively
         </h4>
         <span>
           This is the actual result of compiling and optimizing the above source
           code. <br></br>
-          You can do following thigs : <br></br>- detect same node(basic block)
+          You can do following things : <br></br>- detect same node(basic block)
           between CFGs by clicking the node with purple border,
           <br></br>- move the node and edge freely, <br></br>- switch the
           mode(origin/simple) of CFG,<br></br>- find the target&source node of
@@ -106,9 +108,8 @@ function Example() {
           Click the <b>'Open Guide'</b> button and find out more features that
           LLVM-FLOW can do !
         </span>
-        <hr></hr>
-        <LLVMcfg />
       </section>
+      <LLVMcfg />
       <section id={styles.basic}>
         <h4>
           <Filter4Icon /> Check all your results
@@ -122,6 +123,14 @@ function Example() {
           when uploading.
         </span>
         <img src={tutorial2} />
+        <span>
+          <br></br>
+          <BookmarksIcon /> Please visit the{' '}
+          <a href="https://kc-ml2.gitbook.io/llvm-flow/" target="_blank">
+            DOCS page
+          </a>{' '}
+          to learn more about LLVM-FLOW!
+        </span>
       </section>
     </section>
   )
