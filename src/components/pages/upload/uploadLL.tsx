@@ -50,7 +50,6 @@ function Upload() {
       data.append('profileLabel', profileLabel)
 
       const headers = {
-        // Authorization: 'Token ' + token,
         // FIXME: boundary 해결하기!
         'Content-type':
           'multipart/form-data; boundary=177130003042384797933296855923',

@@ -49,7 +49,6 @@ function Upload() {
       data.append('profileLabel', profileLabel)
 
       const headers = {
-        // Authorization: 'Token ' + token,
         // FIXME: boundary 해결하기!
         'Content-type':
           'multipart/form-data; boundary=177130003042384797933296855923',
@@ -173,7 +172,6 @@ function Upload() {
 
         <div className={styles.cmd}>
           <h5>clang 10, llvm 10</h5>
-          {/* <p>clang -O0 -g -Xclang -disable-O0-optnone -emit-llvm -S *.c</p> */}
           <p>
             opt beforeg.ll -S <i>{pass}</i> -o afterg.ll
           </p>

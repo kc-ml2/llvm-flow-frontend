@@ -32,10 +32,10 @@ const NavBar = () => {
     dispatch(
       setGraphData({
         before_json: exBefore,
-        before_output: ['Function', '%25', '%30', 'Function'],
+        before_output: ['%12', '%14', '%15', '%34'],
         after_json: exAfter,
-        after_output: ['1:', '%15', '%18', '2:'],
-        file_pass: '-simplifycfg -sroa -dse -globalopt -instcombine',
+        after_output: ['%12', '%14', '%15', '%33'],
+        file_pass: '-simplifycfg -dse -globalopt',
       }),
     )
     navigate('/example')
@@ -43,7 +43,7 @@ const NavBar = () => {
 
   return (
     <section className={styles.container}>
-      <Navbar expand="md" className={cx('NavBar', 'fixedTop')}>
+      <Navbar expand="md" className={styles.NavBar}>
         <NavbarBrand href="/" className={styles.logo}>
           <img src={logo} alt="logo" height="46" width="125.45"></img>
         </NavbarBrand>
@@ -59,13 +59,15 @@ const NavBar = () => {
         </NavbarToggler>
         <Collapse navbar isOpen={isOpen} className={styles.right}>
           <Nav navbar className={styles.nav}>
-            {/* <NavItem className={styles.items}>
-            <button className={buttons.nav} onClick={handleExample}>
-              Tutorial
-            </button>
-          </NavItem> */}
             <NavItem className={styles.items}>
-              <NavLink to="/profile">
+              <NavLink to="/tutorial">
+                <button className={buttons.nav} onClick={handleExample}>
+                  Tutorial
+                </button>
+              </NavLink>
+            </NavItem>
+            <NavItem className={styles.items}>
+              <NavLink to="/board">
                 <button className={buttons.nav}>Board</button>
               </NavLink>
             </NavItem>

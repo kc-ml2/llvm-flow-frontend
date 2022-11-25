@@ -19,13 +19,13 @@ function Main() {
     dispatch(
       setGraphData({
         before_json: exBefore,
-        before_output: ['Function', '%25', '%30', 'Function'],
+        before_output: ['%12', '%14', '%15', '%34'],
         after_json: exAfter,
-        after_output: ['1:', '%15', '%18', '2:'],
-        file_pass: '-simplifycfg -sroa -dse -globalopt -instcombine',
+        after_output: ['%12', '%14', '%15', '%33'],
+        file_pass: '-simplifycfg -dse -globalopt',
       }),
     )
-    navigate('/example')
+    navigate('/tutorial')
   }
 
   return (
@@ -33,7 +33,7 @@ function Main() {
       <section className={styles.title}>
         <h1>LLVM-FLOW</h1>
         <h3>Visualize the LLVM CFG interactively.</h3>
-        <button className={buttons.default}>
+        <button className={buttons.default} onClick={handleExample}>
           <img src={check} height="18.3" width="25" /> &nbsp; Tutorial
         </button>
       </section>

@@ -7,22 +7,13 @@
     list-style: none;
   }
 
-  .fixedTop {
-    position: sticky;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 100;
-    margin: 0 auto;
-  }
-
   .logo {
     padding: 0;
     margin: 0 auto;
   }
 
   .NavBar {
-    background-color: white;
+    background-color: transparent;
     padding-top: 1%;
     padding-bottom: 1%;
     display: flex;

@@ -49,7 +49,6 @@ function Upload() {
       data.append('profileLabel', profileLabel)
 
       const headers = {
-        // Authorization: 'Token ' + token,
         // FIXME: boundary 해결하기!
         'Content-type':
           'multipart/form-data; boundary=177130003042384797933296855923',
@@ -82,12 +81,12 @@ function Upload() {
       </div>
       <form onSubmit={handleSubmit} method="post" encType="multipart/form-data">
         <div className={styles.userName}>
-          <label htmlFor="input-text">User Name</label>
+          <label htmlFor="userName">User Name</label>
           <input
             type="text"
             name="profileLabel"
             placeholder={inputName}
-            id="input-text"
+            id="userName"
           />
         </div>
         <div className={styles.file}>
@@ -101,12 +100,12 @@ function Upload() {
           />
         </div>
         <div className={styles.pass}>
-          <label htmlFor="input-text">LLVM's passes</label>
+          <label htmlFor="pass">LLVM's passes</label>
           <input
             type="text"
             name="transformpass"
             placeholder="ex) -simplifycfg -inline"
-            id="input-text"
+            id="pass"
             onChange={(e) => {
               setPass(e.target.value)
             }}
@@ -173,7 +172,6 @@ function Upload() {
 
         <div className={styles.cmd}>
           <h5>clang 10, llvm 10</h5>
-          {/* <p>clang -O0 -g -Xclang -disable-O0-optnone -emit-llvm -S *.c</p> */}
           <p>
             opt beforeg.ll -S <i>{pass}</i> -o afterg.ll
           </p>
