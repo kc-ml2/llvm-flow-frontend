@@ -19,10 +19,10 @@ function Main() {
     dispatch(
       setGraphData({
         before_json: exBefore,
-        before_output: ['Function', '%25', '%30', 'Function'],
+        before_output: ['%12', '%14', '%15', '%34'],
         after_json: exAfter,
-        after_output: ['1:', '%15', '%18', '2:'],
-        file_pass: '-simplifycfg -sroa -dse -globalopt -instcombine',
+        after_output: ['%12', '%14', '%15', '%33'],
+        file_pass: '-simplifycfg -dse -globalopt',
       }),
     )
     navigate('/tutorial')
