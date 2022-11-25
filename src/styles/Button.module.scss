@@ -52,6 +52,10 @@
   font-weight: 500;
 }
 
+.default:hover {
+  background-color: $lightpurple;
+}
+
 .default_fill {
   background-color: $purple;
   border: 2px solid $purple;
