@@ -23,7 +23,10 @@ export default memo(({ data }: any) => {
 
   const findSameBlock = (idWithType: string, type: string) => {
     if (before_output && after_output) {
-      const id = idWithType.substring(data.block_id.indexOf('%'))
+      const id = idWithType.slice(
+        idWithType.indexOf('optimized') + 'optimized'.length,
+      )
+      console.log(id)
       if (type === 'initial') {
         const index = before_output.indexOf(id)
         const sameBlockID = after_output[index]
