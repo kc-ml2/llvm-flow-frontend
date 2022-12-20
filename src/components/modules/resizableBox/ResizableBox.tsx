@@ -9,7 +9,7 @@ interface ResizableProps {
 
 export default function ResizableBox({ children }: ResizableProps) {
   // const width = window.innerWidth * 0.49
-  const width = 585
+  const width = 680
   const height = window.innerHeight * 0.8
 
   return (
