@@ -21,19 +21,27 @@ export default memo(({ data }: any) => {
     }
   }
 
-  const findSameBlock = (idWithType: string, type: string) => {
-    if (before_output && after_output) {
-      const id = idWithType.slice(
+  const makeId = (idWithType: string) => {
+    if (idWithType.includes('optimized')) {
+      return idWithType.slice(
         idWithType.indexOf('optimized') + 'optimized'.length,
       )
-      console.log(id)
-      if (type === 'initial') {
+    } else if (idWithType.includes('initial')) {
+      return idWithType.slice(idWithType.indexOf('initial') + 'initial'.length)
+    }
+  }
+
+  const findSameBlock = (idWithType: string, type: string) => {
+    if (before_output && after_output) {
+      const id = makeId(idWithType)
+
+      if (type === 'initial' && id) {
         const index = before_output.indexOf(id)
         const sameBlockID = after_output[index]
         const targetNode = document.getElementById(idWithType)
         const sameNode = document.getElementById('optimized' + sameBlockID)
         changeColor(sameNode, targetNode)
-      } else {
+      } else if (type === 'optimized' && id) {
         const index = after_output.indexOf(id)
         const sameBlockID = before_output[index]
         const targetNode = document.getElementById(idWithType)
