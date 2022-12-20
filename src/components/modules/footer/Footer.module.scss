@@ -11,7 +11,7 @@
     display: grid;
     grid-template-columns: auto;
     font-size: 12px;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     .one {
       grid-row: 1;
@@ -43,7 +43,7 @@
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1400px) {
   .Footer {
     .container {
       padding-left: 1rem;
