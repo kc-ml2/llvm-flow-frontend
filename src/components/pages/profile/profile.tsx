@@ -20,7 +20,6 @@ const Profile = () => {
       })
       .then((response) => {
         setItems(response.data.data.reverse())
-        console.log(response)
       })
       .catch((err) => {
         console.log(err)
@@ -38,7 +37,6 @@ const Profile = () => {
       })
       .then((response) => {
         setItems(response.data.data.reverse())
-        console.log(response)
       })
       .catch((err) => {
         console.log(err)

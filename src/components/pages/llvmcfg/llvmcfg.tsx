@@ -4,11 +4,22 @@ import SwitchSelector from '@/components/pages/llvmcfg/SwitchSelector'
 import SlidingGuide from './SlidingGuide'
 import { useAppSelector } from '@/redux/hook'
 import styles from './llvmcfg.module.scss'
+import buttons from '@/styles/Button.module.scss'
 import Loading from '@/components/modules/loading/Loading'
+import FileSaver from 'file-saver'
+import UploadFileIcon from '@mui/icons-material/UploadFile'
 
 function LLVMcfg() {
-  const { file_pass, before_json, before_output, after_json, after_output } =
-    useAppSelector((state) => state.graph)
+  const {
+    file_pass,
+    before_json,
+    before_output,
+    after_json,
+    after_output,
+    beforeg_data,
+    afterg_data,
+  } = useAppSelector((state) => state.graph)
+
   const { isFull } = useAppSelector((state) => state.mode)
 
   const LayoutFlow = React.lazy(
@@ -23,6 +34,34 @@ function LLVMcfg() {
   const LayoutFlowFull2 = React.lazy(
     () => import('@/components/modules/llvmcfg/LayoutFlowFull2'),
   )
+
+  function downloadBeforeLLfile() {
+    if (beforeg_data) {
+      const blob = new Blob([beforeg_data], {
+        type: 'text/plain;charset=utf-8',
+      })
+      FileSaver.saveAs(blob, 'initial.ll')
+    } else {
+      const a = document.createElement('a')
+      a.href = '/files/beforeg.ll'
+      a.download = 'initial.ll'
+      a.click()
+    }
+  }
+
+  function downloadAfterLLfile() {
+    if (afterg_data) {
+      const blob = new Blob([afterg_data], {
+        type: 'text/plain;charset=utf-8',
+      })
+      FileSaver.saveAs(blob, 'optimized.ll')
+    } else {
+      const a = document.createElement('a')
+      a.href = '/files/afterg.ll'
+      a.download = 'optimized.ll'
+      a.click()
+    }
+  }
 
   return (
     <section className={styles.llvmcfg}>
@@ -41,6 +80,14 @@ function LLVMcfg() {
           <br></br>
           LLVM's passes = <i>{file_pass}</i>
         </span>
+        <br></br>
+        <button onClick={downloadBeforeLLfile} className={buttons.download}>
+          <UploadFileIcon /> Download <i>initial.ll</i>
+        </button>
+        &nbsp;&nbsp;
+        <button onClick={downloadAfterLLfile} className={buttons.download}>
+          <UploadFileIcon /> Download <i>optimized.ll</i>
+        </button>
       </div>
 
       {isFull && (

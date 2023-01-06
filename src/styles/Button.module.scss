@@ -118,3 +118,26 @@
   background-color: transparent;
   border: transparent;
 }
+
+
+//download .ll file
+.download {
+  background-color: white;
+  color: $dark;
+  border: 1px solid white;
+  border-radius: 25px;
+  margin-top: 1rem;
+  padding-top: $btn-padding-y-sm;
+  padding-bottom: $btn-padding-y-sm;
+  padding-left: $btn-padding-x;
+  padding-right: $btn-padding-x;
+  font-weight: 600;
+  i{
+    color: $purple !important;
+  }
+}
+
+.download:hover {
+  background-color: transparent;
+  color: white;
+}

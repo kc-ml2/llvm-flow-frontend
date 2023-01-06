@@ -11,6 +11,8 @@ interface GraphState {
   file_pass?: string
   isReady?: boolean
   filterID?: number
+  beforeg_data?: string
+  afterg_data?: string
 }
 
 const initialState: GraphState = {
@@ -21,6 +23,8 @@ const initialState: GraphState = {
   file_pass: '-float2int -coro-elide -ipconstprop -simplifycfg',
   isReady: false,
   filterID: undefined,
+  beforeg_data: undefined,
+  afterg_data: undefined,
 }
 
 export const graphSlice = createSlice({
@@ -35,6 +39,8 @@ export const graphSlice = createSlice({
       state.file_pass = payload.file_pass
       state.isReady = true
       state.filterID = payload.filterID
+      state.beforeg_data = payload.beforeg_data
+      state.afterg_data = payload.afterg_data
     },
   },
 })

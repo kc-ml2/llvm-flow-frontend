@@ -34,7 +34,6 @@ const Helper = () => {
       axios
         .post(`${REACT_APP_API_URL}/identify/`, data, { headers: headers })
         .then((response) => {
-          console.log(response)
           if (response.status === 0) {
             localStorage.setItem('nickname', nickname)
             dispatch(setAuthData(nickname))
