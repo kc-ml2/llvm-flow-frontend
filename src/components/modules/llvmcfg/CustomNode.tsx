@@ -31,28 +31,44 @@ export default memo(({ data }: any) => {
     }
   }
 
-  const findSameBlock = (idWithType: string, type: string) => {
-    if (before_output && after_output) {
+  // entry basic block의 경우, sameBlockID가 없으나 label이 같기때문에 같다고 표기
+  const findSameBlock = (
+    idWithType: string,
+    type: string,
+    className: string,
+  ) => {
+    if (before_output && after_output && className === 'yes') {
       const id = makeId(idWithType)
-
       if (type === 'initial' && id) {
         const index = before_output.indexOf(id)
         const sameBlockID = after_output[index]
-        const targetNode = document.getElementById(idWithType)
-        const sameNode = document.getElementById('optimized' + sameBlockID)
-        changeColor(sameNode, targetNode)
+        if (sameBlockID === undefined) {
+          const targetNode = document.getElementById(idWithType)
+          const sameNode = document.getElementById('optimized' + id)
+          changeColor(sameNode, targetNode)
+        } else {
+          const targetNode = document.getElementById(idWithType)
+          const sameNode = document.getElementById('optimized' + sameBlockID)
+          changeColor(sameNode, targetNode)
+        }
       } else if (type === 'optimized' && id) {
         const index = after_output.indexOf(id)
         const sameBlockID = before_output[index]
-        const targetNode = document.getElementById(idWithType)
-        const sameNode = document.getElementById('initial' + sameBlockID)
-        changeColor(sameNode, targetNode)
+        if (sameBlockID === undefined) {
+          const targetNode = document.getElementById(idWithType)
+          const sameNode = document.getElementById('initial' + id)
+          changeColor(sameNode, targetNode)
+        } else {
+          const targetNode = document.getElementById(idWithType)
+          const sameNode = document.getElementById('initial' + sameBlockID)
+          changeColor(sameNode, targetNode)
+        }
       }
     }
   }
 
   const handleSame = (e: any) => {
-    findSameBlock(e.target.id, e.target.name)
+    findSameBlock(e.target.id, e.target.name, e.target.className)
   }
 
   const handleFull = () => {

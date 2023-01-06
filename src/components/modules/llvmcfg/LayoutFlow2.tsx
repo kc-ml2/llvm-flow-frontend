@@ -69,11 +69,17 @@ const getLayoutedElements = (
 
 interface LayoutFlowProps {
   llvmJson: any
+  llvmJson_compare: any
   llvmOutput: any
   title: string
 }
 
-const LayoutFlow2 = ({ llvmJson, llvmOutput, title }: LayoutFlowProps) => {
+const LayoutFlow2 = ({
+  llvmJson,
+  llvmJson_compare,
+  llvmOutput,
+  title,
+}: LayoutFlowProps) => {
   // const flowStyles = {  background: 'white' }
   // step1) json -> react flow에 맞는 형식으로 변경
   const [vertical, setVertical] = useState<boolean>(true)
@@ -110,6 +116,13 @@ const LayoutFlow2 = ({ llvmJson, llvmOutput, title }: LayoutFlowProps) => {
     }
   }
   checkSameBlock(blockID, llvmOutput, node)
+
+  function checkSameEntryBlock(json: any, json_compare: any, data: any) {
+    if (json[0].label == json_compare[0].label) {
+      data[0].isSame = 'yes'
+    }
+  }
+  checkSameEntryBlock(llvmJson.objects, llvmJson_compare.objects, node)
 
   // step*) edge tailport와 node 정보 연결하기
   function connectTailport(tailport: string, tail: number) {

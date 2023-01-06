@@ -96,6 +96,7 @@ function LLVMcfg() {
             <div className={styles.first}>
               <LayoutFlowFull
                 llvmJson={before_json}
+                llvmJson_compare={after_json}
                 llvmOutput={before_output}
                 title={'initial'}
               />
@@ -103,6 +104,7 @@ function LLVMcfg() {
             <div className={styles.second}>
               <LayoutFlowFull2
                 llvmJson={after_json}
+                llvmJson_compare={before_json}
                 llvmOutput={after_output}
                 title={'optimized'}
               />
@@ -116,6 +118,7 @@ function LLVMcfg() {
             <div className={styles.first}>
               <LayoutFlow
                 llvmJson={before_json}
+                llvmJson_compare={after_json}
                 llvmOutput={before_output}
                 title={'initial'}
               />
@@ -123,6 +126,7 @@ function LLVMcfg() {
             <div className={styles.second}>
               <LayoutFlow2
                 llvmJson={after_json}
+                llvmJson_compare={before_json}
                 llvmOutput={after_output}
                 title={'optimized'}
               />
