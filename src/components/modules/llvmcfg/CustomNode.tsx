@@ -123,11 +123,11 @@ export default memo(({ data }: any) => {
         style={{ backgroundColor: 'white' }}
       >
         {fullmode && (
-          <>
+          <div>
             {data.label.map(function (item: string, i: number) {
               return <p key={i}>{item}</p>
             })}
-          </>
+          </div>
         )}
         {!fullmode && (
           <>{data.block_id.substring(data.block_id.indexOf('%'))}</>

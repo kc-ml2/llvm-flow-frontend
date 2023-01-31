@@ -10,8 +10,13 @@
   text-align: start;
   font-size: 12px;
 
-  p {
-    line-height: 5px;
+  div {
+    max-width: 300px;
+    max-height: 300px;
+    overflow-y: auto;
+    p {
+      line-height: 100%;
+    }
   }
 }
 
@@ -24,8 +29,16 @@
   background: white;
   text-align: start;
   font-size: 12px;
+  max-width: 300px;
+  max-height: 300px;
+  overflow-y: scroll;
 
-  p {
-    line-height: 5px;
+  div {
+    max-width: 300px;
+    max-height: 300px;
+    overflow-y: auto;
+    p {
+      line-height: 100%;
+    }
   }
 }
