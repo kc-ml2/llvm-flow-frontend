@@ -25,7 +25,7 @@ dagreGraph.setDefaultEdgeLabel(() => ({}))
 // node에 들어가는 정보에 따라서 nodeWidth, nodeHeight를 바꿔줘야 겹치지 않고 그려짐
 
 const nodeWidth = 350
-const nodeHeight = 350
+const nodeHeight = 300
 
 const nodeTypes = {
   selectorNode: CustomNode,
