@@ -36,6 +36,59 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
+      border: 1px solid $gray;
+      border-radius: 20px;
+    }
+  }
+
+  .feature {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 10rem;
+
+    #box {
+      padding: 1rem;
+      position: relative;
+      top: 0;
+      transition: top ease 0.2s;
+
+      img {
+        max-height: 40px;
+        text-align: center;
+      }
+
+      #text {
+        margin: 0 auto;
+        margin-top: 1rem;
+        border: 2px solid $dark;
+        max-width: 230px;
+        border-radius: 30px;
+        padding: 2rem;
+        text-align: center;
+        font-weight: 600;
+        a {
+          color: $purple;
+        }
+      }
+
+      #text2 {
+        margin: 0 auto;
+        margin-top: 1rem;
+        border: 2px solid $dark;
+        max-width: 230px;
+        border-radius: 30px;
+        padding: 1.8rem;
+        text-align: center;
+        font-weight: 600;
+      }
+    }
+
+    #box:hover {
+      top: -10px;
     }
   }
 }
