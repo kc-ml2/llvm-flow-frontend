@@ -24,7 +24,6 @@ const DeleteModal = ({
 }: DeleteProps) => {
   const { isDeleteOpen } = useAppSelector((state) => state.deleteModal)
   const dispatch = useDispatch()
-  // const { token } = useAppSelector((state) => state.auth)
 
   const deleteGraph = (currentID: any, currentFolder: any) => {
     const headers = {

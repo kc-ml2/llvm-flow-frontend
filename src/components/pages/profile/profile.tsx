@@ -1,23 +1,15 @@
 import { useEffect, useState } from 'react'
 import styles from './profile.module.scss'
 import buttons from '@/styles/Button.module.scss'
-import axios from 'axios'
 import ProfileTable from './ProfileTable'
-const { REACT_APP_API_URL } = process.env
+import { getJsonData } from '@/api/http-get'
 
 const Profile = () => {
   const [userName, setUserName] = useState<string>('')
   const [items, setItems] = useState<any | undefined>(undefined)
 
   useEffect(() => {
-    const headers = {
-      'Content-type': 'application/json',
-    }
-
-    axios
-      .get(`${REACT_APP_API_URL}/allprofile`, {
-        headers: headers,
-      })
+    getJsonData('allprofile')
       .then((response) => {
         setItems(response.data.data.reverse())
       })
@@ -27,16 +19,10 @@ const Profile = () => {
   }, [])
 
   const handleSubmit = () => {
-    const headers = {
-      'Content-type': 'application/json',
-    }
-
-    axios
-      .get(`${REACT_APP_API_URL}/profile?Identifier=${userName}`, {
-        headers: headers,
-      })
+    getJsonData(`profile?Identifier=${userName}`)
       .then((response) => {
         setItems(response.data.data.reverse())
+        console.log(response)
       })
       .catch((err) => {
         console.log(err)

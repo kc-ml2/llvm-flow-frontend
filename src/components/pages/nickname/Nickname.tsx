@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react'
 import styles from './Nickname.module.scss'
 import buttons from '@/styles/Button.module.scss'
-import axios from 'axios'
-const { REACT_APP_API_URL } = process.env
 import Stack from '@mui/material/Stack'
 import Collapse from '@mui/material/Collapse'
 import Alert from '@mui/material/Alert'
@@ -12,6 +10,7 @@ import CloseIcon from '@mui/icons-material/Close'
 import { useNavigate } from 'react-router-dom'
 import { setAuthData } from '@/redux/features/auth/authSlice'
 import { useDispatch } from 'react-redux'
+import { postJsonData } from '@/api/http-post'
 
 const Helper = () => {
   const [nickname, setNickname] = useState<any>()
@@ -27,21 +26,15 @@ const Helper = () => {
     } else {
       const data = { Identifier: nickname }
 
-      const headers = {
-        'Content-type': 'application/json',
-      }
-
-      axios
-        .post(`${REACT_APP_API_URL}/identify/`, data, { headers: headers })
-        .then((response) => {
-          if (response.status === 0) {
-            localStorage.setItem('nickname', nickname)
-            dispatch(setAuthData(nickname))
-            navigate(-1)
-          } else {
-            setOpenWarning(true)
-          }
-        })
+      postJsonData(data, 'identify').then((response) => {
+        if (response.status === 0) {
+          localStorage.setItem('nickname', nickname)
+          dispatch(setAuthData(nickname))
+          navigate(-1)
+        } else {
+          setOpenWarning(true)
+        }
+      })
     }
   }
 

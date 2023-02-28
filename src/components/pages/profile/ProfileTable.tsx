@@ -5,12 +5,11 @@ import { setGraphData } from '@/redux/features/graph/graphSlice'
 import styles from './profile.module.scss'
 import pagination from './pagination.module.scss'
 import buttons from '@/styles/Button.module.scss'
-import axios from 'axios'
 import ReactPaginate from 'react-paginate'
 import DeleteModal from '@/components/pages/profile/DeleteModal'
 import { setIsDeleteOpenTrue } from '@/redux/features/modal/deleteModalSlice'
 import PersonIcon from '@mui/icons-material/Person'
-const { REACT_APP_API_URL } = process.env
+import { postFormData } from '@/api/http-post'
 
 const ProfileTable = ({ items }: any) => {
   // const [currentID, setCurrentID] = useState<number>()
@@ -27,13 +26,7 @@ const ProfileTable = ({ items }: any) => {
     payload.append('path', i[2].substring(0, i[2].indexOf('/')))
     payload.append('passOption', i[0])
 
-    const headers = {
-      'Content-type': 'multipart/form-data',
-    }
-    axios
-      .post(`${REACT_APP_API_URL}/show/`, payload, {
-        headers: headers,
-      })
+    postFormData(payload, 'show')
       .then((response) => {
         dispatch(setGraphData(response.data))
         navigate('/llvmcfg')

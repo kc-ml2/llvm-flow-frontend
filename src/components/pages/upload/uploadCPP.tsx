@@ -1,9 +1,6 @@
 import React, { useState } from 'react'
-// import uploadAPI from '@/api/http-upload'
-// import getCompilerOutput from '@/api/http-upload'
 import { useAppSelector, useAppDispatch } from '@/redux/hook'
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
 import { setGraphData } from '@/redux/features/graph/graphSlice'
 import styles from './upload.module.scss'
 import buttons from '@/styles/Button.module.scss'
@@ -16,7 +13,7 @@ import CloseIcon from '@mui/icons-material/Close'
 import { NavLink } from 'react-router-dom'
 import { setAuthData } from '@/redux/features/auth/authSlice'
 import PassOption from './passOption'
-const { REACT_APP_API_URL } = process.env
+import { postFormData } from '@/api/http-post'
 
 function Upload() {
   const navigate = useNavigate()
@@ -48,19 +45,14 @@ function Upload() {
       data.append('transformpass', transformpass)
       data.append('profileLabel', profileLabel)
 
-      const headers = {
-        'Content-type': 'multipart/form-data',
-      }
-
-      axios
-        .post(`${REACT_APP_API_URL}/uploadCPP/`, data, { headers: headers })
-        .then((response) => {
+      postFormData(data, 'uploadCPP')
+        .then((response: any) => {
           dispatch(setGraphData(response.data))
           localStorage.setItem('nickname', JSON.stringify(profileLabel))
           dispatch(setAuthData(profileLabel))
           navigate('/llvmcfg')
         })
-        .catch((response) => setOpenError(true))
+        .catch(() => setOpenError(true))
     }
   }
 

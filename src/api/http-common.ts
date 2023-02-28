@@ -35,6 +35,6 @@ export const post = async <PT, RT>(url: string, payload?: PT) => {
 }
 
 export const get = async <PT, RT>(url: string, payload?: PT) => {
-  const result = await httpClient.get<PT, AxiosResponse<RT>>(url, payload)
+  const result = await httpClient.get<PT, AxiosResponse<RT>>(url)
   return result
 }
