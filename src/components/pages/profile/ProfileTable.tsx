@@ -82,7 +82,9 @@ const ProfileTable = ({ items }: any) => {
                   <PersonIcon /> &nbsp;
                   {i[3]}
                 </td>
-                <td>{i[2].substring(i[2].indexOf('/') + 1)}</td>
+                <td id={styles.fileList}>
+                  {i[2].substring(i[2].indexOf('/') + 1)}
+                </td>
                 <td id={styles.passOption}>{i[0]}</td>
                 <td>
                   <button className={buttons.mini} onClick={() => showGraph(i)}>
