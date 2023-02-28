@@ -4,7 +4,7 @@
   <img width="251" height="92" src="src/images/logo.png">
 </p>
 
-#### Visualize the LLVM CFG interactively.
+## Visualize the LLVM CFG interactively !
 
 <b>LLVM-FLOW</b> is an open-source project that interactively visualizes [LLVM IR CFG](https://flang.llvm.org/docs/ControlFlowGraph.html).
 You can easily compare CFG before and after optimization in <b>LLVM-FLOW</b> page.
@@ -13,7 +13,7 @@ You can easily compare CFG before and after optimization in <b>LLVM-FLOW</b> pag
 
 ![example](src/gif/example.gif)
 
-#### What You can do
+## ✅ What You can do
 
 1. Detect the same Basic Block between IR modules
 2. Switch the mode of CFG
@@ -26,7 +26,7 @@ You can easily compare CFG before and after optimization in <b>LLVM-FLOW</b> pag
 9. Download `.ll` files
 10. Guide for LLVM-FLOW
 
-#### Contribution
+## ✅ Contribution
 
 - Please make a new branch instead of the current basic branch (ex. main) and work on it.
 - If there is an additional commit after the review, please proceed with the `Re-request` review!
