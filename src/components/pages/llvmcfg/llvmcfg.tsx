@@ -83,11 +83,11 @@ function LLVMcfg() {
         </span>
         <br></br>
         <button onClick={downloadBeforeLLfile} className={buttons.download}>
-          <UploadFile /> Download <i>initial.ll</i>
+          <UploadFile /> Download <i>before.ll</i>
         </button>
         &nbsp;&nbsp;
         <button onClick={downloadAfterLLfile} className={buttons.download}>
-          <UploadFile /> Download <i>optimized.ll</i>
+          <UploadFile /> Download <i>after.ll</i>
         </button>
       </div>
 
@@ -99,7 +99,7 @@ function LLVMcfg() {
                 llvmJson={before_json}
                 llvmJson_compare={after_json}
                 llvmOutput={before_output}
-                title={'initial'}
+                title={'Before'}
               />
             </div>
             <div className={styles.second}>
@@ -107,7 +107,7 @@ function LLVMcfg() {
                 llvmJson={after_json}
                 llvmJson_compare={before_json}
                 llvmOutput={after_output}
-                title={'optimized'}
+                title={'After'}
               />
             </div>
           </section>

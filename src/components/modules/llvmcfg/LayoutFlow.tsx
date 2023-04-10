@@ -23,7 +23,6 @@ dagreGraph.setDefaultEdgeLabel(() => ({}))
 
 // node 크기에 따라 중심 맞춰서 edge를 그리기 때문에
 // node에 들어가는 정보에 따라서 nodeWidth, nodeHeight를 바꿔줘야 겹치지 않고 그려짐
-
 const nodeWidth = 45
 const nodeHeight = 45
 
@@ -249,7 +248,7 @@ const LayoutFlow = ({
         onConnect={onConnect}
         nodeTypes={nodeTypes}
         connectionLineType={ConnectionLineType.SmoothStep}
-        defaultPosition={[100, 0]}
+        defaultPosition={[150, 150]}
         defaultZoom={0.5}
         minZoom={0.1}
         // style={flowStyles}
