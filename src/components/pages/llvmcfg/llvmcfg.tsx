@@ -7,7 +7,8 @@ import styles from './llvmcfg.module.scss'
 import buttons from '@/styles/Button.module.scss'
 import Loading from '@/components/modules/loading/Loading'
 import FileSaver from 'file-saver'
-import UploadFileIcon from '@mui/icons-material/UploadFile'
+// import UploadFileIcon from '@mui/icons-material/UploadFile'
+import { UploadFile } from '@mui/icons-material'
 
 function LLVMcfg() {
   const {
@@ -82,11 +83,11 @@ function LLVMcfg() {
         </span>
         <br></br>
         <button onClick={downloadBeforeLLfile} className={buttons.download}>
-          <UploadFileIcon /> Download <i>initial.ll</i>
+          <UploadFile /> Download <i>initial.ll</i>
         </button>
         &nbsp;&nbsp;
         <button onClick={downloadAfterLLfile} className={buttons.download}>
-          <UploadFileIcon /> Download <i>optimized.ll</i>
+          <UploadFile /> Download <i>optimized.ll</i>
         </button>
       </div>
 

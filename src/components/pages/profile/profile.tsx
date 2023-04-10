@@ -12,6 +12,7 @@ const Profile = () => {
     getJsonData('allprofile')
       .then((response) => {
         setItems(response.data.data.reverse())
+        console.log(response)
       })
       .catch((err) => {
         console.log(err)
