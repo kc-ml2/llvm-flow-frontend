@@ -99,7 +99,7 @@ function LLVMcfg() {
                 llvmJson={before_json}
                 llvmJson_compare={after_json}
                 llvmOutput={before_output}
-                title={'Before'}
+                title={'before'}
               />
             </div>
             <div className={styles.second}>
@@ -107,7 +107,7 @@ function LLVMcfg() {
                 llvmJson={after_json}
                 llvmJson_compare={before_json}
                 llvmOutput={after_output}
-                title={'After'}
+                title={'after'}
               />
             </div>
           </section>
@@ -121,7 +121,7 @@ function LLVMcfg() {
                 llvmJson={before_json}
                 llvmJson_compare={after_json}
                 llvmOutput={before_output}
-                title={'initial'}
+                title={'before'}
               />
             </div>
             <div className={styles.second}>
@@ -129,7 +129,7 @@ function LLVMcfg() {
                 llvmJson={after_json}
                 llvmJson_compare={before_json}
                 llvmOutput={after_output}
-                title={'optimized'}
+                title={'after'}
               />
             </div>
           </section>

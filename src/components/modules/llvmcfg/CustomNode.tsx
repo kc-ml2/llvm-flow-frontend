@@ -22,12 +22,10 @@ export default memo(({ data }: any) => {
   }
 
   const makeId = (idWithType: string) => {
-    if (idWithType.includes('optimized')) {
-      return idWithType.slice(
-        idWithType.indexOf('optimized') + 'optimized'.length,
-      )
-    } else if (idWithType.includes('initial')) {
-      return idWithType.slice(idWithType.indexOf('initial') + 'initial'.length)
+    if (idWithType.includes('after')) {
+      return idWithType.slice(idWithType.indexOf('after') + 'after'.length)
+    } else if (idWithType.includes('before')) {
+      return idWithType.slice(idWithType.indexOf('before') + 'before'.length)
     }
   }
 
@@ -39,28 +37,28 @@ export default memo(({ data }: any) => {
   ) => {
     if (before_output && after_output && className === 'yes') {
       const id = makeId(idWithType)
-      if (type === 'initial' && id) {
+      if (type === 'before' && id) {
         const index = before_output.indexOf(id)
         const sameBlockID = after_output[index]
         if (sameBlockID === undefined) {
           const targetNode = document.getElementById(idWithType)
-          const sameNode = document.getElementById('optimized' + id)
+          const sameNode = document.getElementById('after' + id)
           changeColor(sameNode, targetNode)
         } else {
           const targetNode = document.getElementById(idWithType)
-          const sameNode = document.getElementById('optimized' + sameBlockID)
+          const sameNode = document.getElementById('after' + sameBlockID)
           changeColor(sameNode, targetNode)
         }
-      } else if (type === 'optimized' && id) {
+      } else if (type === 'after' && id) {
         const index = after_output.indexOf(id)
         const sameBlockID = before_output[index]
         if (sameBlockID === undefined) {
           const targetNode = document.getElementById(idWithType)
-          const sameNode = document.getElementById('initial' + id)
+          const sameNode = document.getElementById('before' + id)
           changeColor(sameNode, targetNode)
         } else {
           const targetNode = document.getElementById(idWithType)
-          const sameNode = document.getElementById('initial' + sameBlockID)
+          const sameNode = document.getElementById('before' + sameBlockID)
           changeColor(sameNode, targetNode)
         }
       }
@@ -68,7 +66,13 @@ export default memo(({ data }: any) => {
   }
 
   const handleSame = (e: any) => {
-    findSameBlock(e.target.id, e.target.name, e.target.className)
+    //target 프로퍼티는 실제 이벤트가 발생한 요소를 반환, currentTarget 프로퍼티는 이벤트 핸들러가 바인딩된 요소를 반환.
+    findSameBlock(
+      e.currentTarget.id,
+      e.currentTarget.name,
+      e.currentTarget.className,
+    )
+    e.preventDefault()
   }
 
   const handleFull = () => {
