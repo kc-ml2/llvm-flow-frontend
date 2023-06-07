@@ -2,11 +2,26 @@
 
 .upload {
   margin: 0 auto;
-  margin-top: 5rem;
+  margin-top: 2rem;
   margin-bottom: 5rem;
   min-height: 70vh;
   max-width: 1400px;
   width: 50%;
+
+  .Docker {
+    font-size: 0.9rem;
+    padding: 0.6rem;
+    color: gray;
+    border-bottom: 1px solid $gray;
+    margin-bottom: 3rem;
+    a {
+      text-decoration: underline;
+      color: $dark;
+    }
+    a:hover {
+      color: $purple;
+    }
+  }
 
   .navlink {
     margin-bottom: 5rem;
@@ -35,6 +50,10 @@
       border: 2px solid $purple;
       border-radius: 25px;
       font-weight: 500;
+    }
+
+    #deactive:hover {
+      background-color: $lightpurple;
     }
   }
 

@@ -10,6 +10,7 @@ import Stack from '@mui/material/Stack'
 import IconButton from '@mui/material/IconButton'
 import Collapse from '@mui/material/Collapse'
 import CloseIcon from '@mui/icons-material/Close'
+import NearMeIcon from '@mui/icons-material/NearMe'
 import { NavLink } from 'react-router-dom'
 import { setAuthData } from '@/redux/features/auth/authSlice'
 import PassOption from './passOption'
@@ -59,6 +60,17 @@ function Upload() {
 
   return (
     <section className={styles.upload}>
+      <div className={styles.Docker}>
+        If you want to run it directly on local environment,
+        <a
+          href="https://kc-ml2.gitbook.io/llvm-flow/getting-started/docker-guide"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <NearMeIcon></NearMeIcon>
+          <b>click here !</b>
+        </a>
+      </div>
       <div className={styles.navlink}>
         <NavLink to="/uploadC" id={styles.deactive}>
           with .c file
