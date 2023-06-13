@@ -91,6 +91,12 @@ const LayoutFlow2 = ({
 
   const edge = llvmJson.edges
 
+  if (!edge) {
+    alert(
+      "⚠️ The graph cannot be shown because the edge is undefined. Please open a Github issue and we'll fix it.",
+    )
+  }
+
   const numberOfNode = llvmJson.objects.length
   const numberOfEdge = llvmJson.edges.length
 
