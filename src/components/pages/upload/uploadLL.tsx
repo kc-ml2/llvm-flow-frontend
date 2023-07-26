@@ -25,6 +25,7 @@ function Upload() {
   const [openError, setOpenError] = useState(false)
   const { nickname } = useAppSelector((state) => state.auth)
   const [inputName, setInputName] = useState<string | undefined>(nickname)
+  const [errorMessage, setErrorMessage] = useState<string>('')
 
   const handleSubmit = async (e: any) => {
     e.preventDefault()
@@ -54,7 +55,10 @@ function Upload() {
           dispatch(setAuthData(profileLabel))
           navigate('/llvmcfg')
         })
-        .catch(() => setOpenError(true))
+        .catch(function (err: any) {
+          setOpenError(true)
+          setErrorMessage(err.response.data.error)
+        })
     }
   }
 
@@ -157,7 +161,7 @@ function Upload() {
               <AlertTitle>
                 <b>LLVM Command Error</b>
               </AlertTitle>
-              Please check LLVM's passes and file again!
+              {errorMessage}
             </Alert>
           </Collapse>
         </Stack>
