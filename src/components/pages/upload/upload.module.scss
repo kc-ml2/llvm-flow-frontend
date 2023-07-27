@@ -144,6 +144,7 @@
     border-radius: 5px;
     color: white;
     padding: 1rem;
+
     h5 {
       font-size: 0.7rem;
       color: $gray;
@@ -152,6 +153,10 @@
     i {
       color: $highlight;
       font-style: normal;
+    }
+    p {
+      white-space: normal;
+      word-wrap: break-word;
     }
   }
 

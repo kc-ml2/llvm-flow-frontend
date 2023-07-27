@@ -319,7 +319,7 @@ export default {
       description: 'Strip debug info for unused symbols',
     },
     55: {
-      pass: '-strip-dead-prototypes¶',
+      pass: '-strip-dead-prototypes',
       description: 'Strip Unused Function Prototypes',
     },
     56: {

@@ -1,9 +1,15 @@
+import { Dispatch, SetStateAction } from 'react'
 import styles from './passOption.module.scss'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import MenuBookIcon from '@mui/icons-material/MenuBook'
 import passes from '@/locale/passes'
 
-function PassOption() {
+interface PassOptionProps {
+  pass_Props: string
+  setPass_Props: Dispatch<SetStateAction<string>>
+}
+
+const PassOption = ({ pass_Props, setPass_Props }: PassOptionProps) => {
   const handleDisplayA = () => {
     const x = document.getElementById('passOption_pass_a__14cQD')
     if (x) {
@@ -26,6 +32,13 @@ function PassOption() {
     }
   }
 
+  const handleSetPass = (e: any) => {
+    const text = e.target.textContent
+    const spanText = e.target.querySelector('span')?.textContent || ''
+    const plainText = text.replace(spanText, '')
+    setPass_Props((prev) => prev + ' ' + plainText)
+  }
+
   const analysisPasses = Object.values(passes.analysis)
   const transformPasses = Object.values(passes.transform)
 
@@ -39,10 +52,10 @@ function PassOption() {
       </section>
       <section id={styles.pass_a}>
         {analysisPasses.map(({ pass, description }) => (
-          <span className={styles.tooltip} key={pass}>
+          <button className={styles.tooltip} key={pass} onClick={handleSetPass}>
             {pass}
             <span className={styles.tooltip_text}>{description}</span>
-          </span>
+          </button>
         ))}
       </section>
       <br></br>
@@ -54,10 +67,10 @@ function PassOption() {
       </section>
       <section id={styles.pass_t}>
         {transformPasses.map(({ pass, description }) => (
-          <span className={styles.tooltip} key={pass}>
+          <button className={styles.tooltip} key={pass} onClick={handleSetPass}>
             {pass}
             <span className={styles.tooltip_text}>{description}</span>
-          </span>
+          </button>
         ))}
       </section>
       {/* */}
@@ -70,4 +83,4 @@ function PassOption() {
   )
 }
 
-export default PassOption as React.ComponentType
+export default PassOption

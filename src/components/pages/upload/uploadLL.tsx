@@ -136,6 +136,7 @@ function Upload() {
             onChange={(e) => {
               setPass(e.target.value)
             }}
+            value={pass}
           />
         </div>
         {/* Warning & Error Alert */}
@@ -211,7 +212,7 @@ function Upload() {
         </div>
       </form>
 
-      <PassOption />
+      <PassOption pass_Props={pass} setPass_Props={setPass} />
     </section>
   )
 }
