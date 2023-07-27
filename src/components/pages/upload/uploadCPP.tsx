@@ -91,8 +91,9 @@ function Upload() {
           <input
             type="text"
             name="profileLabel"
-            placeholder={inputName}
+            // placeholder={inputName}
             id="input-text"
+            defaultValue={inputName}
           />
         </div>
         <div className={styles.file}>
