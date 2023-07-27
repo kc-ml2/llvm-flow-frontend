@@ -13,6 +13,7 @@ import BookmarksIcon from '@mui/icons-material/Bookmarks'
 import SouthIcon from '@mui/icons-material/South'
 import tutorial1 from '@/images/tutorial1.png'
 import tutorial2 from '@/images/tutorial2.png'
+import passClick from '@/images/passClick.png'
 
 function Example() {
   const handleSubmit = () => {
@@ -78,6 +79,13 @@ function Example() {
           ,<code>.ll</code> only)
           <br></br>
           <b>3.</b> Fill in LLVM passes for optimization.
+          <br></br>
+          <i>
+            You can enter the pass manually, or click the pass box at the bottom
+            (which opens when you press LLVM's Analysis Passes, LLVM's Transform
+            Passes) to enter it automatically like this:
+          </i>
+          <img src={passClick} alt="passClick" />
           <br></br>
           <br></br>
           If you're done with all three, press the submit button! That's all!
