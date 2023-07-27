@@ -34,6 +34,10 @@ function Main() {
     navigate('/tutorial')
   }
 
+  const handleStart = () => {
+    navigate('/uploadC')
+  }
+
   return (
     <section className={styles.main}>
       <section className={styles.title}>
@@ -41,6 +45,9 @@ function Main() {
         <h3>Visualize the LLVM IR CFG interactively.</h3>
         <button className={buttons.default} onClick={handleExample}>
           <img src={check} height="18.3" width="25" /> &nbsp; Tutorial
+        </button>
+        <button className={buttons.default} onClick={handleStart}>
+          <img src={check} height="18.3" width="25" /> &nbsp; Start
         </button>
       </section>
       <section className={styles.example}>
