@@ -5,11 +5,10 @@ import MenuBookIcon from '@mui/icons-material/MenuBook'
 import passes from '@/locale/passes'
 
 interface PassOptionProps {
-  pass_Props: string
   setPass_Props: Dispatch<SetStateAction<string>>
 }
 
-const PassOption = ({ pass_Props, setPass_Props }: PassOptionProps) => {
+const PassOption = ({ setPass_Props }: PassOptionProps) => {
   const handleDisplayA = () => {
     const x = document.getElementById('passOption_pass_a__14cQD')
     if (x) {

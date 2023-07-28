@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
-import { useAppSelector, useAppDispatch } from '@/redux/hook'
+import { useAppDispatch, useAppSelector } from '@/redux/hook'
 import { useNavigate } from 'react-router-dom'
 import { setGraphData } from '@/redux/features/graph/graphSlice'
+import { setPathData } from '@/redux/features/path/pathSlice'
 import styles from './profile.module.scss'
 import pagination from './pagination.module.scss'
 import buttons from '@/styles/Button.module.scss'
@@ -29,6 +30,7 @@ const ProfileTable = ({ items }: any) => {
     postFormData(payload, 'show')
       .then((response) => {
         dispatch(setGraphData(response.data))
+        dispatch(setPathData(i[2].substring(0, i[2].indexOf('/'))))
         navigate('/llvmcfg')
       })
       .catch(() => {

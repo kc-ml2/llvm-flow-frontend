@@ -1,14 +1,15 @@
 /* eslint-disable camelcase */
-import React, { Suspense, useEffect } from 'react'
+import React, { Suspense, useState, useEffect } from 'react'
 import SwitchSelector from '@/components/pages/llvmcfg/SwitchSelector'
 import SlidingGuide from './SlidingGuide'
-import { useAppSelector } from '@/redux/hook'
+import { useAppSelector, useAppDispatch } from '@/redux/hook'
 import styles from './llvmcfg.module.scss'
 import buttons from '@/styles/Button.module.scss'
 import Loading from '@/components/modules/loading/Loading'
 import FileSaver from 'file-saver'
-// import UploadFileIcon from '@mui/icons-material/UploadFile'
 import { UploadFile } from '@mui/icons-material'
+import { postFormData } from '@/api/http-post'
+import { setGraphData } from '@/redux/features/graph/graphSlice'
 
 function LLVMcfg() {
   const {
@@ -22,6 +23,15 @@ function LLVMcfg() {
   } = useAppSelector((state) => state.graph)
 
   const { isFull } = useAppSelector((state) => state.mode)
+  const { pathData } = useAppSelector((state) => state.path)
+
+  useEffect(() => {
+    console.log(pathData)
+  })
+
+  const [passAgain, setPassAgain] = useState('')
+
+  const dispatch = useAppDispatch()
 
   const LayoutFlow = React.lazy(
     () => import('@/components/modules/llvmcfg/LayoutFlow'),
@@ -64,6 +74,39 @@ function LLVMcfg() {
     }
   }
 
+  const handlePassInput = (e: any) => {
+    setPassAgain(e.target.value)
+  }
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault()
+
+    if (passAgain.length == 0) {
+      // setOpenWarning(true)
+      alert('warning')
+    } else {
+      const data = new FormData()
+      data.append('transformpass', passAgain)
+      if (pathData) {
+        data.append('filePath', pathData)
+        console.log(pathData)
+      }
+
+      postFormData(data, 'showAgain')
+        .then((response: any) => {
+          dispatch(setGraphData(response.data))
+          // localStorage.setItem('nickname', JSON.stringify(profileLabel))
+          // dispatch(setAuthData(profileLabel))
+          // navigate('/llvmcfg')
+        })
+        .catch(function (err: any) {
+          // setOpenError(true)
+          // setErrorMessage(err.response.data.error)
+          alert(err.response.data.error)
+        })
+    }
+  }
+
   return (
     <section className={styles.llvmcfg}>
       <div className={styles.row}>
@@ -80,6 +123,15 @@ function LLVMcfg() {
           {before_json.name}
           <br></br>
           LLVM's passes = <i>{file_pass}</i>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              value={passAgain}
+              onChange={handlePassInput}
+              placeholder={file_pass}
+            />
+            <button type="submit">Submit</button>
+          </form>
         </span>
         <br></br>
         <button onClick={downloadBeforeLLfile} className={buttons.download}>
@@ -89,6 +141,18 @@ function LLVMcfg() {
         <button onClick={downloadAfterLLfile} className={buttons.download}>
           <UploadFile /> Download <i>after.ll</i>
         </button>
+        {/* <div>
+          Change LLVM's passes<br></br>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              value={passAgain}
+              onChange={handlePassInput}
+              placeholder="Enter another LLVM's passes"
+            />
+            <button type="submit">Submit</button>
+          </form>
+        </div> */}
       </div>
 
       {isFull && (

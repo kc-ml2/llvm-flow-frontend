@@ -194,7 +194,7 @@ function Upload() {
         </div>
       </form>
 
-      <PassOption pass_Props={pass} setPass_Props={setPass} />
+      <PassOption setPass_Props={setPass} />
     </section>
   )
 }

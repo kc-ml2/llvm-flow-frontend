@@ -118,7 +118,6 @@ function Upload() {
               setPass(e.target.value)
             }}
             value={pass}
-            // style={{ width: `100% + ${pass.length * 8}px` }}
           />
         </div>
 
@@ -196,7 +195,7 @@ function Upload() {
         </div>
       </form>
 
-      <PassOption pass_Props={pass} setPass_Props={setPass} />
+      <PassOption setPass_Props={setPass} />
     </section>
   )
 }
