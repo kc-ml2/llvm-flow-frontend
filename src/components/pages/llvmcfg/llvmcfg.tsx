@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import React, { Suspense, useState, useEffect } from 'react'
+import React, { Suspense, useState, useEffect, useMemo } from 'react'
 import SwitchSelector from '@/components/pages/llvmcfg/SwitchSelector'
 import SlidingGuide from './SlidingGuide'
 import { useAppSelector, useAppDispatch } from '@/redux/hook'
@@ -24,10 +24,6 @@ function LLVMcfg() {
 
   const { isFull } = useAppSelector((state) => state.mode)
   const { pathData } = useAppSelector((state) => state.path)
-
-  useEffect(() => {
-    console.log(pathData)
-  })
 
   const [passAgain, setPassAgain] = useState('')
 
@@ -74,9 +70,12 @@ function LLVMcfg() {
     }
   }
 
-  const handlePassInput = (e: any) => {
-    setPassAgain(e.target.value)
-  }
+  const handlePassInput = useMemo(
+    () => (e: any) => {
+      setPassAgain(e.target.value)
+    },
+    [],
+  )
 
   const handleSubmit = async (e: any) => {
     e.preventDefault()
@@ -89,15 +88,11 @@ function LLVMcfg() {
       data.append('transformpass', passAgain)
       if (pathData) {
         data.append('filePath', pathData)
-        console.log(pathData)
       }
 
       postFormData(data, 'showAgain')
         .then((response: any) => {
           dispatch(setGraphData(response.data))
-          // localStorage.setItem('nickname', JSON.stringify(profileLabel))
-          // dispatch(setAuthData(profileLabel))
-          // navigate('/llvmcfg')
         })
         .catch(function (err: any) {
           // setOpenError(true)
@@ -141,18 +136,6 @@ function LLVMcfg() {
         <button onClick={downloadAfterLLfile} className={buttons.download}>
           <UploadFile /> Download <i>after.ll</i>
         </button>
-        {/* <div>
-          Change LLVM's passes<br></br>
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              value={passAgain}
-              onChange={handlePassInput}
-              placeholder="Enter another LLVM's passes"
-            />
-            <button type="submit">Submit</button>
-          </form>
-        </div> */}
       </div>
 
       {isFull && (
@@ -203,4 +186,4 @@ function LLVMcfg() {
   )
 }
 
-export default LLVMcfg as React.ComponentType
+export default LLVMcfg

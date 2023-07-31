@@ -4,17 +4,12 @@ import { useNavigate } from 'react-router-dom'
 import { setGraphData } from '@/redux/features/graph/graphSlice'
 import styles from './upload.module.scss'
 import buttons from '@/styles/Button.module.scss'
-import Alert from '@mui/material/Alert'
-import AlertTitle from '@mui/material/AlertTitle'
-import Stack from '@mui/material/Stack'
-import IconButton from '@mui/material/IconButton'
-import Collapse from '@mui/material/Collapse'
-import CloseIcon from '@mui/icons-material/Close'
 import NearMeIcon from '@mui/icons-material/NearMe'
 import { NavLink } from 'react-router-dom'
 import { setAuthData } from '@/redux/features/auth/authSlice'
 import PassOption from './passOption'
 import { postFormData } from '@/api/http-post'
+import WarningErrorAlert from './warningErrorAlert'
 
 function Upload() {
   const navigate = useNavigate()
@@ -121,62 +116,13 @@ function Upload() {
         </div>
 
         {/* Warning & Error Alert */}
-
-        <Stack>
-          <Collapse in={openError}>
-            <Alert
-              severity="error"
-              variant="outlined"
-              action={
-                <IconButton
-                  aria-label="close"
-                  color="inherit"
-                  size="small"
-                  onClick={() => {
-                    setOpenError(false)
-                  }}
-                >
-                  <CloseIcon fontSize="inherit" />
-                </IconButton>
-              }
-              sx={{ mb: 2 }}
-            >
-              <AlertTitle>
-                <b>LLVM Command Error</b>
-              </AlertTitle>
-              {errorMessage}
-            </Alert>
-          </Collapse>
-        </Stack>
-
-        <Stack>
-          <Collapse in={openWarning}>
-            <Alert
-              severity="warning"
-              variant="outlined"
-              action={
-                <IconButton
-                  aria-label="close"
-                  color="inherit"
-                  size="small"
-                  onClick={() => {
-                    setOpenWarning(false)
-                  }}
-                >
-                  <CloseIcon fontSize="inherit" />
-                </IconButton>
-              }
-              sx={{ mb: 2 }}
-            >
-              <AlertTitle>
-                <b>Warning</b>
-              </AlertTitle>
-              User Name, File and Pass Option must be filled out!
-            </Alert>
-          </Collapse>
-        </Stack>
-
-        {/* Warning & Error Alert */}
+        <WarningErrorAlert
+          errorMessage={errorMessage}
+          openError={openError}
+          openWarning={openWarning}
+          setOpenError={setOpenError}
+          setOpenWarning={setOpenWarning}
+        />
 
         <div className={styles.cmd}>
           <h5>clang 10, llvm 10</h5>
