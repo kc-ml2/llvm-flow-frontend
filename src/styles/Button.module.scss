@@ -119,7 +119,6 @@
   border: transparent;
 }
 
-
 //download .ll file
 .download {
   background-color: white;
@@ -132,12 +131,32 @@
   padding-left: $btn-padding-x;
   padding-right: $btn-padding-x;
   font-weight: 600;
-  i{
+  i {
     color: $purple !important;
   }
 }
 
 .download:hover {
   background-color: transparent;
+  color: white;
+}
+
+// llvmcfg, change pass->submit
+
+.default_semi {
+  background-color: $lightpurple;
+  border: 2px solid $purple;
+  border-radius: 28px;
+  padding-top: $btn-padding-y;
+  padding-bottom: $btn-padding-y;
+  padding-left: $btn-padding-x;
+  padding-right: $btn-padding-x;
+  color: $purple;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.default_semi:hover {
+  background-color: $purple;
   color: white;
 }

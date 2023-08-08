@@ -10,6 +10,7 @@ import FileSaver from 'file-saver'
 import { UploadFile } from '@mui/icons-material'
 import { postFormData } from '@/api/http-post'
 import { setGraphData } from '@/redux/features/graph/graphSlice'
+import WarningErrorAlert from '../upload/warningErrorAlert'
 
 function LLVMcfg() {
   const {
@@ -26,6 +27,9 @@ function LLVMcfg() {
   const { pathData } = useAppSelector((state) => state.path)
 
   const [passAgain, setPassAgain] = useState('')
+  const [openWarning, setOpenWarning] = useState(false)
+  const [openError, setOpenError] = useState(false)
+  const [errorMessage, setErrorMessage] = useState<string>('')
 
   const dispatch = useAppDispatch()
 
@@ -81,8 +85,7 @@ function LLVMcfg() {
     e.preventDefault()
 
     if (passAgain.length == 0) {
-      // setOpenWarning(true)
-      alert('warning')
+      setOpenWarning(true)
     } else {
       const data = new FormData()
       data.append('transformpass', passAgain)
@@ -93,11 +96,11 @@ function LLVMcfg() {
       postFormData(data, 'showAgain')
         .then((response: any) => {
           dispatch(setGraphData(response.data))
+          console.log('hello')
         })
         .catch(function (err: any) {
-          // setOpenError(true)
-          // setErrorMessage(err.response.data.error)
-          alert(err.response.data.error)
+          setOpenError(true)
+          setErrorMessage(err.response.data.error)
         })
     }
   }
@@ -117,16 +120,7 @@ function LLVMcfg() {
         <span>
           {before_json.name}
           <br></br>
-          LLVM's passes = <i>{file_pass}</i>
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              value={passAgain}
-              onChange={handlePassInput}
-              placeholder={file_pass}
-            />
-            <button type="submit">Submit</button>
-          </form>
+          current LLVM's passes = <i>{file_pass}</i>
         </span>
         <br></br>
         <button onClick={downloadBeforeLLfile} className={buttons.download}>
@@ -136,6 +130,27 @@ function LLVMcfg() {
         <button onClick={downloadAfterLLfile} className={buttons.download}>
           <UploadFile /> Download <i>after.ll</i>
         </button>
+        <hr></hr>
+        <span>Change the LLVM's passes</span>
+        <form onSubmit={handleSubmit} className={styles.form}>
+          <input
+            type="text"
+            value={passAgain}
+            onChange={handlePassInput}
+            // placeholder={file_pass}
+          />
+          <button type="submit" className={buttons.default_semi}>
+            Submit
+          </button>
+        </form>
+        <br></br>
+        <WarningErrorAlert
+          errorMessage={errorMessage}
+          openError={openError}
+          openWarning={openWarning}
+          setOpenError={setOpenError}
+          setOpenWarning={setOpenWarning}
+        />
       </div>
 
       {isFull && (
