@@ -130,7 +130,7 @@ function LLVMcfg() {
         <button onClick={downloadAfterLLfile} className={buttons.download}>
           <UploadFile /> Download <i>after.ll</i>
         </button>
-        <hr></hr>
+        {/* <hr></hr>
         <span>Change the LLVM's passes</span>
         <form onSubmit={handleSubmit} className={styles.form}>
           <input
@@ -150,7 +150,7 @@ function LLVMcfg() {
           openWarning={openWarning}
           setOpenError={setOpenError}
           setOpenWarning={setOpenWarning}
-        />
+        /> */}
       </div>
 
       {isFull && (
