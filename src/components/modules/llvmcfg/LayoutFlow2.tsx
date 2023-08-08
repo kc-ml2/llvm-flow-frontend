@@ -211,11 +211,11 @@ const LayoutFlow2 = ({
   const nodeColor = (node: any) => {
     switch (node.data.isSame) {
       case 'yes':
-        return COLORS.PURPLE
+        return COLORS.GRAY
       case 'no':
-        return COLORS.GRAY
+        return COLORS.PURPLE
       default:
-        return COLORS.GRAY
+        return COLORS.PURPLE
     }
   }
 

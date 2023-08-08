@@ -12,12 +12,12 @@ export default memo(({ data }: any) => {
   const [fullmode, setFullmode] = useState<boolean>(isFull)
 
   const changeColor = (sameNode: any, targetNode: any) => {
-    if (targetNode.style.backgroundColor === 'rgb(224, 210, 255)') {
+    if (targetNode.style.backgroundColor === 'rgb(196, 196, 196)') {
       sameNode.style.backgroundColor = 'white'
       targetNode.style.backgroundColor = 'white'
     } else if (targetNode.style.backgroundColor === 'white') {
-      sameNode.style.backgroundColor = COLORS.LIGHTPURPLE
-      targetNode.style.backgroundColor = COLORS.LIGHTPURPLE
+      sameNode.style.backgroundColor = COLORS.GRAY
+      targetNode.style.backgroundColor = COLORS.GRAY
     }
   }
 
@@ -103,7 +103,7 @@ export default memo(({ data }: any) => {
             ? {
                 right: '20%',
                 left: 'auto',
-                background: COLORS.PURPLE,
+                background: COLORS.GRAY,
                 border: 'none',
                 borderRadius: '0px',
                 height: '3.5px',
@@ -111,7 +111,7 @@ export default memo(({ data }: any) => {
             : {
                 right: '20%',
                 left: 'auto',
-                background: COLORS.GRAY,
+                background: COLORS.PURPLE,
                 border: 'none',
                 borderRadius: '0px',
                 height: '3.5px',
@@ -147,7 +147,7 @@ export default memo(({ data }: any) => {
             ? {
                 right: '20%',
                 left: 'auto',
-                background: COLORS.PURPLE,
+                background: COLORS.GRAY,
                 border: 'none',
                 borderRadius: '0px',
                 height: '3.5px',
@@ -155,7 +155,7 @@ export default memo(({ data }: any) => {
             : {
                 right: '20%',
                 left: 'auto',
-                background: COLORS.GRAY,
+                background: COLORS.PURPLE,
                 border: 'none',
                 borderRadius: '0px',
                 height: '3.5px',

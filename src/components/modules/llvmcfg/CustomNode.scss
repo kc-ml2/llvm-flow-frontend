@@ -3,7 +3,8 @@
 .yes {
   height: 100%;
   width: 100%;
-  border: 3px solid $purple;
+  // border: 3px solid $purple;
+  border: 2px solid $gray;
   padding: 10px;
   border-radius: 5px;
   text-align: start;
@@ -23,7 +24,8 @@
 .no {
   height: 100%;
   width: 100%;
-  border: 2px solid $gray;
+  // border: 2px solid $gray;
+  border: 3px solid $purple;
   padding: 10px;
   border-radius: 5px;
   text-align: start;
