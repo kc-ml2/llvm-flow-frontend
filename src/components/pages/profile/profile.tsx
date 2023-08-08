@@ -9,7 +9,7 @@ const Profile = () => {
   const [items, setItems] = useState<any | undefined>(undefined)
 
   useEffect(() => {
-    getJsonData('allprofile')
+    getJsonData('allprofile/')
       .then((response) => {
         setItems(response.data.data.reverse())
         // console.log(response)
