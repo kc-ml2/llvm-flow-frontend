@@ -220,7 +220,7 @@ const LayoutFlow2 = ({
   }
 
   const onConnect = useCallback(
-    (params) =>
+    (params: any) =>
       setEdges((eds) =>
         addEdge(
           { ...params, type: ConnectionLineType.SmoothStep, animated: true },
@@ -230,7 +230,7 @@ const LayoutFlow2 = ({
     [],
   )
   const onLayout = useCallback(
-    (direction) => {
+    (direction: any) => {
       const { nodes: layoutedNodes, edges: layoutedEdges } =
         getLayoutedElements(nodes, edges, direction)
 

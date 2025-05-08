@@ -146,4 +146,4 @@ function Upload() {
   )
 }
 
-export default Upload as React.ComponentType
+export default Upload

@@ -144,4 +144,4 @@ function Example() {
   )
 }
 
-export default Example as React.ComponentType
+export default Example

@@ -93,4 +93,4 @@ function Main() {
   )
 }
 
-export default Main as React.ComponentType
+export default Main

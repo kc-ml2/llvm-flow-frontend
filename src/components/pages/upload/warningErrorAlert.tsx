@@ -5,13 +5,7 @@ import Stack from '@mui/material/Stack'
 import IconButton from '@mui/material/IconButton'
 import Collapse from '@mui/material/Collapse'
 import CloseIcon from '@mui/icons-material/Close'
-import { makeStyles } from '@material-ui/core'
-
-const useStyles = makeStyles({
-  myAlert: {
-    backgroundColor: '#fdeded',
-  },
-})
+// import { makeStyles } from '@material-ui/core'
 
 interface AlertProps {
   errorMessage: string
@@ -28,7 +22,7 @@ const WarningErrorAlert = ({
   setOpenError,
   setOpenWarning,
 }: AlertProps) => {
-  const classes = useStyles()
+  // const classes = useStyles()
   return (
     <>
       <Stack>
@@ -36,7 +30,7 @@ const WarningErrorAlert = ({
           <Alert
             severity="error"
             variant="outlined"
-            className={classes.myAlert}
+            sx={{ backgroundColor: '#fdeded', mb: 2 }}
             action={
               <IconButton
                 aria-label="close"
@@ -49,7 +43,6 @@ const WarningErrorAlert = ({
                 <CloseIcon fontSize="inherit" />
               </IconButton>
             }
-            sx={{ mb: 2 }}
           >
             <AlertTitle>
               <b>LLVM Command Error</b>

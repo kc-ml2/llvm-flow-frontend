@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { Provider } from 'react-redux'
@@ -10,7 +10,9 @@ import './index.scss'
 
 let persistor = persistStore(store)
 
-ReactDOM.render(
+const container = document.getElementById('root')
+const root = createRoot(container!)
+root.render(
   <React.Fragment>
     <Provider store={store}>
       <PersistGate persistor={persistor}>
@@ -18,7 +20,6 @@ ReactDOM.render(
       </PersistGate>
     </Provider>
   </React.Fragment>,
-  document.getElementById('root'),
 )
 
 reportWebVitals()

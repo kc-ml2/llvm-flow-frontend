@@ -12,7 +12,7 @@ const Login = () => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
 
-  const handleUserInit = useCallback((response) => {
+  const handleUserInit = useCallback((response: any) => {
     if (response.ok) {
       dispatch(setAuthData(response.data))
       localStorage.setItem('user', JSON.stringify(response.data))
@@ -39,7 +39,7 @@ const Login = () => {
   }
 
   const onGoogleLoginSuccess = useCallback(
-    (response) => {
+    (response: any) => {
       const jwt = response.credential
       const parsedJwt = parseJwt(jwt)
 
@@ -74,4 +74,4 @@ const Login = () => {
   )
 }
 
-export default Login as React.ComponentType
+export default Login

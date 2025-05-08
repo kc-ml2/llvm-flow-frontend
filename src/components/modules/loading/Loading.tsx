@@ -9,4 +9,4 @@ const Loading = () => {
   )
 }
 
-export default Loading as React.ComponentType
+export default Loading
