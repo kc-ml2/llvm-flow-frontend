@@ -12,6 +12,13 @@ import { postFormData } from '@/api/http-post'
 import { setGraphData } from '@/redux/features/graph/graphSlice'
 import WarningErrorAlert from '../upload/warningErrorAlert'
 
+interface LayoutFlowProps {
+  llvmJson: any
+  llvmJson_compare: any
+  llvmOutput: any
+  title: string
+}
+
 function LLVMcfg() {
   const {
     file_pass,
