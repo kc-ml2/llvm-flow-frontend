@@ -21,16 +21,18 @@ const nodeTypes = {
   selectorNode: CustomNode,
 }
 
-interface BaseLayoutFlowProps {
+export interface BaseLayoutFlowProps {
   llvmJson: any
   llvmJson_compare: any
   llvmOutput: any
   title: string
-  nodeWidth: number
-  nodeHeight: number
-  defaultPosition: [number, number]
-  minZoom: number
-  labelType: 'simple' | 'detail'
+  layoutConfig: {
+    nodeWidth: number
+    nodeHeight: number
+    defaultPosition: [number, number]
+    minZoom: number
+    labelType: 'simple' | 'detail'
+  }
 }
 
 const BaseLayoutFlow = ({
@@ -38,11 +40,7 @@ const BaseLayoutFlow = ({
   llvmJson_compare,
   llvmOutput,
   title,
-  nodeWidth,
-  nodeHeight,
-  defaultPosition,
-  minZoom,
-  labelType,
+  layoutConfig,
 }: BaseLayoutFlowProps) => {
   const [vertical, setVertical] = useState<boolean>(true)
   const [horizontal, setHorizontal] = useState<boolean>(false)
@@ -135,7 +133,7 @@ const BaseLayoutFlow = ({
     data: {
       type: title,
       label:
-        labelType === 'simple'
+        layoutConfig.labelType === 'simple'
           ? [label.replace(/[{}]/g, '').split(/\\l/)[0]]
           : label.replace(/[{}]/g, '').split(/\\l/),
       name: name.replace('Node', ''),
@@ -173,7 +171,10 @@ const BaseLayoutFlow = ({
     const isHorizontal = direction === 'LR'
     dagreGraph.setGraph({ rankdir: direction })
     nodes.forEach((node: Node) => {
-      dagreGraph.setNode(node.id, { width: nodeWidth, height: nodeHeight })
+      dagreGraph.setNode(node.id, {
+        width: layoutConfig.nodeWidth,
+        height: layoutConfig.nodeHeight,
+      })
     })
     edges.forEach((edge: Edge) => {
       dagreGraph.setEdge(edge.source, edge.target)
@@ -184,8 +185,8 @@ const BaseLayoutFlow = ({
       node.targetPosition = isHorizontal ? 'left' : 'top'
       node.sourcePosition = isHorizontal ? 'right' : 'bottom'
       node.position = {
-        x: nodeWithPosition.x - nodeWidth / 2,
-        y: nodeWithPosition.y - nodeHeight / 2,
+        x: nodeWithPosition.x - layoutConfig.nodeWidth / 2,
+        y: nodeWithPosition.y - layoutConfig.nodeHeight / 2,
       }
       return node
     })
@@ -246,9 +247,9 @@ const BaseLayoutFlow = ({
         onConnect={onConnect}
         nodeTypes={nodeTypes}
         connectionLineType={ConnectionLineType.SmoothStep}
-        defaultPosition={defaultPosition}
+        defaultPosition={layoutConfig.defaultPosition}
         defaultZoom={0.5}
-        minZoom={minZoom}
+        minZoom={layoutConfig.minZoom}
       >
         <Background />
         <MiniMap

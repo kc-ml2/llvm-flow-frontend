@@ -40,17 +40,21 @@ function LLVMcfg() {
 
   const dispatch = useAppDispatch()
 
-  const LayoutFlow = React.lazy(
-    () => import('@/components/modules/llvmcfg/LayoutFlow'),
-  )
-  const LayoutFlow2 = React.lazy(
-    () => import('@/components/modules/llvmcfg/LayoutFlow2'),
-  )
-  const LayoutFlowFull = React.lazy(
-    () => import('@/components/modules/llvmcfg/LayoutFlowFull'),
-  )
-  const LayoutFlowFull2 = React.lazy(
-    () => import('@/components/modules/llvmcfg/LayoutFlowFull2'),
+  // const LayoutFlow = React.lazy(
+  //   () => import('@/components/modules/llvmcfg/LayoutFlow'),
+  // )
+  // const LayoutFlow2 = React.lazy(
+  //   () => import('@/components/modules/llvmcfg/LayoutFlow2'),
+  // )
+  // const LayoutFlowFull = React.lazy(
+  //   () => import('@/components/modules/llvmcfg/LayoutFlowFull'),
+  // )
+  // const LayoutFlowFull2 = React.lazy(
+  //   () => import('@/components/modules/llvmcfg/LayoutFlowFull2'),
+  // )
+
+  const LayoutFlowFactory = React.lazy(
+    () => import('@/components/modules/llvmcfg/LayoutFlowFactory'),
   )
 
   function downloadBeforeLLfile() {
@@ -164,19 +168,21 @@ function LLVMcfg() {
         <Suspense fallback={<Loading />}>
           <section className={styles.layout}>
             <div className={styles.first}>
-              <LayoutFlowFull
+              <LayoutFlowFactory
                 llvmJson={before_json}
                 llvmJson_compare={after_json}
                 llvmOutput={before_output}
                 title={'before'}
+                variant={'detailLarge'}
               />
             </div>
             <div className={styles.second}>
-              <LayoutFlowFull2
+              <LayoutFlowFactory
                 llvmJson={after_json}
                 llvmJson_compare={before_json}
                 llvmOutput={after_output}
                 title={'after'}
+                variant={'detailLarge'}
               />
             </div>
           </section>
@@ -186,19 +192,21 @@ function LLVMcfg() {
         <Suspense fallback={<Loading />}>
           <section className={styles.layout}>
             <div className={styles.first}>
-              <LayoutFlow
+              <LayoutFlowFactory
                 llvmJson={before_json}
                 llvmJson_compare={after_json}
                 llvmOutput={before_output}
                 title={'before'}
+                variant={'simpleSmall'}
               />
             </div>
             <div className={styles.second}>
-              <LayoutFlow2
+              <LayoutFlowFactory
                 llvmJson={after_json}
                 llvmJson_compare={before_json}
                 llvmOutput={after_output}
                 title={'after'}
+                variant={'simpleSmall'}
               />
             </div>
           </section>
