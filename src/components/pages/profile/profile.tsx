@@ -23,7 +23,6 @@ const Profile = () => {
     getJsonData(`profile?Identifier=${userName}`)
       .then((response) => {
         setItems(response.data.data.reverse())
-        console.log(response)
       })
       .catch((err) => {
         console.log(err)
