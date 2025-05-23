@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
-import { useAppDispatch, useAppSelector } from '@/redux/hook'
+import { useAppSelector, useAppDispatch } from '@/redux/hook'
 import { useNavigate } from 'react-router-dom'
 import { setGraphData } from '@/redux/features/graph/graphSlice'
-import { setPathData } from '@/redux/features/path/pathSlice'
 import styles from './profile.module.scss'
 import pagination from './pagination.module.scss'
 import buttons from '@/styles/Button.module.scss'
@@ -12,7 +11,23 @@ import { setIsDeleteOpenTrue } from '@/redux/features/modal/deleteModalSlice'
 import PersonIcon from '@mui/icons-material/Person'
 import { postFormData } from '@/api/http-post'
 
-const ProfileTable = ({ items }: any) => {
+interface ProfileTableProps {
+  items: Array<[string, number, string, string]> | undefined
+}
+
+interface ItemsProps {
+  currentItems: Array<[string, number, string, string]> | null
+}
+
+interface PaginatedItemsProps {
+  itemsPerPage: number
+}
+
+interface PageClickEvent {
+  selected: number
+}
+
+const ProfileTable = ({ items = [] }: ProfileTableProps) => {
   // const [currentID, setCurrentID] = useState<number>()
   // const [currentFolder, setCurrentFolder] = useState<string>('')
   // const [currentDate, setCurrentDate] = useState<string>('')
@@ -22,7 +37,7 @@ const ProfileTable = ({ items }: any) => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
 
-  const showGraph = (i: any) => {
+  const showGraph = (i: [string, number, string, string]) => {
     const payload = new FormData()
     payload.append('path', i[2].substring(0, i[2].indexOf('/')))
     payload.append('passOption', i[0])
@@ -30,7 +45,6 @@ const ProfileTable = ({ items }: any) => {
     postFormData(payload, 'show')
       .then((response) => {
         dispatch(setGraphData(response.data))
-        dispatch(setPathData(i[2].substring(0, i[2].indexOf('/'))))
         navigate('/llvmcfg')
       })
       .catch(() => {
@@ -52,7 +66,7 @@ const ProfileTable = ({ items }: any) => {
     )
   }
 
-  function Items({ currentItems }: any) {
+  function Items({ currentItems }: ItemsProps) {
     return (
       <table>
         <thead>
@@ -67,8 +81,8 @@ const ProfileTable = ({ items }: any) => {
         </thead>
         <tbody>
           {currentItems &&
-            currentItems.map((i: any) => (
-              <tr key={i}>
+            currentItems.map((i: [string, number, string, string]) => (
+              <tr key={i[1]}>
                 <td>{convertDate(i[2].substring(0, i[2].indexOf('/')))}</td>
                 <td>
                   <PersonIcon /> &nbsp;
@@ -115,8 +129,8 @@ const ProfileTable = ({ items }: any) => {
     )
   }
 
-  function PaginatedItems({ itemsPerPage }: any) {
-    const [currentItems, setCurrentItems] = useState(null)
+  function PaginatedItems({ itemsPerPage }: PaginatedItemsProps) {
+    const [currentItems, setCurrentItems] = useState<Array<[string, number, string, string]> | null>(null)
     const [pageCount, setPageCount] = useState(0)
     const [itemOffset, setItemOffset] = useState(0)
 
@@ -126,9 +140,9 @@ const ProfileTable = ({ items }: any) => {
         setCurrentItems(items.slice(itemOffset, endOffset))
         setPageCount(Math.ceil(items.length / itemsPerPage))
       }
-    }, [itemOffset, itemsPerPage])
+    }, [itemOffset, itemsPerPage, items])
 
-    const handlePageClick = (event: any) => {
+    const handlePageClick = (event: PageClickEvent) => {
       const newOffset = (event.selected * itemsPerPage) % items.length
       setItemOffset(newOffset)
     }

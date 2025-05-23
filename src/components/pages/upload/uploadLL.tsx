@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, FormEvent, ChangeEvent } from 'react'
 import { useAppSelector, useAppDispatch } from '@/redux/hook'
 import { useNavigate } from 'react-router-dom'
 import { setGraphData } from '@/redux/features/graph/graphSlice'
@@ -11,6 +11,21 @@ import { setAuthData } from '@/redux/features/auth/authSlice'
 import PassOption from './passOption'
 import { postFormData } from '@/api/http-post'
 import WarningErrorAlert from './warningErrorAlert'
+import { AxiosError } from 'axios'
+
+interface FormData {
+  content: FileList
+  transformpass: string
+  profileLabel: string
+}
+
+interface ApiError {
+  response?: {
+    data?: {
+      error?: string
+    }
+  }
+}
 
 function Upload() {
   const navigate = useNavigate()
@@ -23,17 +38,19 @@ function Upload() {
   const [inputName, setInputName] = useState<string | undefined>(nickname)
   const [errorMessage, setErrorMessage] = useState<string>('')
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    const profileLabel = e.target[0].value
-    const content = e.target[1].files
-    const transformpass = e.target[2].value
+    const form = e.target as HTMLFormElement
+    const profileLabel = (form[0] as HTMLInputElement).value
+    const content = (form[1] as HTMLInputElement).files
+    const transformpass = (form[2] as HTMLInputElement).value
 
     if (
-      content.length == 0 ||
-      transformpass.length == 0 ||
-      profileLabel.length == 0
+      !content ||
+      content.length === 0 ||
+      transformpass.length === 0 ||
+      profileLabel.length === 0
     ) {
       setOpenWarning(true)
     } else {
@@ -45,15 +62,15 @@ function Upload() {
       data.append('profileLabel', profileLabel)
 
       postFormData(data, 'uploadLL')
-        .then((response: any) => {
+        .then((response) => {
           dispatch(setGraphData(response.data))
           localStorage.setItem('nickname', JSON.stringify(profileLabel))
           dispatch(setAuthData(profileLabel))
           navigate('/llvmcfg')
         })
-        .catch(function (err: any) {
+        .catch((err: AxiosError) => {
           setOpenError(true)
-          setErrorMessage(err.response.data.error)
+          setErrorMessage(err.response?.data?.error || 'An error occurred')
         })
     }
   }
@@ -104,7 +121,6 @@ function Upload() {
           <input
             type="text"
             name="profileLabel"
-            // placeholder={inputName}
             id="input-text"
             defaultValue={inputName}
           />
@@ -117,7 +133,7 @@ function Upload() {
             multiple
             id="intput-file"
             accept=".ll"
-            onChange={(e) => {
+            onChange={(e: ChangeEvent<HTMLInputElement>) => {
               setFile(e.target.value)
             }}
           />
@@ -129,13 +145,13 @@ function Upload() {
             name="transformpass"
             placeholder="ex) -simplifycfg -inline"
             id="input-text"
-            onChange={(e) => {
+            onChange={(e: ChangeEvent<HTMLInputElement>) => {
               setPass(e.target.value)
             }}
             value={pass}
           />
         </div>
-        {/* Warning & Error Alert */}
+
         <WarningErrorAlert
           errorMessage={errorMessage}
           openError={openError}

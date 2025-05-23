@@ -9,6 +9,8 @@ import ReactFlow, {
   Node,
   Edge,
   MarkerType,
+  Connection,
+  Position,
 } from 'react-flow-renderer'
 import dagre from 'dagre'
 import CustomNode from './CustomNode'
@@ -16,37 +18,56 @@ import ResizableBox from '@/components/modules/resizableBox/ResizableBox'
 import './LayoutFlow.scss'
 import buttons from '@/styles/Button.module.scss'
 import { COLORS } from '@/const/color'
+import { GraphJSON, GraphNode, GraphEdge } from '@/types/graph'
 
 const nodeTypes = {
   selectorNode: CustomNode,
 }
 
-export interface BaseLayoutFlowProps {
-  llvmJson: any
-  llvmJson_compare: any
-  llvmOutput: any
-  title: string
-  layoutConfig: {
-    nodeWidth: number
-    nodeHeight: number
-    defaultPosition: [number, number]
-    minZoom: number
-    labelType: 'simple' | 'detail'
-  }
+interface LayoutConfig {
+  nodeWidth: number
+  nodeHeight: number
+  defaultPosition: [number, number]
+  minZoom: number
+  labelType: 'simple' | 'detail'
 }
+
+export interface BaseLayoutFlowProps {
+  llvmJson: GraphJSON
+  llvmJson_compare: GraphJSON
+  llvmOutput?: string[]
+  title: string
+  layoutConfig: LayoutConfig
+}
+
+interface ExtendedNode extends GraphNode {
+  isSame: 'yes' | 'no'
+}
+
+interface FlowNodeData {
+  type: string
+  label: string[]
+  name: string
+  id: string
+  isSame: 'yes' | 'no'
+  block_id: string
+}
+
+type FlowNode = Node<FlowNodeData>
 
 const BaseLayoutFlow = ({
   llvmJson,
   llvmJson_compare,
-  llvmOutput,
+  llvmOutput = [],
   title,
   layoutConfig,
 }: BaseLayoutFlowProps) => {
   const [vertical, setVertical] = useState<boolean>(true)
   const [horizontal, setHorizontal] = useState<boolean>(false)
   const nodeinitial = llvmJson.objects
-  const node = nodeinitial.map((object: any) => {
-    return { ...object, isSame: 'no' }
+  console.dir(llvmOutput)
+  const node = nodeinitial.map((object: GraphNode) => {
+    return { ...object, isSame: 'no' as const }
   })
   const edge = llvmJson.edges || [
     {
@@ -62,15 +83,15 @@ const BaseLayoutFlow = ({
   const position = { x: 0, y: 0 }
 
   // step2) basicblock id 지정 (ex. %210)
-  const blockID = node.map(({ label }: any) =>
+  const blockID = node.map(({ label }: ExtendedNode) =>
     label.replace(/[{}]/g, '').split(/\\l/)[0].slice(0, -1),
   )
 
   // step3) 같은 basicblock 찾기 + entry basic block의 경우 따로 비교
   function checkSameBlock(
-    json: Array<string>,
-    output: Array<string>,
-    data: any,
+    json: string[],
+    output: string[],
+    data: ExtendedNode[],
   ) {
     for (let i = 0; i < json.length; i++) {
       for (let j = 0; j < output.length; j++) {
@@ -82,17 +103,18 @@ const BaseLayoutFlow = ({
   }
   checkSameBlock(blockID, llvmOutput, node)
 
-  function checkSameEntryBlock(json: any, json_compare: any, data: any) {
-    if (json[0].label == json_compare[0].label) {
+  function checkSameEntryBlock(json: GraphNode[], json_compare: GraphNode[], data: ExtendedNode[]) {
+    if (json[0].label === json_compare[0].label) {
       data[0].isSame = 'yes'
     }
   }
   checkSameEntryBlock(llvmJson.objects, llvmJson_compare.objects, node)
 
   // step*) edge tailport와 node 정보 연결하기
-  function connectTailport(tailport: string, tail: number) {
+  function connectTailport(tailport: string | undefined, tail: number): string | null {
     if (tailport) {
-      const tailLabel = node.filter((node: any) => node._gvid === tail)[0].label
+      const tailLabel = node.find((node: ExtendedNode) => node._gvid === tail)?.label
+      if (!tailLabel) return null
       const text = tailLabel.substring(tailLabel.indexOf(tailport) + 3)
       if (text.includes('|')) {
         return text.substring(0, text.indexOf('|'))
@@ -105,17 +127,17 @@ const BaseLayoutFlow = ({
   }
 
   // setp**) 위에서 아래로 target이 되는 경우, targetHandleID 설정
-  function setTargetHandleID(tail: number, head: number) {
-    const tailLabelFull = node.filter((node: any) => node._gvid === tail)[0]
-      .label
-    const tailLabel = tailLabelFull
+  function setTargetHandleID(tail: number, head: number): 'a' | 'b' | undefined {
+    const tailNode = node.find((node: ExtendedNode) => node._gvid === tail)
+    const headNode = node.find((node: ExtendedNode) => node._gvid === head)
+    if (!tailNode || !headNode) return undefined
+
+    const tailLabel = tailNode.label
       .replace(/[{}]/g, '')
       .split(/\\l/)[0]
       .slice(0, -1)
 
-    const headLabelFull = node.filter((node: any) => node._gvid === head)[0]
-      .label
-    const headLabel = headLabelFull
+    const headLabel = headNode.label
       .replace(/[{}]/g, '')
       .split(/\\l/)[0]
       .slice(0, -1)
@@ -125,10 +147,11 @@ const BaseLayoutFlow = ({
     } else if (tailLabel < headLabel) {
       return 'a'
     }
+    return undefined
   }
 
   // step4) node, edge 정의
-  const initialNode = node.map(({ _gvid, name, label, isSame }: any) => ({
+  const initialNode: Node<FlowNodeData>[] = node.map(({ _gvid, name, label, isSame }: ExtendedNode) => ({
     id: _gvid.toString(),
     data: {
       type: title,
@@ -144,7 +167,8 @@ const BaseLayoutFlow = ({
     type: 'selectorNode',
     position: position,
   }))
-  const initialEdge = edge.map(({ _gvid, tail, head, tailport }: any) => ({
+
+  const initialEdge = edge.map(({ _gvid, tail, head, tailport }: GraphEdge) => ({
     id: _gvid.toString(),
     source: tail.toString(),
     target: head.toString(),
@@ -164,26 +188,26 @@ const BaseLayoutFlow = ({
   const dagreGraph = new dagre.graphlib.Graph()
   dagreGraph.setDefaultEdgeLabel(() => ({}))
   const getLayoutedElements = (
-    nodes: Node[],
+    nodes: Node<FlowNodeData>[],
     edges: Edge[],
-    direction = 'TB',
+    direction: 'TB' | 'LR' = 'TB',
   ) => {
     const isHorizontal = direction === 'LR'
     dagreGraph.setGraph({ rankdir: direction })
-    nodes.forEach((node: Node) => {
+    nodes.forEach((node) => {
       dagreGraph.setNode(node.id, {
         width: layoutConfig.nodeWidth,
         height: layoutConfig.nodeHeight,
       })
     })
-    edges.forEach((edge: Edge) => {
+    edges.forEach((edge) => {
       dagreGraph.setEdge(edge.source, edge.target)
     })
     dagre.layout(dagreGraph)
-    nodes.forEach((node: any) => {
+    nodes.forEach((node) => {
       const nodeWithPosition = dagreGraph.node(node.id)
-      node.targetPosition = isHorizontal ? 'left' : 'top'
-      node.sourcePosition = isHorizontal ? 'right' : 'bottom'
+      node.targetPosition = isHorizontal ? Position.Left : Position.Top
+      node.sourcePosition = isHorizontal ? Position.Right : Position.Bottom
       node.position = {
         x: nodeWithPosition.x - layoutConfig.nodeWidth / 2,
         y: nodeWithPosition.y - layoutConfig.nodeHeight / 2,
@@ -197,10 +221,10 @@ const BaseLayoutFlow = ({
     initialEdge,
   )
 
-  const [nodes, setNodes, onNodesChange] = useNodesState<Node[]>(layoutedNodes)
-  const [edges, setEdges, onEdgesChange] = useEdgesState<Edge[]>(layoutedEdges)
+  const [nodes, setNodes, onNodesChange] = useNodesState(layoutedNodes)
+  const [edges, setEdges, onEdgesChange] = useEdgesState(layoutedEdges)
 
-  const nodeColor = (node: any) => {
+  const nodeColor = (node: Node<FlowNodeData>) => {
     switch (node.data.isSame) {
       case 'yes':
         return COLORS.PURPLE
@@ -212,7 +236,7 @@ const BaseLayoutFlow = ({
   }
 
   const onConnect = useCallback(
-    (params: any) =>
+    (params: Connection) =>
       setEdges((eds) =>
         addEdge(
           { ...params, type: ConnectionLineType.SmoothStep, animated: true },
@@ -221,8 +245,9 @@ const BaseLayoutFlow = ({
       ),
     [],
   )
+
   const onLayout = useCallback(
-    (direction: any) => {
+    (direction: 'TB' | 'LR') => {
       const { nodes: layoutedNodes, edges: layoutedEdges } =
         getLayoutedElements(nodes, edges, direction)
       setNodes([...layoutedNodes])
