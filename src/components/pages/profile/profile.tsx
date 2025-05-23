@@ -3,16 +3,20 @@ import styles from './profile.module.scss'
 import buttons from '@/styles/Button.module.scss'
 import ProfileTable from './ProfileTable'
 import { getJsonData } from '@/api/http-get'
+import { OptimizationRecord } from '@/types/optimization'
 
 const Profile = () => {
   const [userName, setUserName] = useState<string>('')
-  const [items, setItems] = useState<Array<any> | undefined>(undefined)
+  const [items, setItems] = useState<OptimizationRecord[]>([])
 
   useEffect(() => {
-    getJsonData('allprofile')
+    getJsonData('optimization-records', {
+      page: 1,
+      page_size: 10,
+      desc: true,
+    })
       .then((response) => {
-        setItems(response.data.data.reverse())
-        // console.log(response)
+        setItems(response.data.data)
       })
       .catch((err) => {
         console.log(err)
