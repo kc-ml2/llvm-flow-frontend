@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import { useAppDispatch } from '@/redux/hook'
 import { useNavigate } from 'react-router-dom'
 import { setGraphData } from '@/redux/features/graph/graphSlice'
@@ -12,21 +11,21 @@ import { OptimizationRecord } from '@/types/optimization'
 
 interface ProfileTableProps {
   items: OptimizationRecord[]
-}
-
-interface ItemsProps {
-  currentItems: OptimizationRecord[] | null
-}
-
-interface PaginatedItemsProps {
-  itemsPerPage: number
+  totalPages: number
+  currentPage: number
+  onPageChange: (page: number) => void
 }
 
 interface PageClickEvent {
   selected: number
 }
 
-const ProfileTable = ({ items = [] }: ProfileTableProps) => {
+const ProfileTable = ({
+  items = [],
+  totalPages,
+  currentPage,
+  onPageChange,
+}: ProfileTableProps) => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
 
@@ -44,10 +43,12 @@ const ProfileTable = ({ items = [] }: ProfileTableProps) => {
       })
   }
 
-  function Items({ currentItems }: ItemsProps) {
-    console.log(currentItems)
+  const handlePageClick = (event: PageClickEvent) => {
+    onPageChange(event.selected + 1) // ReactPaginate uses 0-based indexing
+  }
 
-    return (
+  return (
+    <>
       <table>
         <thead>
           <tr>
@@ -60,68 +61,42 @@ const ProfileTable = ({ items = [] }: ProfileTableProps) => {
           </tr>
         </thead>
         <tbody>
-          {currentItems &&
-            currentItems.map((i) => (
-              <tr key={i.id}>
-                <td>{i.created_at.toString()}</td>
-                <td>
-                  <PersonIcon /> &nbsp;
-                  {i.user_name}
-                </td>
-                <td id={styles.fileList}>{i.file_names.join(',')}</td>
-                <td id={styles.passOption}>{i.opt_passes.join(',')}</td>
-                <td id={styles.llvm_version}>{i.llvm_version}</td>
-                <td>
-                  <button className={buttons.mini} onClick={() => showGraph(i)}>
-                    start
-                  </button>
-                </td>
-              </tr>
-            ))}
+          {items.map((i) => (
+            <tr key={i.id}>
+              <td>{i.created_at.toString()}</td>
+              <td>
+                <PersonIcon /> &nbsp;
+                {i.user_name}
+              </td>
+              <td id={styles.fileList}>{i.file_names.join(',')}</td>
+              <td id={styles.passOption}>{i.opt_passes.join(',')}</td>
+              <td id={styles.llvm_version}>{i.llvm_version}</td>
+              <td>
+                <button className={buttons.mini} onClick={() => showGraph(i)}>
+                  start
+                </button>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
-    )
-  }
 
-  function PaginatedItems({ itemsPerPage }: PaginatedItemsProps) {
-    const [currentItems, setCurrentItems] = useState<
-      OptimizationRecord[] | null
-    >(null)
-    const [pageCount, setPageCount] = useState(0)
-    const [itemOffset, setItemOffset] = useState(0)
-
-    useEffect(() => {
-      if (items) {
-        const endOffset = itemOffset + itemsPerPage
-        setCurrentItems(items.slice(itemOffset, endOffset))
-        setPageCount(Math.ceil(items.length / itemsPerPage))
-      }
-    }, [itemOffset, itemsPerPage, items])
-
-    const handlePageClick = (event: PageClickEvent) => {
-      const newOffset = (event.selected * itemsPerPage) % items.length
-      setItemOffset(newOffset)
-    }
-
-    return (
-      <>
-        <Items currentItems={currentItems} />
+      {totalPages > 1 && (
         <ReactPaginate
           className={pagination.pagination}
           breakLabel="..."
           nextLabel=">"
           onPageChange={handlePageClick}
           pageRangeDisplayed={10}
-          pageCount={pageCount}
+          pageCount={totalPages}
           previousLabel="<"
           renderOnZeroPageCount={() => null}
           activeClassName={pagination.active}
+          forcePage={currentPage - 1} // ReactPaginate uses 0-based indexing
         />
-      </>
-    )
-  }
-
-  return <PaginatedItems itemsPerPage={10} />
+      )}
+    </>
+  )
 }
 
 export default ProfileTable
