@@ -6,7 +6,7 @@ import { getJsonData } from '@/api/http-get'
 
 const Profile = () => {
   const [userName, setUserName] = useState<string>('')
-  const [items, setItems] = useState<any | undefined>(undefined)
+  const [items, setItems] = useState<Array<any> | undefined>(undefined)
 
   useEffect(() => {
     getJsonData('allprofile')

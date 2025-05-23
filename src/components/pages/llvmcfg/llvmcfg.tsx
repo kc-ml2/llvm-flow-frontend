@@ -10,14 +10,6 @@ import FileSaver from 'file-saver'
 import { UploadFile } from '@mui/icons-material'
 import { postFormData } from '@/api/http-post'
 import { setGraphData } from '@/redux/features/graph/graphSlice'
-import WarningErrorAlert from '../upload/warningErrorAlert'
-
-interface LayoutFlowProps {
-  llvmJson: any
-  llvmJson_compare: any
-  llvmOutput: any
-  title: string
-}
 
 function LLVMcfg() {
   const {
@@ -39,19 +31,6 @@ function LLVMcfg() {
   const [errorMessage, setErrorMessage] = useState<string>('')
 
   const dispatch = useAppDispatch()
-
-  // const LayoutFlow = React.lazy(
-  //   () => import('@/components/modules/llvmcfg/LayoutFlow'),
-  // )
-  // const LayoutFlow2 = React.lazy(
-  //   () => import('@/components/modules/llvmcfg/LayoutFlow2'),
-  // )
-  // const LayoutFlowFull = React.lazy(
-  //   () => import('@/components/modules/llvmcfg/LayoutFlowFull'),
-  // )
-  // const LayoutFlowFull2 = React.lazy(
-  //   () => import('@/components/modules/llvmcfg/LayoutFlowFull2'),
-  // )
 
   const LayoutFlowFactory = React.lazy(
     () => import('@/components/modules/llvmcfg/LayoutFlowFactory'),

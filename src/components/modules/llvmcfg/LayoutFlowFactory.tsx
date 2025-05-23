@@ -1,10 +1,10 @@
-import type { BaseLayoutFlowProps } from './BaseLayoutFlow'
 import BaseLayoutFlow from './BaseLayoutFlow'
+import { GraphJSON, GraphNode, GraphEdge } from '@/types/graph'
 
 interface LayoutFlowFactoryProps {
-  llvmJson: any
-  llvmJson_compare: any
-  llvmOutput: any
+  llvmJson: GraphJSON
+  llvmJson_compare: GraphJSON
+  llvmOutput?: string[]
   title: string
   variant: 'simpleSmall' | 'detailLarge'
 }
