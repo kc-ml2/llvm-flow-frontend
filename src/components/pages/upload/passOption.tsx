@@ -35,7 +35,13 @@ const PassOption = ({ setPass_Props }: PassOptionProps) => {
     const text = e.target.textContent
     const spanText = e.target.querySelector('span')?.textContent || ''
     const plainText = text.replace(spanText, '')
-    setPass_Props((prev) => prev + ' ' + plainText)
+    setPass_Props((prev) => {
+      if (prev) {
+        return prev + ',' + plainText
+      } else {
+        return plainText
+      }
+    })
   }
 
   const analysisPasses = Object.values(passes.analysis)

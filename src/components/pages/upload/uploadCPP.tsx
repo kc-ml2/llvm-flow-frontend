@@ -13,9 +13,10 @@ import WarningErrorAlert from './warningErrorAlert'
 import { AxiosError } from 'axios'
 
 interface FormData {
-  content: FileList
-  transformpass: string
-  profileLabel: string
+  files: FileList
+  opt_passes: string
+  user_name: string
+  llvm_version: string
 }
 
 interface ApiError {
@@ -33,7 +34,6 @@ function Upload() {
   const [openWarning, setOpenWarning] = useState(false)
   const [openError, setOpenError] = useState(false)
   const { nickname } = useAppSelector((state) => state.auth)
-  const [inputName, setInputName] = useState<string | undefined>(nickname)
   const [errorMessage, setErrorMessage] = useState<string>('')
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -43,6 +43,7 @@ function Upload() {
     const profileLabel = (form[0] as HTMLInputElement).value
     const content = (form[1] as HTMLInputElement).files
     const transformpass = (form[2] as HTMLInputElement).value
+    const llvm_version = (form[3] as HTMLSelectElement).value
 
     if (
       !content ||
@@ -54,12 +55,13 @@ function Upload() {
     } else {
       const data = new FormData()
       for (let i = 0; i < content.length; i++) {
-        data.append('content', content[i])
+        data.append('files', content[i])
       }
-      data.append('transformpass', transformpass)
-      data.append('profileLabel', profileLabel)
+      data.append('opt_passes', transformpass)
+      data.append('user_name', profileLabel)
+      data.append('llvm_version', llvm_version)
 
-      postFormData(data, 'uploadCPP')
+      postFormData(data, 'upload/CPP')
         .then((response) => {
           dispatch(setGraphData(response.data))
           localStorage.setItem('nickname', JSON.stringify(profileLabel))
@@ -104,7 +106,7 @@ function Upload() {
             type="text"
             name="profileLabel"
             id="input-text"
-            defaultValue={inputName}
+            defaultValue={nickname}
           />
         </div>
         <div className={styles.file}>
@@ -122,13 +124,25 @@ function Upload() {
           <input
             type="text"
             name="transformpass"
-            placeholder="ex) -simplifycfg -inline"
+            placeholder="ex) -passes=simplifycfg,inline"
             id="input-text"
             onChange={(e: ChangeEvent<HTMLInputElement>) => {
               setPass(e.target.value)
             }}
             value={pass}
           />
+        </div>
+        <div className={styles.llvm_version}>
+          <label htmlFor="llvm_version">LLVM Version</label>
+          <select name="llvm_version" id="llvm_version">
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+          </select>
         </div>
 
         <WarningErrorAlert
@@ -142,7 +156,7 @@ function Upload() {
         <div className={styles.cmd}>
           <h5>clang 10, llvm 10</h5>
           <p>
-            opt beforeg.ll -S <i>{pass}</i> -o afterg.ll
+            opt beforeg.ll -S -passes=<i>{pass}</i> -o afterg.ll
           </p>
         </div>
 

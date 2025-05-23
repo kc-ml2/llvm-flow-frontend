@@ -1,46 +1,37 @@
-import { useEffect, useState } from 'react'
-import { useAppSelector, useAppDispatch } from '@/redux/hook'
+import { useAppDispatch } from '@/redux/hook'
 import { useNavigate } from 'react-router-dom'
 import { setGraphData } from '@/redux/features/graph/graphSlice'
 import styles from './profile.module.scss'
 import pagination from './pagination.module.scss'
 import buttons from '@/styles/Button.module.scss'
 import ReactPaginate from 'react-paginate'
-import DeleteModal from '@/components/pages/profile/DeleteModal'
-import { setIsDeleteOpenTrue } from '@/redux/features/modal/deleteModalSlice'
 import PersonIcon from '@mui/icons-material/Person'
 import { postFormData } from '@/api/http-post'
+import { OptimizationRecord } from '@/types/optimization'
 
 interface ProfileTableProps {
-  items: Array<[string, number, string, string]> | undefined
-}
-
-interface ItemsProps {
-  currentItems: Array<[string, number, string, string]> | null
-}
-
-interface PaginatedItemsProps {
-  itemsPerPage: number
+  items: OptimizationRecord[]
+  totalPages: number
+  currentPage: number
+  onPageChange: (page: number) => void
 }
 
 interface PageClickEvent {
   selected: number
 }
 
-const ProfileTable = ({ items = [] }: ProfileTableProps) => {
-  // const [currentID, setCurrentID] = useState<number>()
-  // const [currentFolder, setCurrentFolder] = useState<string>('')
-  // const [currentDate, setCurrentDate] = useState<string>('')
-  // const [currentFile, setCurrentFile] = useState<string>('')
-  // const [currentOption, setCurrentOption] = useState<string>('')
-
+const ProfileTable = ({
+  items = [],
+  totalPages,
+  currentPage,
+  onPageChange,
+}: ProfileTableProps) => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
 
-  const showGraph = (i: [string, number, string, string]) => {
+  const showGraph = (i: { id: string }) => {
     const payload = new FormData()
-    payload.append('path', i[2].substring(0, i[2].indexOf('/')))
-    payload.append('passOption', i[0])
+    payload.append('optimization_record_id', i.id)
 
     postFormData(payload, 'show')
       .then((response) => {
@@ -52,22 +43,12 @@ const ProfileTable = ({ items = [] }: ProfileTableProps) => {
       })
   }
 
-  const convertDate = (date: string) => {
-    return (
-      date.slice(0, 4) +
-      '.' +
-      date.slice(4, 6) +
-      '.' +
-      date.slice(6, 8) +
-      '/' +
-      date.slice(9, 11) +
-      ':' +
-      date.slice(11, 13)
-    )
+  const handlePageClick = (event: PageClickEvent) => {
+    onPageChange(event.selected + 1) // ReactPaginate uses 0-based indexing
   }
 
-  function Items({ currentItems }: ItemsProps) {
-    return (
+  return (
+    <>
       <table>
         <thead>
           <tr>
@@ -75,99 +56,47 @@ const ProfileTable = ({ items = [] }: ProfileTableProps) => {
             <td>user name</td>
             <td>file</td>
             <td>LLVM's passes</td>
+            <td>LLVM's version</td>
             <td>show graph</td>
-            {/* <td>delete</td> */}
           </tr>
         </thead>
         <tbody>
-          {currentItems &&
-            currentItems.map((i: [string, number, string, string]) => (
-              <tr key={i[1]}>
-                <td>{convertDate(i[2].substring(0, i[2].indexOf('/')))}</td>
-                <td>
-                  <PersonIcon /> &nbsp;
-                  {i[3]}
-                </td>
-                <td id={styles.fileList}>
-                  {i[2].substring(i[2].indexOf('/') + 1)}
-                </td>
-                <td id={styles.passOption}>{i[0]}</td>
-                <td>
-                  <button className={buttons.mini} onClick={() => showGraph(i)}>
-                    start
-                  </button>
-                </td>
-                {/* <td>
-                  <button
-                    className={buttons.mini_gray}
-                    onClick={() => {
-                      dispatch(setIsDeleteOpenTrue())
-                      setCurrentID(i[1]),
-                        setCurrentDate(
-                          convertDate(i[2].substring(0, i[2].indexOf('/'))),
-                        ),
-                        setCurrentFile(i[2].substring(i[2].indexOf('/') + 1)),
-                        setCurrentOption(i[0]),
-                        setCurrentFolder(i[2].substring(0, i[2].indexOf('/')))
-                    }}
-                  >
-                    delete
-                  </button>
-
-                  <DeleteModal
-                    currentDate={currentDate}
-                    currentFile={currentFile}
-                    currentOption={currentOption}
-                    currentID={currentID}
-                    currentFolder={currentFolder}
-                  />
-                </td> */}
-              </tr>
-            ))}
+          {items.map((i) => (
+            <tr key={i.id}>
+              <td>{i.created_at.toString()}</td>
+              <td>
+                <PersonIcon /> &nbsp;
+                {i.user_name}
+              </td>
+              <td id={styles.fileList}>{i.file_names.join(',')}</td>
+              <td id={styles.passOption}>{i.opt_passes.join(',')}</td>
+              <td id={styles.llvm_version}>{i.llvm_version}</td>
+              <td>
+                <button className={buttons.mini} onClick={() => showGraph(i)}>
+                  start
+                </button>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
-    )
-  }
 
-  function PaginatedItems({ itemsPerPage }: PaginatedItemsProps) {
-    const [currentItems, setCurrentItems] = useState<Array<
-      [string, number, string, string]
-    > | null>(null)
-    const [pageCount, setPageCount] = useState(0)
-    const [itemOffset, setItemOffset] = useState(0)
-
-    useEffect(() => {
-      if (items) {
-        const endOffset = itemOffset + itemsPerPage
-        setCurrentItems(items.slice(itemOffset, endOffset))
-        setPageCount(Math.ceil(items.length / itemsPerPage))
-      }
-    }, [itemOffset, itemsPerPage, items])
-
-    const handlePageClick = (event: PageClickEvent) => {
-      const newOffset = (event.selected * itemsPerPage) % items.length
-      setItemOffset(newOffset)
-    }
-
-    return (
-      <>
-        <Items currentItems={currentItems} />
+      {totalPages > 1 && (
         <ReactPaginate
           className={pagination.pagination}
           breakLabel="..."
           nextLabel=">"
           onPageChange={handlePageClick}
           pageRangeDisplayed={10}
-          pageCount={pageCount}
+          pageCount={totalPages}
           previousLabel="<"
           renderOnZeroPageCount={() => null}
           activeClassName={pagination.active}
+          forcePage={currentPage - 1} // ReactPaginate uses 0-based indexing
         />
-      </>
-    )
-  }
-
-  return <PaginatedItems itemsPerPage={10} />
+      )}
+    </>
+  )
 }
 
 export default ProfileTable
