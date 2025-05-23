@@ -10,7 +10,7 @@ export const getFormData = (url: string) => {
 
 export const getJsonData = (
   url: string,
-  params?: Record<string, string | number | boolean>,
+  params?: Record<string, string | number | boolean | undefined>,
 ) => {
   const headers = {
     'Content-type': 'application/json',
