@@ -103,7 +103,11 @@ const BaseLayoutFlow = ({
   }
   checkSameBlock(blockID, llvmOutput, node)
 
-  function checkSameEntryBlock(json: GraphNode[], json_compare: GraphNode[], data: ExtendedNode[]) {
+  function checkSameEntryBlock(
+    json: GraphNode[],
+    json_compare: GraphNode[],
+    data: ExtendedNode[],
+  ) {
     if (json[0].label === json_compare[0].label) {
       data[0].isSame = 'yes'
     }
@@ -111,9 +115,14 @@ const BaseLayoutFlow = ({
   checkSameEntryBlock(llvmJson.objects, llvmJson_compare.objects, node)
 
   // step*) edge tailport와 node 정보 연결하기
-  function connectTailport(tailport: string | undefined, tail: number): string | null {
+  function connectTailport(
+    tailport: string | undefined,
+    tail: number,
+  ): string | null {
     if (tailport) {
-      const tailLabel = node.find((node: ExtendedNode) => node._gvid === tail)?.label
+      const tailLabel = node.find(
+        (node: ExtendedNode) => node._gvid === tail,
+      )?.label
       if (!tailLabel) return null
       const text = tailLabel.substring(tailLabel.indexOf(tailport) + 3)
       if (text.includes('|')) {
@@ -127,7 +136,10 @@ const BaseLayoutFlow = ({
   }
 
   // setp**) 위에서 아래로 target이 되는 경우, targetHandleID 설정
-  function setTargetHandleID(tail: number, head: number): 'a' | 'b' | undefined {
+  function setTargetHandleID(
+    tail: number,
+    head: number,
+  ): 'a' | 'b' | undefined {
     const tailNode = node.find((node: ExtendedNode) => node._gvid === tail)
     const headNode = node.find((node: ExtendedNode) => node._gvid === head)
     if (!tailNode || !headNode) return undefined
@@ -151,37 +163,42 @@ const BaseLayoutFlow = ({
   }
 
   // step4) node, edge 정의
-  const initialNode: Node<FlowNodeData>[] = node.map(({ _gvid, name, label, isSame }: ExtendedNode) => ({
-    id: _gvid.toString(),
-    data: {
-      type: title,
-      label:
-        layoutConfig.labelType === 'simple'
-          ? [label.replace(/[{}]/g, '').split(/\\l/)[0]]
-          : label.replace(/[{}]/g, '').split(/\\l/),
-      name: name.replace('Node', ''),
+  const initialNode: Node<FlowNodeData>[] = node.map(
+    ({ _gvid, name, label, isSame }: ExtendedNode) => ({
       id: _gvid.toString(),
-      isSame: isSame,
-      block_id: title + label.replace(/[{}]/g, '').split(/\\l/)[0].slice(0, -1),
-    },
-    type: 'selectorNode',
-    position: position,
-  }))
+      data: {
+        type: title,
+        label:
+          layoutConfig.labelType === 'simple'
+            ? [label.replace(/[{}]/g, '').split(/\\l/)[0]]
+            : label.replace(/[{}]/g, '').split(/\\l/),
+        name: name.replace('Node', ''),
+        id: _gvid.toString(),
+        isSame: isSame,
+        block_id:
+          title + label.replace(/[{}]/g, '').split(/\\l/)[0].slice(0, -1),
+      },
+      type: 'selectorNode',
+      position: position,
+    }),
+  )
 
-  const initialEdge = edge.map(({ _gvid, tail, head, tailport }: GraphEdge) => ({
-    id: _gvid.toString(),
-    source: tail.toString(),
-    target: head.toString(),
-    type: 'smoothstep',
-    animated: true,
-    targetHandle: setTargetHandleID(tail, head),
-    sourceHandle: setTargetHandleID(tail, head),
-    label: connectTailport(tailport, tail),
-    labelStyle: { fontWeight: 600, fontSize: '1rem' },
-    markerEnd: {
-      type: MarkerType.ArrowClosed,
-    },
-  }))
+  const initialEdge = edge.map(
+    ({ _gvid, tail, head, tailport }: GraphEdge) => ({
+      id: _gvid.toString(),
+      source: tail.toString(),
+      target: head.toString(),
+      type: 'smoothstep',
+      animated: true,
+      targetHandle: setTargetHandleID(tail, head),
+      sourceHandle: setTargetHandleID(tail, head),
+      label: connectTailport(tailport, tail),
+      labelStyle: { fontWeight: 600, fontSize: '1rem' },
+      markerEnd: {
+        type: MarkerType.ArrowClosed,
+      },
+    }),
+  )
 
   // step5) react-flow 설정
   // dagre 레이아웃 적용

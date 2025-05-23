@@ -130,7 +130,9 @@ const ProfileTable = ({ items = [] }: ProfileTableProps) => {
   }
 
   function PaginatedItems({ itemsPerPage }: PaginatedItemsProps) {
-    const [currentItems, setCurrentItems] = useState<Array<[string, number, string, string]> | null>(null)
+    const [currentItems, setCurrentItems] = useState<Array<
+      [string, number, string, string]
+    > | null>(null)
     const [pageCount, setPageCount] = useState(0)
     const [itemOffset, setItemOffset] = useState(0)
 
