@@ -11,27 +11,21 @@ const Profile = () => {
   const [totalPages, setTotalPages] = useState<number>(1)
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [loading, setLoading] = useState<boolean>(false)
+  const [currentSearchUser, setCurrentSearchUser] = useState<string>('')
 
   const fetchData = async (page: number, searchUser?: string) => {
     setLoading(true)
     try {
-      if (searchUser) {
-        // Search specific user - assuming this endpoint also supports pagination
-        const response = await getJsonData(`profile?Identifier=${searchUser}`)
-        setItems(response.data.data)
-        setTotalPages(1) // Assuming search returns all results in one page
-        setCurrentPage(1)
-      } else {
-        // Get paginated optimization history
-        const response = await getJsonData('optimization-records', {
-          page,
-          page_size: 10,
-          desc: true,
-        })
-        setItems(response.data.data)
-        setTotalPages(Math.ceil(response.data.total_count / 10))
-        setCurrentPage(page)
-      }
+      // Get paginated optimization history
+      const response = await getJsonData('optimization-records', {
+        page,
+        page_size: 10,
+        desc: true,
+        user_name_filter: searchUser,
+      })
+      setItems(response.data.data)
+      setTotalPages(Math.ceil(response.data.total_count / 10))
+      setCurrentPage(page)
     } catch (err) {
       console.log(err)
     } finally {
@@ -44,14 +38,12 @@ const Profile = () => {
   }, [])
 
   const handleSubmit = () => {
+    setCurrentSearchUser(userName)
     fetchData(1, userName)
   }
 
   const handlePageChange = (page: number) => {
-    if (!userName) {
-      // Only use server pagination for general history, not for user search
-      fetchData(page)
-    }
+    fetchData(page, currentSearchUser || undefined)
   }
 
   return (
