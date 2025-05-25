@@ -137,6 +137,33 @@
     }
   }
 
+  .llvm_version {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    padding-bottom: 1rem;
+
+    label {
+      font-weight: 600;
+      grid-row: 1;
+      grid-column: 1;
+      color: white;
+      background-color: $dark;
+      border-radius: 3px;
+      width: 90%;
+      padding: 4px;
+      padding-left: 10px;
+    }
+    select {
+      border: 1px solid $dark;
+      border-radius: 5px;
+      color: $dark;
+      padding: 0.3rem;
+      width: 100%;
+      grid-row: 1;
+      grid-column: 2;
+    }
+  }
+
   .cmd {
     margin-top: 1rem;
     margin-bottom: 2rem;
