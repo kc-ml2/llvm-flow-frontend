@@ -4,14 +4,14 @@ import { useNavigate } from 'react-router-dom'
 import { setGraphData } from '@/redux/features/graph/graphSlice'
 import styles from './upload.module.scss'
 import buttons from '@/styles/Button.module.scss'
-import CloseIcon from '@mui/icons-material/Close'
 import NearMeIcon from '@mui/icons-material/NearMe'
-import { NavLink } from 'react-router-dom'
 import { setAuthData } from '@/redux/features/auth/authSlice'
 import PassOption from './passOption'
 import { postFormData } from '@/api/http-post'
 import WarningErrorAlert from './warningErrorAlert'
 import { AxiosError } from 'axios'
+
+type FileType = 'C' | 'CPP' | 'LL'
 
 interface FormData {
   files: FileList
@@ -20,23 +20,42 @@ interface FormData {
   llvm_version: string
 }
 
-interface ApiError {
-  response?: {
-    data?: {
-      error?: string
-    }
-  }
-}
-
 function Upload() {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
+  const [fileType, setFileType] = useState<FileType>('C')
   const [pass, setPass] = useState<string>('')
   const [file, setFile] = useState<string>('')
   const [openWarning, setOpenWarning] = useState(false)
   const [openError, setOpenError] = useState(false)
   const { nickname } = useAppSelector((state) => state.auth)
   const [errorMessage, setErrorMessage] = useState<string>('')
+
+  const getFileAccept = () => {
+    switch (fileType) {
+      case 'C':
+        return '.h, .c'
+      case 'CPP':
+        return '.h, .cpp'
+      case 'LL':
+        return '.ll'
+      default:
+        return '.h, .c'
+    }
+  }
+
+  const getFileLabel = () => {
+    switch (fileType) {
+      case 'C':
+        return '.c File Upload'
+      case 'CPP':
+        return '.cpp File Upload'
+      case 'LL':
+        return '.ll File Upload'
+      default:
+        return '.c File Upload'
+    }
+  }
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -63,7 +82,7 @@ function Upload() {
       data.append('user_name', profileLabel)
       data.append('llvm_version', llvm_version)
 
-      postFormData(data, 'upload/LL')
+      postFormData(data, `upload/${fileType}`)
         .then((response) => {
           dispatch(setGraphData(response.data))
           localStorage.setItem('nickname', JSON.stringify(profileLabel))
@@ -91,62 +110,74 @@ function Upload() {
         </a>
       </div>
       <div className={styles.navlink}>
-        <NavLink to="/uploadC" id={styles.deactive}>
+        <button 
+          onClick={() => setFileType('C')} 
+          id={fileType === 'C' ? styles.active : styles.deactive}
+        >
           with .c file
-        </NavLink>
-        <NavLink to="/uploadCPP" id={styles.deactive}>
+        </button>
+        <button 
+          onClick={() => setFileType('CPP')} 
+          id={fileType === 'CPP' ? styles.active : styles.deactive}
+        >
           with .cpp file
-        </NavLink>
-        <NavLink to="/uploadLL" id={styles.active}>
+        </button>
+        <button 
+          onClick={() => setFileType('LL')} 
+          id={fileType === 'LL' ? styles.active : styles.deactive}
+        >
           with .ll file
-        </NavLink>
+        </button>
       </div>
-      <div className={styles.clang}>
-        <span>
-          ⚠️ <br></br>
-          LLVM-FLOW searches the same basic blocks between IR modules using
-          <b> debug information.</b> <br></br>
-          So, when compiling with clang,{' '}
-          <b>please include the following commands.</b>
-        </span>
-        <br></br>
-        <span id={styles.clangex}>
-          <i>
-            clang <b>-O0 -g -Xclang -disable-O0-optnone</b> -emit-llvm -S
-          </i>
-        </span>
-      </div>
+
+      {fileType === 'LL' && (
+        <div className={styles.clang}>
+          <span>
+            ⚠️ <br></br>
+            LLVM-FLOW searches the same basic blocks between IR modules using
+            <b> debug information.</b> <br></br>
+            So, when compiling with clang,{' '}
+            <b>please include the following commands.</b>
+          </span>
+          <br></br>
+          <span id={styles.clangex}>
+            <i>
+              clang <b>-O0 -g -Xclang -disable-O0-optnone</b> -emit-llvm -S
+            </i>
+          </span>
+        </div>
+      )}
 
       <form onSubmit={handleSubmit} method="post" encType="multipart/form-data">
         <div className={styles.userName}>
-          <label htmlFor="input-text">User Name</label>
+          <label htmlFor="userName">User Name</label>
           <input
             type="text"
             name="profileLabel"
-            id="input-text"
+            id="userName"
             defaultValue={nickname}
           />
         </div>
         <div className={styles.file}>
-          <label htmlFor="input-file">.ll File Upload</label>
+          <label htmlFor="input-file">{getFileLabel()}</label>
           <input
             type="file"
             name="content"
             multiple
             id="intput-file"
-            accept=".ll"
+            accept={getFileAccept()}
             onChange={(e: ChangeEvent<HTMLInputElement>) => {
               setFile(e.target.value)
             }}
           />
         </div>
         <div className={styles.pass}>
-          <label htmlFor="input-text">LLVM's passes</label>
+          <label htmlFor="pass">LLVM's passes</label>
           <input
             type="text"
             name="transformpass"
             placeholder="ex) -passes=simplifycfg,inline"
-            id="input-text"
+            id="pass"
             onChange={(e: ChangeEvent<HTMLInputElement>) => {
               setPass(e.target.value)
             }}
@@ -175,8 +206,9 @@ function Upload() {
         />
 
         <div className={styles.cmd}>
+          <h5>llvm 20</h5>
           <p>
-            opt {file} -S -passes=<i>{pass}</i> -o afterg.ll
+            opt {fileType === 'LL' ? file : 'beforeg.ll'} -S -passes=<i>{pass}</i> -o afterg.ll
           </p>
         </div>
 

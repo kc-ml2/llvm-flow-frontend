@@ -28,13 +28,14 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    a {
+    button {
       margin: 1rem;
       text-decoration: none;
       padding-left: 1rem;
       padding-top: 0.5rem;
       padding-right: 1rem;
       padding-bottom: 0.5rem;
+      background-color: white;
     }
 
     #active {
