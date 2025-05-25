@@ -110,20 +110,20 @@ function Upload() {
         </a>
       </div>
       <div className={styles.navlink}>
-        <button 
-          onClick={() => setFileType('C')} 
+        <button
+          onClick={() => setFileType('C')}
           id={fileType === 'C' ? styles.active : styles.deactive}
         >
           with .c file
         </button>
-        <button 
-          onClick={() => setFileType('CPP')} 
+        <button
+          onClick={() => setFileType('CPP')}
           id={fileType === 'CPP' ? styles.active : styles.deactive}
         >
           with .cpp file
         </button>
-        <button 
-          onClick={() => setFileType('LL')} 
+        <button
+          onClick={() => setFileType('LL')}
           id={fileType === 'LL' ? styles.active : styles.deactive}
         >
           with .ll file
@@ -208,7 +208,8 @@ function Upload() {
         <div className={styles.cmd}>
           <h5>llvm 20</h5>
           <p>
-            opt {fileType === 'LL' ? file : 'beforeg.ll'} -S -passes=<i>{pass}</i> -o afterg.ll
+            opt {fileType === 'LL' ? file : 'beforeg.ll'} -S -passes=
+            <i>{pass}</i> -o afterg.ll
           </p>
         </div>
 
