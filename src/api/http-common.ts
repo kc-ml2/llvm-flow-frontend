@@ -14,7 +14,9 @@ interface ApiResponse<T = unknown> {
   data: T
 }
 
-export const serializeResponse = <T = unknown>(response: Response): Promise<ApiResponse<T>> => {
+export const serializeResponse = <T = unknown>(
+  response: Response,
+): Promise<ApiResponse<T>> => {
   return response
     .text()
     .then((text: string) => {
