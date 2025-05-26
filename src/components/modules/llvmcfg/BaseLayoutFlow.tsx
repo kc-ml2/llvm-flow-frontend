@@ -51,6 +51,7 @@ interface FlowNodeData {
   id: string
   isSame: 'yes' | 'no'
   block_id: string
+  layoutConfig: LayoutConfig
 }
 
 type FlowNode = Node<FlowNodeData>
@@ -168,15 +169,13 @@ const BaseLayoutFlow = ({
       id: _gvid.toString(),
       data: {
         type: title,
-        label:
-          layoutConfig.labelType === 'simple'
-            ? [label.replace(/[{}]/g, '').split(/\\l/)[0]]
-            : label.replace(/[{}]/g, '').split(/\\l/),
+        label: label.replace(/[{}]/g, '').split(/\\l/),
         name: name.replace('Node', ''),
         id: _gvid.toString(),
         isSame: isSame,
         block_id:
           title + label.replace(/[{}]/g, '').split(/\\l/)[0].slice(0, -1),
+        layoutConfig: layoutConfig,
       },
       type: 'selectorNode',
       position: position,
