@@ -94,7 +94,7 @@ const NavBar = () => {
               </button>
             </NavItem>
             <NavItem className={styles.items}>
-              <NavLink to="/uploadC">
+              <NavLink to="/upload">
                 <button className={buttons.default}>Start</button>
               </NavLink>
             </NavItem>

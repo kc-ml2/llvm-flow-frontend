@@ -66,7 +66,7 @@ function Example() {
         </h4>
         <span>
           Simply do the following <b>3</b> things on{' '}
-          <a href="https://llvmflow.kc-ml2.com/uploadC" target="_blank">
+          <a href="https://llvmflow.kc-ml2.com/upload" target="_blank">
             start page
           </a>{' '}
           .

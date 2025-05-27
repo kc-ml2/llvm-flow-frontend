@@ -34,7 +34,7 @@ function Main() {
   }
 
   const handleStart = () => {
-    navigate('/uploadC')
+    navigate('/upload')
   }
 
   return (
