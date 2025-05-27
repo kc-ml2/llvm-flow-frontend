@@ -8,7 +8,7 @@ import { PersistGate } from 'redux-persist/integration/react'
 import { persistStore } from 'redux-persist'
 import './index.scss'
 
-let persistor = persistStore(store)
+const persistor = persistStore(store)
 
 const container = document.getElementById('root')
 const root = createRoot(container!)
