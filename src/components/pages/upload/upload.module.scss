@@ -127,7 +127,7 @@
     }
 
     i {
-      color: #68d391;
+      color: $highlight;
       font-style: normal;
     }
   }
@@ -144,7 +144,7 @@
 
     i {
       font-style: normal;
-      color: #68d391;
+      color: $highlight;
       background-color: #2d3748;
       padding: 0.2rem 0.4rem;
       font-size: 0.85rem;
