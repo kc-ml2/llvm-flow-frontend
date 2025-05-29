@@ -1,8 +1,8 @@
 /* eslint-disable camelcase */
-import React, { Suspense, useState, useEffect, useMemo } from 'react'
+import React, { Suspense } from 'react'
 import SwitchSelector from '@/components/pages/llvmcfg/SwitchSelector'
 import SlidingGuide from './SlidingGuide'
-import { useAppSelector, useAppDispatch } from '@/redux/hook'
+import { useAppSelector } from '@/redux/hook'
 import styles from './llvmcfg.module.scss'
 import buttons from '@/styles/Button.module.scss'
 import Loading from '@/components/modules/loading/Loading'
