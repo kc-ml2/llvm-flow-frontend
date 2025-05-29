@@ -57,8 +57,8 @@
 }
 
 .default_fill {
-  background-color: #f2f0f5;
-  border: 2px solid #f2f0f5;
+  background-color: $secondary;
+  border: 2px solid $secondary;
   border-radius: 10px;
   padding-top: $btn-padding-y;
   padding-bottom: $btn-padding-y;
