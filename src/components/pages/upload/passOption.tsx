@@ -31,10 +31,11 @@ const PassOption = ({ setPass_Props }: PassOptionProps) => {
     }
   }
 
-  const handleSetPass = (e: any) => {
-    const text = e.target.textContent
-    const spanText = e.target.querySelector('span')?.textContent || ''
-    const plainText = text.replace(spanText, '')
+  const handleSetPass = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const target = e.target as HTMLButtonElement
+    const text = target.textContent
+    const spanText = target.querySelector('span')?.textContent || ''
+    const plainText = text?.replace(spanText, '') || ''
     setPass_Props((prev) => {
       if (prev) {
         return prev + ',' + plainText
@@ -52,7 +53,7 @@ const PassOption = ({ setPass_Props }: PassOptionProps) => {
       {/* analysis */}
       <section id={styles.title}>
         <button onClick={handleDisplayA}>
-          LLVM’s <i>Analysis</i> Passes <ExpandMoreIcon />
+          LLVM's <i>Analysis</i> Passes <ExpandMoreIcon />
         </button>
       </section>
       <section id={styles.pass_a}>
@@ -67,7 +68,7 @@ const PassOption = ({ setPass_Props }: PassOptionProps) => {
       {/* transform */}
       <section id={styles.title}>
         <button onClick={handleDisplayT}>
-          LLVM’s <i>Transform</i> Passes <ExpandMoreIcon />
+          LLVM's <i>Transform</i> Passes <ExpandMoreIcon />
         </button>
       </section>
       <section id={styles.pass_t}>
