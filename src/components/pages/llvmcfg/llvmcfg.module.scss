@@ -64,3 +64,39 @@
     }
   }
 }
+
+@media (max-width: 1400px) {
+  .llvmcfg {
+    width: 98%;
+    margin: 0 1%;
+  }
+}
+
+@media (max-width: 900px) {
+  .llvmcfg {
+    .row {
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 0.5rem;
+      
+      .mode {
+        margin-left: 0;
+        align-self: stretch;
+      }
+    }
+    
+    .layout {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+    
+    .cfgName {
+      padding: 0.75rem;
+      
+      button {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.6rem;
+      }
+    }
+  }
+}
