@@ -4,78 +4,200 @@
   max-width: 1400px;
   margin: 0 auto;
   color: $dark;
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
+  width: 95%;
+  
   #title {
-    border: 1px solid $purple;
-    padding: 1em;
-    border-radius: 10px;
-    margin: 1rem;
+    background-color: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e9ecef;
 
     h3 {
-      font-size: 2rem;
-      font-weight: 600;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: $dark;
     }
+    
     span {
       font-size: 1rem;
+      line-height: 1.6;
+      color: #6c757d;
 
       i {
         font-style: normal;
-        color: $purple;
+        color: $highlight;
+        font-weight: 600;
       }
     }
   }
 
   #basic {
-    border: 1px solid $gray;
-    padding: 1em;
-    border-radius: 10px;
-    margin: 1rem;
-    line-height: 200%;
-    font-size: 1rem;
+    background-color: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e9ecef;
+    line-height: 1.6;
+    font-size: 0.95rem;
+
+    h4 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: $dark;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    span {
+      display: block;
+      margin-bottom: 1rem;
+      color: #495057;
+    }
 
     img {
       display: block;
-      margin-left: auto;
-      margin-right: auto;
-      max-width: 800px;
-      margin-top: 1rem;
-      margin-bottom: 1rem;
-      width: 100%;
+      margin: 1rem auto;
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
     a {
-      // text-decoration: none;
-      color: $purple;
+      color: $highlight;
       font-weight: 600;
-    }
-
-    h4 {
-      font-size: 1.2rem;
-      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.2s ease;
+      
+      &:hover {
+        color: darken($highlight, 15%);
+        text-decoration: underline;
+      }
     }
 
     code {
-      font-size: 0.8rem !important;
-      line-height: 1.1rem !important;
-      background-color: $light;
-      border-radius: 10px;
-      padding: 0.5rem;
+      font-size: 0.85rem;
+      background-color: #f8f9fa;
+      border: 1px solid #e9ecef;
+      border-radius: 6px;
+      padding: 0.4rem 0.6rem;
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+      color: #495057;
+      margin: 0.25rem 0;
+      width:100%;
     }
 
     button {
       display: block;
-      margin-left: auto;
-      margin-right: auto;
-      font-size: 0.8rem;
-      padding-left: 15px;
-      padding-right: 15px;
+      margin: 1.5rem auto 1rem;
+      font-size: 0.9rem;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+      
+      &:hover {
+        transform: translateY(-1px);
+      }
     }
 
     #submit {
-      color: $purple;
+      color: $highlight;
       text-align: center;
       font-weight: 600;
       padding: 1rem;
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      margin-top: 1rem;
+      border: 1px solid #e9ecef;
+    }
+  }
+  
+  // CodeBlock 스타일링
+  #codeblock {
+    margin: 1rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    
+    pre {
+      margin: 0;
+      padding: 1rem;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      overflow-x: auto;
+      white-space: pre;
+    }
+    
+    // react-code-blocks 라이브러리 스타일 강제 오버라이드
+    :global(*) {
+      pre {
+        white-space: pre-wrap !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        max-width: 100% !important;
+        width: auto !important;
+        font-size: 0.9rem !important;
+        line-height: 1.5 !important;
+        padding: 1.2rem !important;
+      }
+      
+      code {
+        white-space: pre-wrap !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+    }
+  }
+}
+
+@media (max-width: 1400px) {
+  .tutorial {
+    width: 98%;
+    margin: 0 1%;
+  }
+}
+
+@media (max-width: 900px) {
+  .tutorial {
+    #title {
+      padding: 1rem;
+      
+      h3 {
+        font-size: 1.5rem;
+      }
+      
+      span {
+        font-size: 0.9rem;
+      }
+    }
+    
+    #basic {
+      padding: 1rem;
+      
+      h4 {
+        font-size: 1.1rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+      }
+      
+      span {
+        font-size: 0.9rem;
+      }
+      
+      img {
+        margin: 0.75rem auto;
+      }
     }
   }
 }

@@ -42,14 +42,14 @@ function Example() {
           <Filter1Icon /> Prepare source code
         </h4>
         <span>
-          Here's an example of simple C source code.
-          <br></br>We'll compile and optimize this source code by{' '}
+          {/* Here's an example of simple C source code. */}
+          We'll compile and optimize this source code by{' '}
           <a href="https://llvm.org/" target="_blank">
             LLVM
           </a>
           , and compare the CFG before and after optimization.
         </span>
-        <br></br>
+        {/* <br></br>
         <br></br>
         <code>example.c</code>
         <CodeBlock
@@ -57,8 +57,9 @@ function Example() {
           language={'c'}
           showLineNumbers={false}
           theme={tomorrow}
-          id={styles.codeblock}
-        />
+          wrapLines={false}
+          codeBlock
+        /> */}
       </section>
       <section id={styles.basic}>
         <h4>
