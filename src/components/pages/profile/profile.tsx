@@ -60,15 +60,15 @@ const Profile = () => {
               setUserName(e.target.value)
             }}
           />
-        </div>
-        <div className={styles.submit}>
-          <button
-            onClick={handleSubmit}
-            className={buttons.default}
-            disabled={loading}
-          >
-            {loading ? 'Searching...' : 'Search'}
-          </button>
+          <div className={styles.submit}>
+            <button
+              onClick={handleSubmit}
+              className={buttons.default_fill}
+              disabled={loading}
+            >
+              {loading ? 'Searching...' : 'Search'}
+            </button>
+          </div>
         </div>
       </div>
       <div className={styles.list}>
