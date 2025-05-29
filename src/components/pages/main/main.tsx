@@ -12,9 +12,6 @@ import check from '@/images/check.png'
 import feature1 from '@/images/feature1.png'
 import feature2 from '@/images/feature2.png'
 import feature3 from '@/images/feature3.png'
-// import feature1_1 from '@/images/feature1_1.png'
-// import feature2_1 from '@/images/feature2_1.png'
-// import feature3_1 from '@/images/feature3_1.png'
 
 function Main() {
   const navigate = useNavigate()
