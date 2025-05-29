@@ -23,14 +23,6 @@ function LLVMcfg() {
   } = useAppSelector((state) => state.graph)
 
   const { isFull } = useAppSelector((state) => state.mode)
-  const { pathData } = useAppSelector((state) => state.path)
-
-  const [passAgain, setPassAgain] = useState('')
-  const [openWarning, setOpenWarning] = useState(false)
-  const [openError, setOpenError] = useState(false)
-  const [errorMessage, setErrorMessage] = useState<string>('')
-
-  const dispatch = useAppDispatch()
 
   const LayoutFlowFactory = React.lazy(
     () => import('@/components/modules/llvmcfg/LayoutFlowFactory'),
@@ -64,37 +56,6 @@ function LLVMcfg() {
     }
   }
 
-  const handlePassInput = useMemo(
-    () => (e: any) => {
-      setPassAgain(e.target.value)
-    },
-    [],
-  )
-
-  const handleSubmit = async (e: any) => {
-    e.preventDefault()
-
-    if (passAgain.length == 0) {
-      setOpenWarning(true)
-    } else {
-      const data = new FormData()
-      data.append('transformpass', passAgain)
-      if (pathData) {
-        data.append('filePath', pathData)
-      }
-
-      postFormData(data, 'showAgain')
-        .then((response: any) => {
-          dispatch(setGraphData(response.data))
-          console.log('hello')
-        })
-        .catch(function (err: any) {
-          setOpenError(true)
-          setErrorMessage(err.response.data.error)
-        })
-    }
-  }
-
   return (
     <section className={styles.llvmcfg}>
       <div className={styles.row}>
@@ -120,27 +81,6 @@ function LLVMcfg() {
         <button onClick={downloadAfterLLfile} className={buttons.download}>
           <UploadFile /> Download <i>after.ll</i>
         </button>
-        {/* <hr></hr>
-        <span>Change the LLVM's passes</span>
-        <form onSubmit={handleSubmit} className={styles.form}>
-          <input
-            type="text"
-            value={passAgain}
-            onChange={handlePassInput}
-            // placeholder={file_pass}
-          />
-          <button type="submit" className={buttons.default_semi}>
-            Submit
-          </button>
-        </form>
-        <br></br>
-        <WarningErrorAlert
-          errorMessage={errorMessage}
-          openError={openError}
-          openWarning={openWarning}
-          setOpenError={setOpenError}
-          setOpenWarning={setOpenWarning}
-        /> */}
       </div>
 
       {isFull && (
