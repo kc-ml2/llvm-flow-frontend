@@ -114,8 +114,8 @@ export default memo(({ data }: CustomNodeProps) => {
     : localFullMode   // simple 모드에서는 localFullMode가 true일 때 detail로
 
   // detail 모드일 때는 큰 크기, simple 모드일 때는 작은 크기
-  const nodeWidth = isDetailMode ? layoutConfig.nodeWidth : 45
-  const nodeHeight = isDetailMode ? layoutConfig.nodeHeight : 45
+  const nodeWidth = isDetailMode ? 350 : 45
+  const nodeHeight = isDetailMode ? 300 : 45
 
   return (
     <>
