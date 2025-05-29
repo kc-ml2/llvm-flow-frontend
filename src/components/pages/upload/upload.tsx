@@ -217,7 +217,7 @@ function Upload() {
           <input
             type="submit"
             value="submit"
-            className={buttons.default}
+            className={buttons.default_fill}
           ></input>
         </div>
       </form>
