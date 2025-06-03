@@ -29,6 +29,16 @@ const ProfileTable = ({
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
 
+  const formatDateTime = (date: Date) => {
+    const year = date.getFullYear()
+    const month = String(date.getMonth() + 1).padStart(2, '0')
+    const day = String(date.getDate()).padStart(2, '0')
+    const hours = String(date.getHours()).padStart(2, '0')
+    const minutes = String(date.getMinutes()).padStart(2, '0')
+    
+    return `${year}.${month}.${day} - ${hours}:${minutes}`
+  }
+
   const showGraph = (i: { id: string }) => {
     const payload = new FormData()
     payload.append('optimization_record_id', i.id)
@@ -63,7 +73,7 @@ const ProfileTable = ({
         <tbody>
           {items.map((i) => (
             <tr key={i.id}>
-              <td>{i.created_at.toString()}</td>
+              <td>{formatDateTime(new Date(i.created_at))}</td>
               <td>
                 <PersonIcon /> &nbsp;
                 {i.user_name}

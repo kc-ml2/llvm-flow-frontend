@@ -65,10 +65,16 @@
     img {
       display: block;
       margin: 1rem auto;
-      max-width: 100%;
+      max-width: 80%;
       height: auto;
       border-radius: 8px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      
+      // Specific sizing for tutorial images
+      &[src*="tutorial1"], &[src*="passClick"] {
+        max-width: 40%;
+        width: auto;
+      }
     }
 
     a {
