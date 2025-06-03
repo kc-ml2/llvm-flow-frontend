@@ -66,7 +66,7 @@ function Example() {
           <Filter2Icon /> Upload source code with pass option
         </h4>
         <span>
-          Simply do the following <b>3</b> things on{' '}
+          Simply do the following <b>4</b> things on{' '}
           <a href="https://llvmflow.kc-ml2.com/upload" target="_blank">
             start page
           </a>{' '}
@@ -80,6 +80,9 @@ function Example() {
           ,<code>.ll</code> only)
           <br></br>
           <b>3.</b> Fill in LLVM passes for optimization.
+          <br></br>
+          <b>4.</b> Please choose the version of LLVM to use for compilation. Versions from 14 to 20 are available.
+          <br></br>
           <br></br>
           <i>
             You can enter the pass manually, or click the pass box at the bottom
