@@ -118,7 +118,18 @@ function Example() {
           LLVM-FLOW can do !
         </span>
       </section>
-      <LLVMcfg />
+      
+      <div className={styles.continuePrompt}>
+        <div className={styles.promptContent}>
+          <span>🎯 Try the interactive demo below, then continue scrolling to learn how to access all your results!</span>
+          <SouthIcon className={styles.bounceArrow} />
+        </div>
+      </div>
+      
+      <div className={styles.llvmcfgWrapper}>
+        <LLVMcfg />
+      </div>
+      
       <section id={styles.basic}>
         <h4>
           <Filter4Icon /> Check all your results
