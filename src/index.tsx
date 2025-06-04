@@ -7,6 +7,9 @@ import { store } from './redux/store'
 import { PersistGate } from 'redux-persist/integration/react'
 import { persistStore } from 'redux-persist'
 import './index.scss'
+import { initGA } from './utils/ga'
+
+initGA()
 
 const persistor = persistStore(store)
 
